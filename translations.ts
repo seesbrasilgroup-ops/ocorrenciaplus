@@ -10,6 +10,11 @@ export const translations = {
       history: 'Meus Laudos',
       plans: 'Planos',
       admin: 'Painel',
+      about: 'Quem Somos',
+    },
+    aboutPage: {
+      title: 'A Solução Automotiva',
+      subtitle: 'Conheça a tecnologia que está mudando como lidamos com colisões.',
     },
     driversLanding: {
       hero: {
@@ -177,6 +182,11 @@ export const translations = {
       history: 'My Reports',
       plans: 'Plans',
       admin: 'Dashboard',
+      about: 'About Us',
+    },
+    aboutPage: {
+      title: 'The Automotive Solution',
+      subtitle: 'Meet the technology changing how we handle collisions.',
     },
     driversLanding: {
       hero: {
@@ -344,6 +354,11 @@ export const translations = {
       history: 'Historial',
       plans: 'Planes',
       admin: 'Panel',
+      about: 'Quiénes Somos',
+    },
+    aboutPage: {
+      title: 'La Solución Automotriz',
+      subtitle: 'Conoce la tecnología que está cambiando cómo manejamos las colisiones.',
     },
     driversLanding: {
       hero: {

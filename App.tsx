@@ -4,11 +4,10 @@ import FileUpload from './components/FileUpload';
 import AnalysisResultView from './components/AnalysisResultView';
 import PricingSection from './components/PricingSection';
 import AdminDashboard from './components/AdminDashboard';
-import VideoSection from './components/VideoSection';
 import AnimatedCar from './components/AnimatedCar'; 
 import DriversLanding from './components/DriversLanding';
 import ShopsLanding from './components/ShopsLanding';
-import { FeaturesSection, HowItWorksSection } from './components/LandingSections';
+import AboutPage from './components/AboutPage';
 import { ViewState, AnalysisResult, Language } from './types';
 import { analyzeImage, fileToGenerativePart } from './services/geminiService';
 import { saveAnalysisToHistory } from './services/storageService';
@@ -174,11 +173,11 @@ const App: React.FC = () => {
 
                 </div>
               </div>
-
-              <FeaturesSection language={language} />
-              <HowItWorksSection language={language} />
-              <VideoSection language={language} />
             </>
+          )}
+
+          {view === ViewState.ABOUT && (
+             <AboutPage language={language} />
           )}
 
           {view === ViewState.LANDING_DRIVERS && (

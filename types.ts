@@ -5,6 +5,7 @@ export enum ViewState {
   ADMIN = 'ADMIN',
   LANDING_DRIVERS = 'LANDING_DRIVERS',
   LANDING_SHOPS = 'LANDING_SHOPS',
+  ABOUT = 'ABOUT',
 }
 
 export type Language = 'pt-BR' | 'en' | 'es';

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ViewState, Language } from '../types';
-import { Car, LayoutDashboard, Sun, Moon, ChevronDown, Wrench, User, Menu, X } from 'lucide-react';
+import { Car, LayoutDashboard, Sun, Moon, ChevronDown, Wrench, User, Menu, X, Info } from 'lucide-react';
 import { translations } from '../translations';
 
 interface NavbarProps {
@@ -105,6 +105,18 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
               </div>
 
               <button
+                onClick={() => setView(ViewState.ABOUT)}
+                className={`flex items-center px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
+                  currentView === ViewState.ABOUT 
+                    ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10' 
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
+                }`}
+              >
+                <Info className="w-4 h-4 mr-2" />
+                {t.about}
+              </button>
+
+              <button
                 onClick={() => setView(ViewState.PRICING)}
                 className={`px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
                   currentView === ViewState.PRICING 
@@ -200,6 +212,18 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
             </div>
 
             {/* Standard Links */}
+            <button
+              onClick={() => handleNavClick(ViewState.ABOUT)}
+              className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors flex items-center ${
+                currentView === ViewState.ABOUT
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              <Info className="w-4 h-4 mr-2" />
+              {t.about}
+            </button>
+
             <button
               onClick={() => handleNavClick(ViewState.PRICING)}
               className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors ${
