@@ -20,7 +20,7 @@ export const translations = {
       hero: {
         title: 'Solução Pós-Colisão.',
         subtitle: 'Seu guia técnico e jurídico quando o imprevisto acontece.',
-        desc: 'Nós não vendemos seguro. Entregamos relatórios precisos sobre o que fazer após colidir. Seja com outro veículo ou patrimônio público, saiba seus direitos, custos reais e tenha acesso a crédito facilitado em situações desconfortáveis.',
+        desc: 'Não somos seguradora. Somos sua defesa imediata. Bateu? Saiba na hora o valor justo do conserto, entenda seus direitos e acesse crédito rápido para resolver o problema sem dor de cabeça.',
         cta: 'Gerar Laudo Agora',
       },
       benefits: {
@@ -190,7 +190,7 @@ export const translations = {
       hero: {
         title: 'Not Insurance. It\'s Your Post-Collision Solution.',
         subtitle: 'Your technical and legal guide when the unexpected happens.',
-        desc: 'We do not sell insurance. We deliver accurate reports on what to do after a crash. Whether with another vehicle or public property, know your rights, real costs, and access easy credit in uncomfortable situations.',
+        desc: 'We are not an insurer. We are your immediate defense. Crashed? Know the fair repair cost instantly, understand your rights, and access quick credit to solve the problem without headaches.',
         cta: 'Generate Report Now',
       },
       benefits: {
@@ -291,7 +291,7 @@ export const translations = {
         title: 'Fair Market Estimate',
         partsTotal: 'Parts Cost',
         labor: 'Avg Labor',
-        totalEstimated: 'Final Estimate',
+        totalEstimated: 'Estimación Final',
         disclaimer: '*Values based on regional average table.',
         cta: 'View Premium Details',
         lockedTitle: 'Unlock Full Report',
@@ -360,7 +360,7 @@ export const translations = {
       hero: {
         title: 'No es Seguro. Es tu Solución Post-Colisión.',
         subtitle: 'Tu guía técnico y legal cuando ocurre lo inesperado.',
-        desc: 'No vendemos seguros. Entregamos informes precisos sobre qué hacer después de chocar. Ya sea con otro vehículo o propiedad pública, conoce tus derechos, costos reales y accede a crédito fácil en situaciones incómodas.',
+        desc: 'No somos una aseguradora. Somos tu defensa inmediata. ¿Chocaste? Conoce al instante el costo justo de reparación, tus derechos y accede a crédito rápido para resolver el problema sin dolores de cabeza.',
         cta: 'Generar Informe Ahora',
       },
       benefits: {
