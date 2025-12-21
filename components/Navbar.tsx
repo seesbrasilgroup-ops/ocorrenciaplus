@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ViewState, Language } from '../types';
-import { Car, LayoutDashboard, Sun, Moon, ChevronDown, Wrench, User, Menu, X, Info } from 'lucide-react';
+import { Sun, Moon, ChevronDown, Menu, X } from 'lucide-react';
 import { translations } from '../translations';
 
 interface NavbarProps {
@@ -47,10 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center cursor-pointer" onClick={() => handleNavClick(ViewState.HOME)}>
-            <div className="flex-shrink-0 text-brand-600 dark:text-brand-500">
-              <Car className="h-8 w-8" />
-            </div>
-            <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+            <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
               OC<span className="text-brand-600 dark:text-brand-500">+</span>
             </span>
           </div>
@@ -78,11 +75,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                   <div className="absolute top-full left-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                     <button
                       onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)}
-                      className="w-full text-left px-4 py-3 flex items-center hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors border-b border-gray-100 dark:border-slate-700/50"
+                      className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors border-b border-gray-100 dark:border-slate-700/50"
                     >
-                      <div className="bg-blue-100 dark:bg-blue-500/20 p-2 rounded-lg mr-3">
-                         <User className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                      </div>
                       <div>
                         <span className="block text-sm font-bold text-gray-900 dark:text-white">{t.drivers}</span>
                         <span className="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">B2C Solution</span>
@@ -90,11 +84,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                     </button>
                     <button
                       onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
-                      className="w-full text-left px-4 py-3 flex items-center hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
+                      className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
                     >
-                      <div className="bg-amber-100 dark:bg-amber-500/20 p-2 rounded-lg mr-3">
-                         <Wrench className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                      </div>
                       <div>
                         <span className="block text-sm font-bold text-gray-900 dark:text-white">{t.shops}</span>
                         <span className="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">B2B Solution</span>
@@ -112,7 +103,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                     : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
                 }`}
               >
-                <Info className="w-4 h-4 mr-2" />
                 {t.about}
               </button>
 
@@ -134,7 +124,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                     : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
                 }`}
               >
-                <LayoutDashboard className="w-4 h-4 mr-2" />
                 {t.admin}
               </button>
             </div>
@@ -193,18 +182,12 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                     onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)}
                     className="w-full flex items-center p-3 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-700 shadow-sm"
                   >
-                    <div className="bg-blue-100 dark:bg-blue-500/20 p-2 rounded-md mr-3">
-                       <User className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                    </div>
                     <span className="text-sm font-medium text-gray-900 dark:text-white">{t.drivers}</span>
                   </button>
                   <button
                     onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
                     className="w-full flex items-center p-3 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-700 shadow-sm"
                   >
-                    <div className="bg-amber-100 dark:bg-amber-500/20 p-2 rounded-md mr-3">
-                       <Wrench className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                    </div>
                     <span className="text-sm font-medium text-gray-900 dark:text-white">{t.shops}</span>
                   </button>
                 </div>
@@ -220,7 +203,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                   : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
               }`}
             >
-              <Info className="w-4 h-4 mr-2" />
               {t.about}
             </button>
 
@@ -243,7 +225,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                   : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
               }`}
             >
-              <LayoutDashboard className="w-4 h-4 mr-2" />
               {t.admin}
             </button>
           </div>

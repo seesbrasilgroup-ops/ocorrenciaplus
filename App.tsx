@@ -8,6 +8,7 @@ import AnimatedCar from './components/AnimatedCar';
 import DriversLanding from './components/DriversLanding';
 import ShopsLanding from './components/ShopsLanding';
 import AboutPage from './components/AboutPage';
+import VideoSection from './components/VideoSection';
 import { ViewState, AnalysisResult, Language } from './types';
 import { analyzeImage, fileToGenerativePart } from './services/geminiService';
 import { saveAnalysisToHistory } from './services/storageService';
@@ -172,6 +173,11 @@ const App: React.FC = () => {
                   </div>
 
                 </div>
+              </div>
+              
+              {/* Second Section: Video */}
+              <div className="bg-slate-50 dark:bg-slate-900/50">
+                <VideoSection language={language} />
               </div>
             </>
           )}

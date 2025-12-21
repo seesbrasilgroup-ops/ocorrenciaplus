@@ -13,8 +13,8 @@ export const translations = {
       about: 'Quem Somos',
     },
     aboutPage: {
-      title: 'A Solução Automotiva',
-      subtitle: 'Conheça a tecnologia que está mudando como lidamos com colisões.',
+      title: 'O Fim da Incerteza no Trânsito',
+      subtitle: 'Descubra como o OC+ transforma uma simples foto na sua defesa técnica, jurídica e financeira em segundos.',
     },
     driversLanding: {
       hero: {
@@ -87,9 +87,7 @@ export const translations = {
       desc3: 'Conectamos com oficinas ou oferecemos crédito para o reparo imediato.',
     },
     video: {
-      tag: 'Visão Computacional',
-      title: 'Precisão que gera Confiança',
-      subtitle: 'Nossa IA foi treinada com milhões de colisões para entregar a verdade técnica para o motorista e eficiência operacional para a oficina.',
+      overlayTitle: 'Inteligência Artificial no Trânsito',
     },
     upload: {
       title: 'Foto do veículo',
@@ -185,8 +183,8 @@ export const translations = {
       about: 'About Us',
     },
     aboutPage: {
-      title: 'The Automotive Solution',
-      subtitle: 'Meet the technology changing how we handle collisions.',
+      title: 'Ending Traffic Uncertainty',
+      subtitle: 'Discover how OC+ transforms a simple photo into your technical, legal, and financial defense in seconds.',
     },
     driversLanding: {
       hero: {
@@ -259,9 +257,7 @@ export const translations = {
       desc3: 'We connect you with shops or offer credit for immediate repair.',
     },
     video: {
-      tag: 'Computer Vision',
-      title: 'Precision builds Trust',
-      subtitle: 'Our AI was trained on millions of collisions to deliver technical truth for drivers and operational efficiency for shops.',
+      overlayTitle: 'Artificial Intelligence in Traffic',
     },
     upload: {
       title: 'Vehicle Photo',
@@ -357,8 +353,8 @@ export const translations = {
       about: 'Quiénes Somos',
     },
     aboutPage: {
-      title: 'La Solución Automotriz',
-      subtitle: 'Conoce la tecnología que está cambiando cómo manejamos las colisiones.',
+      title: 'El Fin de la Incertidumbre',
+      subtitle: 'Descubre cómo OC+ transforma una simple foto en tu defensa técnica, legal y financiera en segundos.',
     },
     driversLanding: {
       hero: {
@@ -431,9 +427,7 @@ export const translations = {
       desc3: 'Te conectamos con talleres u ofrecemos crédito para reparación inmediata.',
     },
     video: {
-      tag: 'Visión Computacional',
-      title: 'Precisión que genera Confianza',
-      subtitle: 'Nuestra IA fue entrenada con millones de colisiones para entregar la verdad técnica al conductor y eficiencia al taller.',
+      overlayTitle: 'Inteligencia Artificial en el Tráfico',
     },
     upload: {
       title: 'Foto del vehículo',
