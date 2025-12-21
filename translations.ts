@@ -14,11 +14,11 @@ export const translations = {
     },
     aboutPage: {
       title: 'O Fim da Incerteza no Trânsito',
-      subtitle: 'Descubra como o OC+ transforma uma simples foto na sua defesa técnica, jurídica e financeira em segundos.',
+      subtitle: 'Descubra como o OC+ transforma uma simples foto na solução dos problemas gerados na colisão.',
     },
     driversLanding: {
       hero: {
-        title: 'Não é Seguro. É sua Solução Pós-Colisão.',
+        title: 'Solução Pós-Colisão.',
         subtitle: 'Seu guia técnico e jurídico quando o imprevisto acontece.',
         desc: 'Nós não vendemos seguro. Entregamos relatórios precisos sobre o que fazer após colidir. Seja com outro veículo ou patrimônio público, saiba seus direitos, custos reais e tenha acesso a crédito facilitado em situações desconfortáveis.',
         cta: 'Gerar Laudo Agora',
@@ -120,7 +120,7 @@ export const translations = {
       costs: {
         title: 'Estimativa de Mercado Justo',
         partsTotal: 'Custo de Peças',
-        labor: 'Mão de Obra Média',
+        labor: 'Mano de Obra Média',
         totalEstimated: 'Estimativa Final',
         disclaimer: '*Valores baseados na tabela média da região.',
         cta: 'Ver Detalhes Premium',
@@ -157,7 +157,7 @@ export const translations = {
       analyses: 'Orçamentos Recebidos',
       users: 'Clientes na Região',
       critical: 'Ticket Alto',
-      chartVolume: 'Leads Recebidos',
+      chartVolume: 'Leads Entrantes',
       chartRevenue: 'Conversão em Serviços',
       latestInsight: 'Última Oportunidade',
       profileLabels: {
@@ -184,7 +184,7 @@ export const translations = {
     },
     aboutPage: {
       title: 'Ending Traffic Uncertainty',
-      subtitle: 'Discover how OC+ transforms a simple photo into your technical, legal, and financial defense in seconds.',
+      subtitle: 'Discover how OC+ transforms a simple photo into the solution for problems caused by the collision.',
     },
     driversLanding: {
       hero: {
@@ -263,7 +263,7 @@ export const translations = {
       title: 'Vehicle Photo',
       analyzing: 'Generating Technical Report & Guidance...',
       dragDrop: 'Take a photo to start analysis',
-      aiSteps: 'Identifying parts, checking prices and traffic regulations...',
+      aiSteps: 'Identificando piezas, consultando precios y normas de tráfico...',
       button: 'Generate Report Now',
       error: 'Could not analyze. Try better lighting.',
     },
@@ -354,7 +354,7 @@ export const translations = {
     },
     aboutPage: {
       title: 'El Fin de la Incertidumbre',
-      subtitle: 'Descubre cómo OC+ transforma una simple foto en tu defensa técnica, legal y financiera en segundos.',
+      subtitle: 'Descubre cómo OC+ transforma una simple foto en la solución a los problemas generados por la colisión.',
     },
     driversLanding: {
       hero: {
