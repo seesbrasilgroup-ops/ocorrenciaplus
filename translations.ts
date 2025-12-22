@@ -350,11 +350,14 @@ export const translations = {
       }
     },
     pricing: {
-      header: 'Planos de Acesso',
-      title: 'Escolha seu Perfil',
-      subtitle: 'Soluções acessíveis para diagnósticos e facilidades financeiras.',
-      b2c: 'Sou Motorista',
-      b2b: 'Sou Restaurador',
+      header: 'Investimento Inteligente',
+      title: 'Planos que se pagam',
+      subtitle: 'Escolha o perfil ideal e comece a economizar tempo e dinheiro hoje mesmo.',
+      tabs: {
+        driver: 'Motorista',
+        shop: 'Restaurador',
+        mechanic: 'Mecânico',
+      },
       cta: 'Selecionar Plano',
       mostPopular: 'Recomendado',
     },
@@ -423,7 +426,7 @@ export const translations = {
         suspension: 'Suspension',
         electronics: 'Electric',
         pending: 'Pending',
-        inProgress: 'En Progreso',
+        inProgress: 'In Progress',
         completed: 'Completed'
       },
       tabs: {
@@ -473,7 +476,7 @@ export const translations = {
     video: { overlayTitle: 'AI' },
     upload: { title: 'Photo', analyzing: 'Analyzing...', dragDrop: 'Drop here', aiSteps: 'Thinking...', button: 'Generate', error: 'Error' },
     analysis: { title: 'Report', newAnalysis: 'New', severity: 'Severity', summary: 'Summary', parts: { title: 'Parts', replace: 'Replace', repair: 'Repair', check: 'Check' }, legal: { title: 'Legal', assessment: 'Assessment', advice: 'Advice', disclaimer: 'Disclaimer' }, recommendations: { title: 'Nearby' }, costs: { title: 'Estimate', partsTotal: 'Parts', labor: 'Labor', totalEstimated: 'Total', disclaimer: 'Disclaimer', cta: 'Premium', lockedTitle: 'Locked', lockedDesc: 'Upgrade', lockedButton: 'Unlock', unlockedCta: 'Download' }, services: { loan: { title: 'Loan', desc: 'Need cash?', cta: 'Simulate' }, publicProperty: { title: 'Public Property', desc: 'Damage?', cta: 'Guide' } } },
-    pricing: { header: 'Plans', title: 'Choose', subtitle: 'Solutions', b2c: 'Driver', b2b: 'Restorer', cta: 'Select', mostPopular: 'Popular' },
+    pricing: { header: 'Plans', title: 'Choose', subtitle: 'Solutions', tabs: { driver: 'Driver', shop: 'Restorer', mechanic: 'Mechanic' }, cta: 'Select', mostPopular: 'Popular' },
     admin: { title: 'Dashboard', revenue: 'Revenue', analyses: 'Analyses', users: 'Users', critical: 'Critical', chartVolume: 'Volumen', chartRevenue: 'Conversión', latestInsight: 'Insight', profileLabels: { segment: 'Segmento', churn: 'Abandono', upsell: 'Venta' } },
     footer: { rights: 'Reserved', madeFor: 'Tech' }
   },
@@ -572,7 +575,7 @@ export const translations = {
     video: { overlayTitle: 'Inteligencia Artificial en el Tráfico', },
     upload: { title: 'Foto del vehículo', analyzing: 'Generando Informe Técnico y Guía...', dragDrop: 'Toma una foto para iniciar el análisis', aiSteps: 'Identificando piezas, consultando precios y normas de tráfico...', button: 'Generar Informe Ahora', error: 'No se pudo analizar. Intente con mejor iluminación.', },
     analysis: { title: 'Informe Técnico Integrado', newAnalysis: 'Nuevo Análisis', severity: 'Nivel de Daño', summary: 'Opinión de IA', parts: { title: 'Detalle de Piezas', replace: 'Reemplazar', repair: 'Chapa/Pintura', check: 'Revisión', }, legal: { title: 'Orientación Legal (Ley)', assessment: 'Opinión Preliminar', advice: 'Próximos Pasos Recomendados', disclaimer: 'Este informe guía al conductor sobre procedimientos y culpabilidad. No es un seguro.' }, recommendations: { title: 'Talleres Asociados Cercanos', }, costs: { title: 'Estimación de Mercado Justo', partsTotal: 'Costo Piezas', labor: 'Mano de Obra Prom.', totalEstimated: 'Estimación Final', disclaimer: '*Valores basados en tabla promedio regional.', cta: 'Ver Detalles Premium', lockedTitle: 'Desbloquea Informe Completo', lockedDesc: 'Acceda a precios detallados y guía legal completa para no ser engañado.', lockedButton: 'Desbloquear Informe ($4.00)', unlockedCta: 'Descargar Informe PDF', }, services: { loan: { title: '¿Situación incómoda?', desc: '¿Poco dinero para el arreglo? Los suscriptores tienen acceso a préstamos fáciles.', cta: 'Simular Crédito', }, publicProperty: { title: '¿Daño a Propiedad Pública?', desc: '¿Chocó un poste o señal? Vea cómo regularizar para evitar demandas.', cta: 'Ver Guía de Conducta', } } },
-    pricing: { header: 'Planes de Acceso', title: 'Elige tu Perfil', subtitle: 'Soluciones accesibles para diagnósticos y facilidad financiera.', b2c: 'Soy Conductor', b2b: 'Soy Restaurador', cta: 'Seleccionar Plano', mostPopular: 'Recomendado', },
+    pricing: { header: 'Planes', title: 'Choose', subtitle: 'Solutions', tabs: { driver: 'Driver', shop: 'Restorer', mechanic: 'Mechanic' }, cta: 'Select', mostPopular: 'Popular' },
     admin: { title: 'Panel del Taller Socio', revenue: 'Potencial de Ventas', analyses: 'Presupuestos Recibidos', users: 'Clientes en Zona', critical: 'Ticket Alto', chartVolume: 'Leads Entrantes', chartRevenue: 'Conversión Servicios', latestInsight: 'Última Oportunidade', profileLabels: { segment: 'Vehículo', churn: 'Prob. Cierre', upsell: 'Servicios Extra', }, },
     footer: { rights: 'Todos los derechos reservados.', madeFor: 'Tecnología de orientación para conductores y reparadores.', }
   }

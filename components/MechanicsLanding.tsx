@@ -140,8 +140,8 @@ const MechanicsLanding: React.FC<MechanicsLandingProps> = ({ language, onRegiste
         </div>
       </div>
 
-      {/* Pricing tailored for Mechanics (Reuse B2B Category) */}
-      <PricingSection language={language} fixedCategory="B2B" />
+      {/* Pricing tailored for Mechanics */}
+      <PricingSection language={language} fixedCategory="MECHANIC" />
 
       {/* Final Call to Action with Car */}
       <div className="py-24 bg-slate-900 relative overflow-hidden">

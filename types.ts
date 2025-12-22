@@ -96,5 +96,5 @@ export interface PricingPlan {
   period: string;
   features: PlanFeature[];
   popular?: boolean;
-  category: 'B2C' | 'B2B';
+  category: 'DRIVER' | 'SHOP' | 'MECHANIC';
 }

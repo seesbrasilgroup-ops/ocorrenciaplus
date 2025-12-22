@@ -140,7 +140,7 @@ const ShopsLanding: React.FC<ShopsLandingProps> = ({ language, onRegister }) => 
       </div>
 
       {/* Pricing tailored for Shops */}
-      <PricingSection language={language} fixedCategory="B2B" />
+      <PricingSection language={language} fixedCategory="SHOP" />
 
       {/* Final Call to Action with Car */}
       <div className="py-24 bg-slate-900 relative overflow-hidden">

@@ -3,66 +3,100 @@ import { PricingPlan, Language } from './types';
 export const APP_NAME = "OC+";
 
 export const getPricingPlans = (lang: Language): PricingPlan[] => {
-  const suffix = lang === 'pt-BR' ? '/mês' : lang === 'es' ? '/mes' : '/mo';
+  const suffixMonth = lang === 'pt-BR' ? '/mês' : lang === 'es' ? '/mes' : '/mo';
+  const suffixClaim = lang === 'pt-BR' ? '/sinistro' : lang === 'es' ? '/caso' : '/claim';
 
   const isPt = lang === 'pt-BR';
   const isEn = lang === 'en';
 
   return [
+    // --- DRIVERS ---
     {
-      id: 'free',
-      name: isPt ? 'Motorista Básico' : isEn ? 'Driver Basic' : 'Conductor Básico',
+      id: 'driver-free',
+      name: isPt ? 'Básico' : 'Basic',
       price: isPt ? 'Grátis' : 'Free',
       period: '',
-      category: 'B2C',
+      category: 'DRIVER',
       features: [
-        { text: isPt ? 'Identificação visual de danos' : isEn ? 'Visual damage identification' : 'Identificación visual de daños', included: true },
-        { text: isPt ? 'Lista de peças afetadas' : isEn ? 'List of affected parts' : 'Lista de piezas afectadas', included: true },
-        { text: isPt ? 'Localizar Restauradores Próximos' : isEn ? 'Find Nearby Shops' : 'Encontrar Talleres Cercanos', included: true },
-        { text: isPt ? 'Análise Jurídica/Culpabilidade' : isEn ? 'Legal/Liability Analysis' : 'Análisis Legal/Culpabilidad', included: false },
-        { text: isPt ? 'Estimativa de custos' : isEn ? 'Cost estimation' : 'Estimación de costos', included: false },
+        { text: isPt ? 'Diagnóstico visual IA' : 'AI Visual Diagnosis', included: true },
+        { text: isPt ? 'Identificação de peças' : 'Parts Identification', included: true },
+        { text: isPt ? 'Buscar oficinas próximas' : 'Find nearby shops', included: true },
+        { text: isPt ? 'Análise Jurídica' : 'Legal Analysis', included: false },
+        { text: isPt ? 'Estimativa de preços' : 'Cost Estimation', included: false },
       ]
     },
     {
-      id: 'plus',
-      name: isPt ? 'Motorista Protegido' : isEn ? 'Protected Driver' : 'Conductor Protegido',
-      price: isPt ? 'R$ 19,90' : '$4',
-      period: isPt ? '/sinistro' : isEn ? '/claim' : '/siniestro', // Pay per use logic
-      category: 'B2C',
+      id: 'driver-premium',
+      name: isPt ? 'Protegido' : 'Protected',
+      price: isPt ? 'R$ 19,90' : '$4.99',
+      period: suffixClaim,
+      category: 'DRIVER',
       popular: true,
       features: [
-        { text: isPt ? 'Laudo Completo para Acordo' : isEn ? 'Full Settlement Report' : 'Informe Completo para Acuerdo', included: true },
-        { text: isPt ? 'Análise de Culpabilidade (CTB)' : isEn ? 'Liability Analysis (Traffic Laws)' : 'Análisis de Culpabilidad (Leyes)', included: true },
-        { text: isPt ? 'Valores Justos de Mercado' : isEn ? 'Fair Market Values' : 'Valores Justos de Mercado', included: true },
-        { text: isPt ? 'Download em PDF Oficial' : isEn ? 'Official PDF Download' : 'Descarga PDF Oficial', included: true },
-        { text: isPt ? 'Suporte via Chat' : isEn ? 'Chat Support' : 'Soporte vía Chat', included: true },
+        { text: isPt ? 'Laudo Completo (PDF)' : 'Full Report (PDF)', included: true },
+        { text: isPt ? 'Análise de Culpabilidade (CTB)' : 'Liability Analysis', included: true },
+        { text: isPt ? 'Valores de Mercado' : 'Market Values', included: true },
+        { text: isPt ? 'Suporte via Chat' : 'Chat Support', included: true },
+        { text: isPt ? 'Acesso a Crédito' : 'Loan Access', included: true },
+      ]
+    },
+
+    // --- SHOPS (RESTAURADORES) ---
+    {
+      id: 'shop-start',
+      name: isPt ? 'Oficina Digital' : 'Digital Shop',
+      price: isPt ? 'R$ 299' : '$59',
+      period: suffixMonth,
+      category: 'SHOP',
+      features: [
+        { text: isPt ? 'Painel de Gestão' : 'Management Dashboard', included: true },
+        { text: isPt ? 'Receba 10 Leads/mês' : 'Get 10 Leads/mo', included: true },
+        { text: isPt ? 'Orçamentos via Foto' : 'Photo Estimates', included: true },
+        { text: isPt ? 'API de Integração' : 'Integration API', included: false },
       ]
     },
     {
-      id: 'b2b-pro',
-      name: isPt ? 'Mecânico Parceiro' : isEn ? 'Partner Mechanic' : 'Mecánico Socio',
-      price: isPt ? 'R$ 199' : '$40',
-      period: suffix,
-      category: 'B2B',
+      id: 'shop-pro',
+      name: isPt ? 'Rede Premium' : 'Premium Network',
+      price: isPt ? 'R$ 599' : '$119',
+      period: suffixMonth,
+      category: 'SHOP',
       popular: true,
       features: [
-        { text: isPt ? 'Receba Leads (Motoristas)' : isEn ? 'Receive Leads (Drivers)' : 'Reciba Leads (Conductores)', included: true },
-        { text: isPt ? 'Sistema Integrado de Gestão (Dashboard)' : isEn ? 'Integrated Management Dashboard System' : 'Sistema de Panel de Gestión Integrado', included: true },
-        { text: isPt ? 'Orçamentos via Foto Ilimitados' : isEn ? 'Unlimited Photo Estimates' : 'Presupuestos por Foto Ilimitados', included: true },
-        { text: isPt ? 'Selo de Restaurador Verificado' : isEn ? 'Verified Shop Badge' : 'Insignia de Taller Verificado', included: true },
+        { text: isPt ? 'Painel Avançado + BI' : 'Advanced Dashboard + BI', included: true },
+        { text: isPt ? 'Leads Ilimitados' : 'Unlimited Leads', included: true },
+        { text: isPt ? 'Selo de Verificado OC+' : 'OC+ Verified Badge', included: true },
+        { text: isPt ? 'API e Multi-lojas' : 'API & Multi-store', included: true },
       ]
     },
+
+    // --- MECHANICS (MECÂNICOS) ---
     {
-      id: 'b2b-corp',
-      name: isPt ? 'Rede de Restauradores' : isEn ? 'Shop Network' : 'Red de Talleres',
-      price: isPt ? 'Sob Consulta' : 'Contact Us',
+      id: 'mech-partner',
+      name: isPt ? 'Mecânico Parceiro' : 'Partner Mechanic',
+      price: isPt ? 'Grátis' : 'Free',
       period: '',
-      category: 'B2B',
+      category: 'MECHANIC',
       features: [
-        { text: isPt ? 'API de Vistoria Digital' : isEn ? 'Digital Inspection API' : 'API de Inspección Digital', included: true },
-        { text: isPt ? 'Integração com ERP' : isEn ? 'ERP Integration' : 'Integración ERP', included: true },
-        { text: isPt ? 'Gestão Multi-lojas' : isEn ? 'Multi-store Management' : 'Gestión Multi-tienda', included: true },
-        { text: isPt ? 'Relatórios de Mercado' : isEn ? 'Market Reports' : 'Informes de Mercado', included: true },
+        { text: isPt ? 'Perfil Profissional' : 'Professional Profile', included: true },
+        { text: isPt ? 'Agenda Digital' : 'Digital Schedule', included: true },
+        { text: isPt ? 'Receba Chamados (Raio 5km)' : 'Receive Calls (5km)', included: true },
+        { text: isPt ? 'Selo de Especialista' : 'Expert Badge', included: false },
+      ]
+    },
+    {
+      id: 'mech-pro',
+      name: isPt ? 'Especialista Pro' : 'Pro Expert',
+      price: isPt ? 'R$ 99' : '$19',
+      period: suffixMonth,
+      category: 'MECHANIC',
+      popular: true,
+      features: [
+        { text: isPt ? 'Selo Mecânico Verificado' : 'Verified Mechanic Badge', included: true },
+        { text: isPt ? 'Destaque na Busca' : 'Search Highlight', included: true },
+        { text: isPt ? 'Raio de Atendimento Ilimitado' : 'Unlimited Radius', included: true },
+        { text: isPt ? 'Gestão de Estoque' : 'Inventory Management', included: true },
+        { text: isPt ? 'Clube de Descontos (Peças)' : 'Parts Discount Club', included: true },
       ]
     }
   ];

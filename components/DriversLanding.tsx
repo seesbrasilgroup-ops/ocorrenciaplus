@@ -83,7 +83,7 @@ const DriversLanding: React.FC<DriversLandingProps> = ({ language, onStart }) =>
       </div>
 
       {/* Pricing tailored for Drivers */}
-      <PricingSection language={language} fixedCategory="B2C" />
+      <PricingSection language={language} fixedCategory="DRIVER" />
 
       {/* Final Call to Action with Car */}
       <div className="py-16 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
