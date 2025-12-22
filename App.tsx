@@ -217,20 +217,8 @@ const App: React.FC = () => {
                       </div>
                     </div>
                     
-                    {/* Upsell for Basic Users */}
-                    {currentUser?.role === 'DRIVER_BASIC' && (
-                      <div className="w-full mb-8 p-4 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800 rounded-xl flex items-center justify-between gap-4">
-                         <div className="text-left">
-                           <p className="text-sm font-bold text-amber-800 dark:text-amber-400">Desbloqueie todos os recursos</p>
-                           <p className="text-xs text-amber-700 dark:text-amber-500">Seja Premium e tenha assessoria jurídica completa.</p>
-                         </div>
-                         <button onClick={() => setView(ViewState.PRICING)} className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-lg transition-colors">
-                            Ver Planos
-                         </button>
-                      </div>
-                    )}
-                      
-                    <div className="flex flex-row flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 w-full opacity-90">
+                    {/* Steps Section - Moved Up */}
+                    <div className="flex flex-row flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 w-full opacity-90 mb-8">
                       <div className="flex items-center gap-2">
                         <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">
                           <Camera className="w-4 h-4 text-brand-500" />
@@ -252,6 +240,20 @@ const App: React.FC = () => {
                         <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.hero.steps.step3}</span>
                       </div>
                     </div>
+
+                    {/* Upsell for Basic Users - Moved Down */}
+                    {currentUser?.role === 'DRIVER_BASIC' && (
+                      <div className="w-full mb-8 p-4 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800 rounded-xl flex items-center justify-between gap-4">
+                         <div className="text-left">
+                           <p className="text-sm font-bold text-amber-800 dark:text-amber-400">Desbloqueie todos os recursos</p>
+                           <p className="text-xs text-amber-700 dark:text-amber-500">Seja Premium e tenha assessoria jurídica completa.</p>
+                         </div>
+                         <button onClick={() => setView(ViewState.PRICING)} className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-lg transition-colors">
+                            Ver Planos
+                         </button>
+                      </div>
+                    )}
+                      
                   </div>
 
                   {/* RIGHT COLUMN: Animated Car */}
