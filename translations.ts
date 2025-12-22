@@ -55,6 +55,26 @@ export const translations = {
       mapBadge: 'Restauradores Ativos',
       cancel: 'Cancelar Solicitação'
     },
+    financialAidSection: {
+      badge: 'Tranquilidade Financeira',
+      title: 'Sem seguro? Ou travado na',
+      titleHighlight: 'Burocracia?',
+      subtitle: 'Resolvemos a falta de verba ou o excesso de papelada.',
+      desc: 'Não deixe seu carro parado. Oferecemos linhas de crédito exclusivas para o reparo imediato. Se possui seguro, nossa IA preenche o B.O. e acelera a abertura do sinistro para você.',
+      cards: {
+        loan: {
+          title: 'Parcele o Conserto',
+          desc: 'Crédito pré-aprovado para usar nas oficinas parceiras.',
+          highlight: 'Em até 24x'
+        },
+        insurance: {
+          title: 'Assistente de Sinistro',
+          desc: 'Geração automática de B.O. e documentos para seguradora.',
+          highlight: 'Burocracia Zero'
+        }
+      },
+      cta: 'Ver Opções de Crédito'
+    },
     superAdmin: {
       title: 'Gestão da Plataforma',
       menu: {
@@ -138,7 +158,7 @@ export const translations = {
     hero: {
       title: 'Ocorrência',
       subtitle: 'A inteligência que guia motoristas após o acidente',
-      description: 'Diagnóstico técnico via IA e amparo jurídico. A verdade que você precisa para resolver conflitos e reparar sem prejuízos.',
+      description: 'Diagnóstico técnico via App e amparo no transito. Evite confusões e brigas desnecessárias no transito.',
       welcomeUser: 'Olá, {name}. Sentimos muito pelo ocorrido.',
       descriptionUser: 'Vamos resolver isso juntos. Tire uma foto do dano e nós cuidaremos de toda a burocracia técnica e jurídica para você.',
       steps: {
@@ -268,6 +288,26 @@ export const translations = {
     nav: { services: 'Services', drivers: 'Drivers', shops: 'Restorers', analysis: 'Start', history: 'History', plans: 'Plans', admin: 'Dashboard', about: 'About', login: 'Login', logout: 'Logout', welcome: 'Hello', shopBadge: 'Restorer', notifications: 'Notifications', markAllRead: 'Clear', empty: 'No new notifications' },
     auth: { title: 'Login', subtitle: 'Choose profile', tabDriver: 'Driver', tabShop: 'Restorer', tabAdmin: 'Admin', emailPlaceholder: 'email', passwordPlaceholder: 'pass', button: 'Login', basicLabel: 'Basic', premiumLabel: 'Premium' },
     emergency: { title: 'Support Center', subtitle: 'How can we help?', btnHelp: 'Request Help', btnHelpDesc: 'Call agent', btnSolution: 'Request Solution', btnSolutionDesc: 'Call Towing', questions: { drivable: 'Drivable?', people: 'People?', injured: 'Injuries?', kids: 'Kids?', fire: 'Fire Risk?', location: 'Location?', details: 'Details:' }, finding: 'Locating...', driverFound: 'Restorer found!', driverArriving: 'Arriving in', contacting: 'Contacting...', agentCall: 'Agent calling...', mapBadge: 'Active Restorers', cancel: 'Cancel' },
+    financialAidSection: {
+      badge: 'Financial Peace',
+      title: 'No insurance? Or stuck in',
+      titleHighlight: 'Red Tape?',
+      subtitle: 'We solve the lack of funds or excess paperwork.',
+      desc: 'Don\'t leave your car stuck. We offer exclusive credit lines for immediate repair. If you have insurance, our AI fills out the police report and speeds up the claim for you.',
+      cards: {
+        loan: {
+          title: 'Installment Plan',
+          desc: 'Pre-approved credit for use in partner shops.',
+          highlight: 'Up to 24x'
+        },
+        insurance: {
+          title: 'Claim Assistant',
+          desc: 'Automatic generation of police reports and documents.',
+          highlight: 'Zero Bureaucracy'
+        }
+      },
+      cta: 'View Credit Options'
+    },
     superAdmin: { title: 'Platform Management', menu: { overview: 'Overview', history: 'Occurrence History', service: 'Service', monitoring: 'Monitoring', costs: 'Costs', earnings: 'Earnings', sales: 'Sales', partnerships: 'Partnerships', legal: 'Legal', reports: 'Reports' }, stats: { activeCalls: 'Active Calls', avgTime: 'Avg Time', satisfaction: 'CSAT', totalRevenue: 'Revenue', totalCosts: 'Costs', netProfit: 'Profit', activePartners: 'Active Partners' }, users: 'Users', financial: 'Financial', totalUsers: 'Total Users', activeShops: 'Active Restorers', conversionRate: 'Conversion', recentActivity: 'Activity', userList: 'Users', filterDriver: 'Drivers', filterShop: 'Restorers', role: 'Role', status: 'Status', actions: 'Actions' },
     shopDashboard: { title: 'Restorer Dashboard', verifiedBadge: 'Verified', verifiedDesc: 'Fair prices', quickActions: 'Actions', newEstimate: 'New Estimate', checklist: 'Checklist', whatsapp: 'WhatsApp', lastEstimates: 'Estimates', pending: 'Pending', approved: 'Approved' },
     aboutPage: { title: 'End Uncertainty', subtitle: 'AI Solution' },
@@ -288,12 +328,32 @@ export const translations = {
     nav: { services: 'Servicios', drivers: 'Conductores', shops: 'Restauradores', analysis: 'Inicio', history: 'Historial', plans: 'Planes', admin: 'Panel', about: 'Nosotros', login: 'Entrar', logout: 'Salir', welcome: 'Hola', shopBadge: 'Restaurador', notifications: 'Notificaciones', markAllRead: 'Limpiar', empty: 'Sin notificaciones' },
     auth: { title: 'Entrar', subtitle: 'Perfil', tabDriver: 'Conductor', tabShop: 'Restaurador', tabAdmin: 'Admin', emailPlaceholder: 'email', passwordPlaceholder: 'pass', button: 'Entrar', basicLabel: 'Básico', premiumLabel: 'Premium' },
     emergency: { title: 'Centro de Soporte', subtitle: '¿Cómo ayudar?', btnHelp: 'Solicitar Ayuda', btnHelpDesc: 'Llamar agente', btnSolution: 'Solicitar Solución', btnSolutionDesc: 'Llamar Grúa', questions: { drivable: '¿Conducible?', people: '¿Gente?', injured: '¿Heridos?', kids: '¿Niños?', fire: '¿Fuego?', location: '¿Ubicación?', details: 'Detalles:' }, finding: 'Localizando...', driverFound: '¡Restaurador encontrado!', driverArriving: 'Llegando en', contacting: 'Contactando...', agentCall: 'Agente llamando...', mapBadge: 'Restauradores Activos', cancel: 'Cancelar' },
+    financialAidSection: {
+      badge: 'Tranquilidad Financiera',
+      title: '¿Sin seguro? ¿O atascado en',
+      titleHighlight: 'Burocracia?',
+      subtitle: 'Resolvemos la falta de fondos o el exceso de papeleo.',
+      desc: 'No dejes tu auto parado. Ofrecemos líneas de crédito exclusivas para la reparación inmediata. Si tienes seguro, nuestra IA completa el informe policial y acelera el reclamo por ti.',
+      cards: {
+        loan: {
+          title: 'Paga a Plazos',
+          desc: 'Crédito preaprobado para usar en talleres asociados.',
+          highlight: 'Hasta 24x'
+        },
+        insurance: {
+          title: 'Asistente de Reclamos',
+          desc: 'Generación automática de informes policiales y documentos.',
+          highlight: 'Cero Burocracia'
+        }
+      },
+      cta: 'Ver Opciones de Crédito'
+    },
     superAdmin: { title: 'Gestión Plataforma', menu: { overview: 'Visión General', history: 'Historial de Ocurrencias', service: 'Servicio', monitoring: 'Monitoreo', costs: 'Costos', earnings: 'Ganancias', sales: 'Ventas', partnerships: 'Alianzas', legal: 'Legal', reports: 'Reportes' }, stats: { activeCalls: 'Llamadas Activas', avgTime: 'Tiempo Prom.', satisfaction: 'CSAT', totalRevenue: 'Ingresos', totalCosts: 'Costos', netProfit: 'Beneficio', activePartners: 'Socios Activos' }, users: 'Usuarios', financial: 'Financiero', totalUsers: 'Total Usuarios', activeShops: 'Talleres Activos', conversionRate: 'Tasa de Conversión', recentActivity: 'Actividad Reciente', userList: 'Gestión de Usuarios', filterDriver: 'Conductores', filterShop: 'Restauradores', role: 'Rol', status: 'Estado', actions: 'Acciones' },
     shopDashboard: { title: 'Panel Restaurador', verifiedBadge: 'Taller Verificado OC+', verifiedDesc: 'Practicas precios justos auditados por OC+.', quickActions: 'Acciones Rápidas', newEstimate: 'Nuevo Presupuesto (Escáner)', checklist: 'Lista de Verificación', whatsapp: 'Enviar por WhatsApp', lastEstimates: 'Últimos Presupuestos', pending: 'Pendiente', approved: 'Aprobado' },
     aboutPage: { title: 'El Fin de la Incertidumbre', subtitle: 'Descubre cómo OC+ transforma una simple foto en la solución a los problemas generados por la colisión.', },
     driversLanding: { hero: { title: 'No es Seguro. Es tu Solución Post-Colisión.', subtitle: 'Tu guía técnico y legal cuando ocurre lo inesperado.', desc: 'Obtenga un informe técnico instantáneo con IA, orientación legal sobre responsabilidad y acceso directo a talleres verificados para realizar la reparación.', cta: 'Generar Informe Ahora', }, benefits: { title: '¿Por qué elegir OC+?', b1: { title: 'Verdad Técnica', desc: 'No dependas solo de talleres. Conoce el valor real de la reparación antes de negociar.' }, b2: { title: 'Dirección Legal', desc: '¿Chocaste un poste u otro auto? Nuestros informes te guían paso a paso para evitar demandas.' }, b3: { title: 'Ayuda Financiera', desc: 'Los suscriptores tienen acceso exclusivo a líneas de crédito para arreglar el auto cuando falta dinero.' } } },
     shopsLanding: { hero: { title: 'Toma el Control Total de tu Operación', subtitle: 'Inteligencia de Datos para Talleres', desc: 'Deja de gestionar tu taller a ciegas. Ten un panel completo que muestra exactamente dónde estás ganando dinero, tus cuellos de botella y tu Ticket Promedio en tiempo real.', cta: 'Ver Demo del Panel', }, benefits: { title: 'El Fin de la Gestión por "Suposición"', b1: { title: 'Radiografía Financiera', desc: 'Visualiza Facturación Bruta, Beneficio Neto y Costo de Piezas en gráficos claros.' }, b2: { title: 'Métricas de Productividad', desc: 'Sepa exactamente cuánto tarda cada reparación y la eficiencia de su equipo.' }, b3: { title: 'Análisis de Ticket Promedio', desc: 'Descubre qué tipos de auto y servicio traen mayor margen para enfocarte en lo que importa.' } } },
-    hero: { title: 'Ocurrencia', subtitle: 'La inteligencia que guía conductores tras un accidente', description: 'Diagnóstico técnico vía IA y amparo jurídico. La verdad que necesitas para resolver conflictos y reparar sin pérdidas.', welcomeUser: 'Hola, {name}. Lamentamos lo sucedido.', descriptionUser: 'Vamos a resolver esto juntos. Tome una foto del daño y nos encargaremos de toda la burocracia técnica y legal por usted.', steps: { step1: 'Foto del Daño', step2: 'Informe Inteligente', step3: 'Solución', } },
+    hero: { title: 'Ocurrencia', subtitle: 'La inteligencia que guía conductores tras un accidente', description: 'Diagnóstico técnico via IA y amparo jurídico. La verdad que necesitas para resolver conflictos y reparar sin pérdidas.', welcomeUser: 'Hola, {name}. Lamentamos lo sucedido.', descriptionUser: 'Vamos a resolver esto juntos. Tome una foto del daño y nos encargaremos de toda la burocracia técnica y legal por usted.', steps: { step1: 'Foto del Daño', step2: 'Informe Inteligente', step3: 'Solución', } },
     features: { tag: 'Tecnología de Apoyo', title: 'Una App, Dos Soluciones', item1: { title: 'Para Conductores: Guía Total', desc: '¿Chocaste y no sabes qué hacer? Recibe un paso a paso técnico y legal inmediato.' }, item2: { title: 'Para Talleres: Presupuesto Automático', desc: 'Reciba el auto ya presupuestado. Ahorre horas de evaluación y acceda a leads calificados.' }, item3: { title: 'Informe Imparcial', desc: 'Un documento estandarizado que sirve como base técnica para negociaciones, sin sesgo de aseguradora.' } },
     history: { title: 'Historial de Siniestros', empty: 'Ningún análisis registrado.', cost: 'Pre-Presupuesto', delete: 'Eliminar', },
     howItWorks: { tag: 'Flujo Inteligente', title: 'Cómo Funciona OC+', step1: 'Diagnóstico Visual', desc1: 'Sube una foto. La IA detecta daños en carrocería y mecánica instantáneamente.', step2: 'Informe y Guía', desc2: 'Calculamos costos justos y orientamos legalmente sobre culpabilidad y daños públicos.', step3: 'Solución del Problema', desc3: 'Te conectamos con talleres u ofrecemos crédito para reparación inmediata.', },
