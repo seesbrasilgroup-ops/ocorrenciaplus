@@ -321,6 +321,24 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
             >
               Home
             </button>
+            
+            {/* Mobile Services Section */}
+            <div className="py-2">
+               <p className="px-4 text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">{t.services}</p>
+               <button
+                  onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)}
+                  className="block w-full text-left px-4 py-2 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 pl-6 border-l-2 border-transparent hover:border-brand-500"
+               >
+                  {t.drivers}
+               </button>
+               <button
+                  onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
+                  className="block w-full text-left px-4 py-2 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 pl-6 border-l-2 border-transparent hover:border-amber-500"
+               >
+                  {t.shops}
+               </button>
+            </div>
+
             <button
               onClick={() => handleNavClick(ViewState.ABOUT)}
               className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
