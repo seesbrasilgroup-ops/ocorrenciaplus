@@ -11,6 +11,8 @@ import ShopsLanding from './components/ShopsLanding';
 import AboutPage from './components/AboutPage';
 import VideoSection from './components/VideoSection';
 import AuthModal from './components/AuthModal';
+import EmergencyFlow from './components/EmergencyFlow';
+import LiveTrackingMap from './components/LiveTrackingMap';
 import { ViewState, AnalysisResult, Language, User } from './types';
 import { analyzeImage, fileToGenerativePart } from './services/geminiService';
 import { saveAnalysisToHistory } from './services/storageService';
@@ -31,6 +33,9 @@ const App: React.FC = () => {
   // User State
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  
+  // Emergency State
+  const [emergencyMode, setEmergencyMode] = useState<'HELP' | 'SOLUTION' | null>(null);
   
   // Check premium status based on user role or simulated payment
   const [isPremium, setIsPremium] = useState(false);
@@ -119,6 +124,17 @@ const App: React.FC = () => {
     setCurrentUser(null);
     setIsPremium(false);
     setView(ViewState.HOME);
+  };
+
+  const handleEmergencyRequest = (mode: 'HELP' | 'SOLUTION') => {
+     setEmergencyMode(mode); // Pre-set mode if directly clicked, or handle in component
+     setView(ViewState.EMERGENCY_FLOW);
+  };
+
+  const handleEmergencyComplete = (mode: 'HELP' | 'SOLUTION', data: any) => {
+     console.log('Emergency Data:', data);
+     setEmergencyMode(mode);
+     setView(ViewState.LIVE_TRACKING);
   };
 
   const t = translations[language];
@@ -283,7 +299,24 @@ const App: React.FC = () => {
               language={language}
               isPremium={isPremium}
               onUnlock={handleUnlock}
+              onRequestHelp={handleEmergencyRequest}
             />
+          )}
+          
+          {view === ViewState.EMERGENCY_FLOW && (
+             <EmergencyFlow 
+               language={language} 
+               onComplete={handleEmergencyComplete} 
+               onCancel={() => setView(ViewState.ANALYSIS)} 
+             />
+          )}
+
+          {view === ViewState.LIVE_TRACKING && emergencyMode && (
+             <LiveTrackingMap 
+               language={language} 
+               mode={emergencyMode} 
+               onReset={() => setView(ViewState.ANALYSIS)} 
+             />
           )}
           
           {view === ViewState.PRICING && <PricingSection language={language} />}

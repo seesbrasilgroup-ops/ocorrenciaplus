@@ -18,7 +18,7 @@ export const getPricingPlans = (lang: Language): PricingPlan[] => {
       features: [
         { text: isPt ? 'Identificação visual de danos' : isEn ? 'Visual damage identification' : 'Identificación visual de daños', included: true },
         { text: isPt ? 'Lista de peças afetadas' : isEn ? 'List of affected parts' : 'Lista de piezas afectadas', included: true },
-        { text: isPt ? 'Localizar Oficinas Próximas' : isEn ? 'Find Nearby Shops' : 'Encontrar Talleres Cercanos', included: true },
+        { text: isPt ? 'Localizar Restauradores Próximos' : isEn ? 'Find Nearby Shops' : 'Encontrar Talleres Cercanos', included: true },
         { text: isPt ? 'Análise Jurídica/Culpabilidade' : isEn ? 'Legal/Liability Analysis' : 'Análisis Legal/Culpabilidad', included: false },
         { text: isPt ? 'Estimativa de custos' : isEn ? 'Cost estimation' : 'Estimación de costos', included: false },
       ]
@@ -40,7 +40,7 @@ export const getPricingPlans = (lang: Language): PricingPlan[] => {
     },
     {
       id: 'b2b-pro',
-      name: isPt ? 'Oficina Parceira' : isEn ? 'Partner Shop' : 'Taller Socio',
+      name: isPt ? 'Restaurador Parceiro' : isEn ? 'Partner Shop' : 'Taller Socio',
       price: isPt ? 'R$ 199' : '$40',
       period: suffix,
       category: 'B2B',
@@ -49,12 +49,12 @@ export const getPricingPlans = (lang: Language): PricingPlan[] => {
         { text: isPt ? 'Receba Leads (Motoristas)' : isEn ? 'Receive Leads (Drivers)' : 'Reciba Leads (Conductores)', included: true },
         { text: isPt ? 'Sistema Integrado de Gestão (Dashboard)' : isEn ? 'Integrated Management Dashboard System' : 'Sistema de Panel de Gestión Integrado', included: true },
         { text: isPt ? 'Orçamentos via Foto Ilimitados' : isEn ? 'Unlimited Photo Estimates' : 'Presupuestos por Foto Ilimitados', included: true },
-        { text: isPt ? 'Selo de Oficina Verificada' : isEn ? 'Verified Shop Badge' : 'Insignia de Taller Verificado', included: true },
+        { text: isPt ? 'Selo de Restaurador Verificado' : isEn ? 'Verified Shop Badge' : 'Insignia de Taller Verificado', included: true },
       ]
     },
     {
       id: 'b2b-corp',
-      name: isPt ? 'Rede de Funilarias' : isEn ? 'Shop Network' : 'Red de Talleres',
+      name: isPt ? 'Rede de Restauradores' : isEn ? 'Shop Network' : 'Red de Talleres',
       price: isPt ? 'Sob Consulta' : 'Contact Us',
       period: '',
       category: 'B2B',

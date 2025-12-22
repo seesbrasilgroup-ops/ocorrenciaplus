@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ViewState, Language, User } from '../types';
-import { Sun, Moon, ChevronDown, Menu, X, User as UserIcon, LogOut } from 'lucide-react';
+import { Sun, Moon, ChevronDown, Menu, X, User as UserIcon, LogOut, Bell, Check } from 'lucide-react';
 import { translations } from '../translations';
 
 interface NavbarProps {
@@ -20,6 +20,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
+  // Notification State
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const notificationRef = useRef<HTMLDivElement>(null);
+  
   const dropdownRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
@@ -31,6 +35,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
       }
       if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
         setIsUserMenuOpen(false);
+      }
+      if (notificationRef.current && !notificationRef.current.contains(event.target as Node)) {
+        setIsNotificationsOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -56,6 +63,29 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
     return ViewState.HOME; // Basic/Premium users go to Home with updated UI
   };
 
+  const getNotifications = () => {
+    if (!currentUser) return [];
+    
+    // Mock Notifications based on Role
+    if (currentUser.role === 'SHOP') {
+      return [
+        { id: 1, title: 'Novo Lead Próximo', desc: 'Honda Civic a 2km de você solicitando reparo.', time: '2 min', unread: true },
+        { id: 2, title: 'Orçamento Aprovado', desc: 'Cliente João aceitou a proposta #492.', time: '1h', unread: false },
+        { id: 3, title: 'Meta Mensal', desc: 'Você atingiu 80% da sua meta de faturamento!', time: '1d', unread: false },
+      ];
+    }
+    
+    // Driver or Admin default
+    return [
+      { id: 1, title: 'Laudo Concluído', desc: 'A análise do seu veículo foi finalizada.', time: '5 min', unread: true },
+      { id: 2, title: 'Profissional a Caminho', desc: 'O guincho está a 10 minutos da sua localização.', time: '15 min', unread: true },
+      { id: 3, title: 'Bem-vindo ao OC+', desc: 'Complete seu cadastro para ganhar descontos.', time: '2d', unread: false },
+    ];
+  };
+
+  const notifications = getNotifications();
+  const unreadCount = notifications.filter(n => n.unread).length;
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/90 dark:bg-brand-900/90 backdrop-blur-md border-b border-gray-200 dark:border-brand-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,7 +94,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
             <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
               OC<span className="text-brand-600 dark:text-brand-500">+</span>
             </span>
-            {currentUser?.role === 'SHOP' && <span className="ml-2 text-xs font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded border border-amber-200">SHOP</span>}
+            {currentUser?.role === 'SHOP' && <span className="ml-2 text-xs font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded border border-amber-200">{t.shopBadge.toUpperCase()}</span>}
             {currentUser?.role === 'SUPER_ADMIN' && <span className="ml-2 text-xs font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded border border-purple-200">ADMIN</span>}
           </div>
           
@@ -111,31 +141,87 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                 )}
               </div>
 
-              <button
-                onClick={() => setView(ViewState.ABOUT)}
-                className={`flex items-center px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                  currentView === ViewState.ABOUT 
-                    ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10' 
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
-                }`}
-              >
-                {t.about}
-              </button>
+              {!currentUser && (
+                <>
+                  <button
+                    onClick={() => setView(ViewState.ABOUT)}
+                    className={`flex items-center px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
+                      currentView === ViewState.ABOUT 
+                        ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10' 
+                        : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
+                    }`}
+                  >
+                    {t.about}
+                  </button>
 
-              <button
-                onClick={() => setView(ViewState.PRICING)}
-                className={`px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                  currentView === ViewState.PRICING 
-                    ? 'bg-blue-600 text-white shadow-md shadow-brand-500/20 dark:bg-brand-600' 
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
-                }`}
-              >
-                {t.plans}
-              </button>
+                  <button
+                    onClick={() => setView(ViewState.PRICING)}
+                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
+                      currentView === ViewState.PRICING 
+                        ? 'bg-blue-600 text-white shadow-md shadow-brand-500/20 dark:bg-brand-600' 
+                        : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
+                    }`}
+                  >
+                    {t.plans}
+                  </button>
+                </>
+              )}
             </div>
 
             {/* Auth & Theme & Mobile */}
             <div className="flex items-center gap-2 border-l border-gray-200 dark:border-slate-700 pl-4 ml-2">
+              
+              {/* Notifications Button (Only if logged in) */}
+              {currentUser && (
+                <div className="relative" ref={notificationRef}>
+                   <button
+                      onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+                      className="p-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700 transition-all focus:outline-none relative"
+                      aria-label="Notifications"
+                   >
+                      <Bell className="w-5 h-5" />
+                      {unreadCount > 0 && (
+                        <span className="absolute top-2 right-2.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white dark:border-slate-900 animate-pulse"></span>
+                      )}
+                   </button>
+
+                   {isNotificationsOpen && (
+                      <div className="absolute top-full right-0 mt-2 w-80 sm:w-96 bg-white dark:bg-slate-900 rounded-xl shadow-2xl border border-gray-200 dark:border-slate-800 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+                         <div className="px-4 py-3 border-b border-gray-100 dark:border-slate-800 flex justify-between items-center bg-gray-50 dark:bg-slate-800/50">
+                            <span className="font-bold text-sm text-gray-900 dark:text-white">{t.notifications}</span>
+                            <button className="text-xs text-brand-600 dark:text-brand-400 hover:underline flex items-center">
+                              <Check className="w-3 h-3 mr-1" /> {t.markAllRead}
+                            </button>
+                         </div>
+                         <div className="max-h-80 overflow-y-auto">
+                            {notifications.length > 0 ? (
+                              notifications.map((note) => (
+                                <div key={note.id} className={`p-4 border-b border-gray-100 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors cursor-pointer ${note.unread ? 'bg-blue-50/50 dark:bg-blue-900/10' : ''}`}>
+                                  <div className="flex justify-between items-start mb-1">
+                                    <h4 className={`text-sm ${note.unread ? 'font-bold text-gray-900 dark:text-white' : 'font-medium text-gray-700 dark:text-gray-300'}`}>
+                                      {note.title}
+                                    </h4>
+                                    <span className="text-[10px] text-gray-400">{note.time}</span>
+                                  </div>
+                                  <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{note.desc}</p>
+                                </div>
+                              ))
+                            ) : (
+                              <div className="p-8 text-center text-gray-400 text-sm">
+                                {t.empty}
+                              </div>
+                            )}
+                         </div>
+                         <div className="p-2 text-center border-t border-gray-100 dark:border-slate-800 bg-gray-50 dark:bg-slate-800/50">
+                            <button className="text-xs font-bold text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400">
+                               Ver todas
+                            </button>
+                         </div>
+                      </div>
+                   )}
+                </div>
+              )}
+
               <button 
                 onClick={toggleTheme}
                 className="p-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700 transition-all focus:outline-none"
@@ -166,7 +252,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                   </button>
 
                   {isUserMenuOpen && (
-                    <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 z-50">
                       <div className="px-4 py-3 border-b border-gray-100 dark:border-slate-700">
                         <p className="text-sm font-bold text-gray-900 dark:text-white">{currentUser.name}</p>
                         <p className="text-xs text-gray-500 truncate">{currentUser.email}</p>
@@ -235,18 +321,22 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
             >
               Home
             </button>
-            <button
-              onClick={() => handleNavClick(ViewState.ABOUT)}
-              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
-            >
-              {t.about}
-            </button>
-            <button
-              onClick={() => handleNavClick(ViewState.PRICING)}
-              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
-            >
-              {t.plans}
-            </button>
+            {!currentUser && (
+              <>
+                <button
+                  onClick={() => handleNavClick(ViewState.ABOUT)}
+                  className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
+                >
+                  {t.about}
+                </button>
+                <button
+                  onClick={() => handleNavClick(ViewState.PRICING)}
+                  className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
+                >
+                  {t.plans}
+                </button>
+              </>
+            )}
           </div>
         </div>
       )}

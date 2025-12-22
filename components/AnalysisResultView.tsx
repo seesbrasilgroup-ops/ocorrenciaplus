@@ -1,6 +1,6 @@
 import React from 'react';
 import { AnalysisResult, Language } from '../types';
-import { AlertTriangle, CheckCircle, Wrench, DollarSign, MapPin, Lock, Eye, Scale, BookOpen, AlertCircle, Building, Landmark, CreditCard, ArrowRightCircle } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Wrench, DollarSign, MapPin, Lock, Eye, Scale, BookOpen, AlertCircle, Building, Landmark, CreditCard, ArrowRightCircle, Phone, Truck } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { translations, partActionMap } from '../translations';
 
@@ -11,10 +11,12 @@ interface AnalysisResultViewProps {
   language: Language;
   isPremium: boolean;
   onUnlock: () => void;
+  onRequestHelp: (mode: 'HELP' | 'SOLUTION') => void;
 }
 
-const AnalysisResultView: React.FC<AnalysisResultViewProps> = ({ result, imageSrc, onReset, language, isPremium, onUnlock }) => {
+const AnalysisResultView: React.FC<AnalysisResultViewProps> = ({ result, imageSrc, onReset, language, isPremium, onUnlock, onRequestHelp }) => {
   const t = translations[language].analysis;
+  const tEmerg = translations[language].emergency;
   const actions = partActionMap[language];
 
   const severityColor = (score: number) => {
@@ -51,6 +53,30 @@ const AnalysisResultView: React.FC<AnalysisResultViewProps> = ({ result, imageSr
         >
           {t.newAnalysis}
         </button>
+      </div>
+
+      {/* EMERGENCY ACTION BAR */}
+      <div className="bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-700 rounded-xl p-6 mb-8 shadow-xl text-white flex flex-col md:flex-row items-center justify-between gap-6 border-b-4 border-amber-500">
+         <div className="flex-1">
+            <h3 className="text-xl font-bold text-amber-400 mb-1 flex items-center">
+               <AlertTriangle className="w-5 h-5 mr-2" /> Precisa de suporte imediato?
+            </h3>
+            <p className="text-slate-300 text-sm">Selecione como deseja ser atendido agora.</p>
+         </div>
+         <div className="flex gap-4 w-full md:w-auto">
+            <button 
+               onClick={() => onRequestHelp('HELP')}
+               className="flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-bold transition-transform hover:scale-105"
+            >
+               <Phone className="w-5 h-5" /> {tEmerg.btnHelp}
+            </button>
+            <button 
+               onClick={() => onRequestHelp('SOLUTION')}
+               className="flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 rounded-lg font-bold transition-transform hover:scale-105"
+            >
+               <Truck className="w-5 h-5" /> {tEmerg.btnSolution}
+            </button>
+         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -117,24 +143,6 @@ const AnalysisResultView: React.FC<AnalysisResultViewProps> = ({ result, imageSr
              )}
              
              <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-4 border-t border-gray-200 dark:border-slate-700/50 pt-2">{t.legal.disclaimer}</p>
-          </div>
-
-          {/* ADDED SERVICE: Public Property Damage Guide */}
-          <div className="bg-orange-50 dark:bg-orange-950/20 p-5 rounded-xl border border-orange-200 dark:border-orange-800 hover:shadow-md transition-shadow">
-            <div className="flex items-start gap-3">
-              <div className="bg-orange-100 dark:bg-orange-900/40 p-2 rounded-lg text-orange-600 dark:text-orange-400">
-                <Building className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 dark:text-white text-sm mb-1">{t.services.publicProperty.title}</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed mb-3">
-                  {t.services.publicProperty.desc}
-                </p>
-                <button className="text-orange-600 dark:text-orange-400 text-xs font-bold hover:underline flex items-center">
-                  {t.services.publicProperty.cta} <ArrowRightCircle className="w-3 h-3 ml-1" />
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -232,9 +240,6 @@ const AnalysisResultView: React.FC<AnalysisResultViewProps> = ({ result, imageSr
                   {result.costs.currency} {((result.costs.totalMin + result.costs.totalMax) / 2).toLocaleString(language === 'pt-BR' ? 'pt-BR' : 'en-US')}
                 </span>
               </div>
-              <p className="text-xs text-gray-500 text-center mt-2">
-                {t.costs.disclaimer}
-              </p>
             </div>
             
             {/* Shops (Blurred in free) */}

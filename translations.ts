@@ -5,7 +5,7 @@ export const translations = {
     nav: {
       services: 'Serviços',
       drivers: 'Para Motoristas',
-      shops: 'Para Reparadores',
+      shops: 'Para Restauradores',
       analysis: 'Começar',
       history: 'Meus Laudos',
       plans: 'Planos',
@@ -14,12 +14,16 @@ export const translations = {
       login: 'Entrar',
       logout: 'Sair',
       welcome: 'Olá,',
+      shopBadge: 'Restaurador',
+      notifications: 'Notificações',
+      markAllRead: 'Limpar',
+      empty: 'Sem novas notificações',
     },
     auth: {
       title: 'Acesse sua conta',
       subtitle: 'Escolha seu perfil para continuar',
       tabDriver: 'Motorista',
-      tabShop: 'Oficina',
+      tabShop: 'Restaurador',
       tabAdmin: 'Admin',
       emailPlaceholder: 'seu@email.com',
       passwordPlaceholder: '••••••••',
@@ -27,26 +31,69 @@ export const translations = {
       basicLabel: 'Login como Básico (Demo)',
       premiumLabel: 'Login como Premium (Demo)',
     },
+    emergency: {
+      title: 'Central de Apoio OC+',
+      subtitle: 'Como podemos ajudar você agora?',
+      btnHelp: 'Solicitar Ajuda',
+      btnHelpDesc: 'Falar com atendente, suporte emocional e orientação.',
+      btnSolution: 'Solicitar Solução',
+      btnSolutionDesc: 'Chamar guincho/restaurador parceiro imediatamente.',
+      questions: {
+        drivable: 'O veículo tem condições de rodar?',
+        people: 'Quantas pessoas envolvidas?',
+        injured: 'Alguém está ferido?',
+        kids: 'Há crianças no local?',
+        fire: 'Existe risco de incêndio/fumaça?',
+        location: 'Confirmar localização atual?',
+        details: 'Relate brevemente o ocorrido:',
+      },
+      finding: 'Localizando parceiros próximos...',
+      driverFound: 'Restaurador a caminho!',
+      driverArriving: 'Chegada estimada em',
+      contacting: 'Acionando nossa central...',
+      agentCall: 'Um atendente especialista ligará em instantes.',
+      mapBadge: 'Restauradores Ativos',
+      cancel: 'Cancelar Solicitação'
+    },
     superAdmin: {
       title: 'Gestão da Plataforma',
-      overview: 'Visão Geral',
+      menu: {
+        overview: 'Visão Geral',
+        history: 'Histórico de Ocorrências',
+        service: 'Atendimento',
+        monitoring: 'Monitoramento',
+        costs: 'Custos Financeiros',
+        earnings: 'Ganhos Financeiros',
+        sales: 'Vendas',
+        partnerships: 'Anúncios & Parcerias',
+        legal: 'Casos Jurídicos',
+        reports: 'Relatórios',
+      },
+      stats: {
+        activeCalls: 'Chamados em Aberto',
+        avgTime: 'Tempo Médio Atend.',
+        satisfaction: 'Satisfação (CSAT)',
+        totalRevenue: 'Receita Total',
+        totalCosts: 'Custos Operacionais',
+        netProfit: 'Lucro Líquido',
+        activePartners: 'Parceiros Online',
+      },
       users: 'Usuários',
       financial: 'Financeiro',
       totalUsers: 'Total de Usuários',
-      activeShops: 'Oficinas Ativas',
-      totalRevenue: 'Receita Total',
+      activeShops: 'Restauradores Ativos',
       conversionRate: 'Taxa de Conversão',
       recentActivity: 'Atividade Recente na Plataforma',
       userList: 'Gerenciamento de Usuários',
       filterDriver: 'Motoristas',
-      filterShop: 'Oficinas',
+      filterShop: 'Restauradores',
       role: 'Perfil',
       status: 'Status',
       actions: 'Ações',
     },
     shopDashboard: {
-      title: 'Painel da Oficina',
-      verifiedBadge: 'Oficina Verificada OC+',
+      title: 'Painel do Restaurador',
+      verifiedBadge: 'Restaurador Verificado OC+',
       verifiedDesc: 'Você pratica preços justos auditados pela OC+.',
       quickActions: 'Ações Rápidas',
       newEstimate: 'Novo Orçamento (Scanner)',
@@ -77,8 +124,8 @@ export const translations = {
     shopsLanding: {
       hero: {
         title: 'Assuma o Controle Total da Sua Operação',
-        subtitle: 'Inteligência de Dados para Funilarias',
-        desc: 'Chega de gerenciar sua oficina no escuro. Tenha um painel completo que mostra exatamente onde você está ganhando dinheiro, seus gargalos de produção e seu Ticket Médio em tempo real.',
+        subtitle: 'Inteligência de Dados para Restauradores',
+        desc: 'Chega de gerenciar sua restauradora no escuro. Tenha um painel completo que mostra exatamente onde você está ganhando dinheiro, seus gargalos de produção e seu Ticket Médio em tempo real.',
         cta: 'Ver Demonstração do Painel',
       },
       benefits: {
@@ -91,7 +138,7 @@ export const translations = {
     hero: {
       title: 'Ocorrência',
       subtitle: 'A inteligência que guia motoristas após o acidente',
-      description: 'A plataforma definitiva de orientação automotiva. Não somos seguradora: entregamos a verdade técnica e jurídica para você resolver conflitos e consertar seu carro sem ser enganado.',
+      description: 'A plataforma definitiva de orientación automotiva. Não somos seguradora: entregamos a verdade técnica e jurídica para você resolver conflitos e consertar seu carro sem ser enganado.',
       welcomeUser: 'Olá, {name}. Sentimos muito pelo ocorrido.',
       descriptionUser: 'Vamos resolver isso juntos. Tire uma foto do dano e nós cuidaremos de toda a burocracia técnica e jurídica para você.',
       steps: {
@@ -108,7 +155,7 @@ export const translations = {
         desc: 'Bateu e não sabe o que fazer? Receba um passo-a-passo técnico e jurídico imediato.'
       },
       item2: {
-        title: 'Para Funilarias: Orçamento Automático',
+        title: 'Para Restauradores: Orçamento Automático',
         desc: 'Receba o carro já orçado pela IA. Economize horas de avaliação e ganhe acesso a leads qualificados na sua região.'
       },
       item3: {
@@ -161,7 +208,7 @@ export const translations = {
         disclaimer: 'Este laudo visa orientar o condutor sobre procedimentos e culpabilidade. Não é um seguro.'
       },
       recommendations: {
-        title: 'Oficinas Parceiras Próximas',
+        title: 'Restauradores Parceiros Próximos',
       },
       costs: {
         title: 'Estimativa de Mercado Justo',
@@ -193,7 +240,7 @@ export const translations = {
       title: 'Escolha seu Perfil',
       subtitle: 'Soluções acessíveis para diagnósticos e facilidades financeiras.',
       b2c: 'Sou Motorista',
-      b2b: 'Tenho Oficina',
+      b2b: 'Sou Restaurador',
       cta: 'Selecionar Plano',
       mostPopular: 'Recomendado',
     },
@@ -218,441 +265,61 @@ export const translations = {
     }
   },
   'en': {
-    nav: {
-      services: 'Services',
-      drivers: 'For Drivers',
-      shops: 'For Shops',
-      analysis: 'Start',
-      history: 'My Reports',
-      plans: 'Plans',
-      admin: 'Dashboard',
-      about: 'About Us',
-      login: 'Login',
-      logout: 'Logout',
-      welcome: 'Hello,',
-    },
-    auth: {
-      title: 'Access Account',
-      subtitle: 'Choose your profile to continue',
-      tabDriver: 'Driver',
-      tabShop: 'Shop',
-      tabAdmin: 'Admin',
-      emailPlaceholder: 'your@email.com',
-      passwordPlaceholder: '••••••••',
-      button: 'Enter Platform',
-      basicLabel: 'Login as Basic (Demo)',
-      premiumLabel: 'Login as Premium (Demo)',
-    },
-    superAdmin: {
-      title: 'Platform Management',
-      overview: 'Overview',
-      users: 'Users',
-      financial: 'Financial',
-      totalUsers: 'Total Users',
-      activeShops: 'Active Shops',
-      totalRevenue: 'Total Revenue',
-      conversionRate: 'Conversion Rate',
-      recentActivity: 'Recent Platform Activity',
-      userList: 'User Management',
-      filterDriver: 'Drivers',
-      filterShop: 'Shops',
-      role: 'Role',
-      status: 'Status',
-      actions: 'Actions',
-    },
-    shopDashboard: {
-      title: 'Shop Dashboard',
-      verifiedBadge: 'OC+ Verified Shop',
-      verifiedDesc: 'You practice fair prices audited by OC+.',
-      quickActions: 'Quick Actions',
-      newEstimate: 'New Estimate (Scanner)',
-      checklist: 'Intake Checklist',
-      whatsapp: 'Send via WhatsApp',
-      lastEstimates: 'Latest Estimates',
-      pending: 'Pending',
-      approved: 'Approved',
-    },
-    aboutPage: {
-      title: 'Ending Traffic Uncertainty',
-      subtitle: 'Discover how OC+ transforms a simple photo into the solution for problems caused by the collision.',
-    },
-    driversLanding: {
-      hero: {
-        title: 'Not Insurance. It\'s Your Post-Collision Solution.',
-        subtitle: 'Your technical and legal guide when the unexpected happens.',
-        desc: 'Crashed? Know the fair repair cost instantly, understand your rights, and access quick credit to solve the problem without headaches.',
-        cta: 'Generate Report Now',
-      },
-      benefits: {
-        title: 'Why choose OC+?',
-        b1: { title: 'Technical Truth', desc: 'Don\'t rely solely on shop estimates. Know the real repair value before negotiating.' },
-        b2: { title: 'Legal Direction', desc: 'Hit a pole or another car? Our reports guide you step-by-step to avoid lawsuits.' },
-        b3: { title: 'Financial Aid', desc: 'Subscribers get exclusive access to credit lines to fix the car when cash is tight.' }
-      }
-    },
-    shopsLanding: {
-      hero: {
-        title: 'Take Full Control of Your Operation',
-        subtitle: 'Data Intelligence for Body Shops',
-        desc: 'Stop managing your shop in the dark. Get a complete dashboard that shows exactly where you are making money, your production bottlenecks, and your Average Ticket in real-time.',
-        cta: 'View Dashboard Demo',
-      },
-      benefits: {
-        title: 'End of "Guesswork" Management',
-        b1: { title: 'Financial X-Ray', desc: 'Visualize Gross Revenue, Net Profit, and Parts Cost in clear, automatic charts.' },
-        b2: { title: 'Productivity Metrics', desc: 'Know exactly how long each repair takes and your team\'s efficiency.' },
-        b3: { title: 'Average Ticket Analysis', desc: 'Discover which car types and services bring the highest profit margin to focus on what matters.' }
-      }
-    },
-    hero: {
-      title: 'Occurrence',
-      subtitle: 'The intelligence guiding drivers after an accident',
-      description: 'The definitive automotive guidance platform. We are not an insurer: we deliver technical and legal truth for you to resolve conflicts and fix your car without being misled.',
-      welcomeUser: 'Hello, {name}. We are sorry for what happened.',
-      descriptionUser: 'Let\'s solve this together. Take a photo of the damage and we will handle all the technical and legal bureaucracy for you.',
-      steps: {
-        step1: 'Damage Photo',
-        step2: 'Smart Report',
-        step3: 'Solution',
-      }
-    },
-    features: {
-      tag: 'Support Technology',
-      title: 'One App, Two Solutions',
-      item1: {
-        title: 'For Drivers: Total Guidance',
-        desc: 'Crashed and don\'t know what to do? Receive an immediate technical and legal step-by-step.'
-      },
-      item2: {
-        title: 'For Shops: Automated Estimates',
-        desc: 'Receive pre-estimated cars. Save hours on evaluation and access qualified leads in your area.'
-      },
-      item3: {
-        title: 'Unbiased Report',
-        desc: 'A standardized document that serves as a technical basis for negotiations, without insurer bias.'
-      }
-    },
-    history: {
-      title: 'Claim History',
-      empty: 'No records found.',
-      cost: 'Pre-Estimate',
-      delete: 'Remove',
-    },
-    howItWorks: {
-      tag: 'Smart Flow',
-      title: 'How OC+ Works',
-      step1: 'Visual Diagnosis',
-      desc1: 'Upload a photo. AI detects body and mechanical damage instantly.',
-      step2: 'Report & Guidance',
-      desc2: 'We calculate fair costs and provide legal guidance on liability and public damage.',
-      step3: 'Problem Solution',
-      desc3: 'We connect you with shops or offer credit for immediate repair.',
-    },
-    video: {
-      overlayTitle: 'Artificial Intelligence in Traffic',
-    },
-    upload: {
-      title: 'Vehicle Photo',
-      analyzing: 'Generating Technical Report & Guidance...',
-      dragDrop: 'Take a photo to start analysis',
-      aiSteps: 'Identificando piezas, consultando precios y normas de tráfico...',
-      button: 'Generate Report Now',
-      error: 'Could not analyze. Try better lighting.',
-    },
-    analysis: {
-      title: 'Integrated Technical Report',
-      newAnalysis: 'New Analysis',
-      severity: 'Damage Level',
-      summary: 'AI Opinion',
-      parts: {
-        title: 'Parts Detail',
-        replace: 'Replace',
-        repair: 'Body/Paint',
-        check: 'Check',
-      },
-      legal: {
-        title: 'Legal Guidance (Traffic Law)',
-        assessment: 'Preliminary Opinion',
-        advice: 'Recommended Next Steps',
-        disclaimer: 'This report guides the driver on procedures and liability. It is not insurance.'
-      },
-      recommendations: {
-        title: 'Nearby Partner Shops',
-      },
-      costs: {
-        title: 'Fair Market Estimate',
-        partsTotal: 'Parts Cost',
-        labor: 'Avg Labor',
-        totalEstimated: 'Final Estimate',
-        disclaimer: '*Values based on regional average table.',
-        cta: 'View Premium Details',
-        lockedTitle: 'Unlock Full Report',
-        lockedDesc: 'Access detailed prices and complete legal guidance to avoid being taken advantage of.',
-        lockedButton: 'Unlock Report ($4.00)',
-        unlockedCta: 'Download PDF Report',
-      },
-      services: {
-        loan: {
-          title: 'Uncomfortable situation?',
-          desc: 'Short on cash for repairs? Subscribers have access to easy loans.',
-          cta: 'Simulate Credit',
-        },
-        publicProperty: {
-          title: 'Public Property Damage?',
-          desc: 'Hit a pole or sign? See how to settle it to avoid lawsuits.',
-          cta: 'View Conduct Guide',
-        }
-      }
-    },
-    pricing: {
-      header: 'Access Plans',
-      title: 'Choose Your Profile',
-      subtitle: 'Accessible solutions for diagnostics and financial ease.',
-      b2c: 'I am a Driver',
-      b2b: 'I own a Shop',
-      cta: 'Select Plan',
-      mostPopular: 'Recommended',
-    },
-    admin: {
-      title: 'Partner Shop Dashboard',
-      revenue: 'Sales Potential',
-      analyses: 'Estimates Received',
-      users: 'Clients in Area',
-      critical: 'Ticket Alto',
-      chartVolume: 'Leads Entrantes',
-      chartRevenue: 'Service Conversion',
-      latestInsight: 'Última Oportunidad',
-      profileLabels: {
-        segment: 'Vehicle',
-        churn: 'Close Prob.',
-        upsell: 'Extra Services',
-      },
-    },
-    footer: {
-      rights: 'All rights reserved.',
-      madeFor: 'Guidance technology for drivers and repairers.',
-    }
+    nav: { services: 'Services', drivers: 'Drivers', shops: 'Restorers', analysis: 'Start', history: 'History', plans: 'Plans', admin: 'Dashboard', about: 'About', login: 'Login', logout: 'Logout', welcome: 'Hello', shopBadge: 'Restorer', notifications: 'Notifications', markAllRead: 'Clear', empty: 'No new notifications' },
+    auth: { title: 'Login', subtitle: 'Choose profile', tabDriver: 'Driver', tabShop: 'Restorer', tabAdmin: 'Admin', emailPlaceholder: 'email', passwordPlaceholder: 'pass', button: 'Login', basicLabel: 'Basic', premiumLabel: 'Premium' },
+    emergency: { title: 'Support Center', subtitle: 'How can we help?', btnHelp: 'Request Help', btnHelpDesc: 'Call agent', btnSolution: 'Request Solution', btnSolutionDesc: 'Call Towing', questions: { drivable: 'Drivable?', people: 'People?', injured: 'Injuries?', kids: 'Kids?', fire: 'Fire Risk?', location: 'Location?', details: 'Details:' }, finding: 'Locating...', driverFound: 'Restorer found!', driverArriving: 'Arriving in', contacting: 'Contacting...', agentCall: 'Agent calling...', mapBadge: 'Active Restorers', cancel: 'Cancel' },
+    superAdmin: { title: 'Platform Management', menu: { overview: 'Overview', history: 'Occurrence History', service: 'Service', monitoring: 'Monitoring', costs: 'Costs', earnings: 'Earnings', sales: 'Sales', partnerships: 'Partnerships', legal: 'Legal', reports: 'Reports' }, stats: { activeCalls: 'Active Calls', avgTime: 'Avg Time', satisfaction: 'CSAT', totalRevenue: 'Revenue', totalCosts: 'Costs', netProfit: 'Profit', activePartners: 'Active Partners' }, users: 'Users', financial: 'Financial', totalUsers: 'Total Users', activeShops: 'Active Restorers', conversionRate: 'Conversion', recentActivity: 'Activity', userList: 'Users', filterDriver: 'Drivers', filterShop: 'Restorers', role: 'Role', status: 'Status', actions: 'Actions' },
+    shopDashboard: { title: 'Restorer Dashboard', verifiedBadge: 'Verified', verifiedDesc: 'Fair prices', quickActions: 'Actions', newEstimate: 'New Estimate', checklist: 'Checklist', whatsapp: 'WhatsApp', lastEstimates: 'Estimates', pending: 'Pending', approved: 'Approved' },
+    aboutPage: { title: 'End Uncertainty', subtitle: 'AI Solution' },
+    driversLanding: { hero: { title: 'Post-Collision', subtitle: 'OC+', desc: 'Crashed?', cta: 'Start' }, benefits: { title: 'Why OC+?', b1: { title: 'Truth', desc: 'Real value' }, b2: { title: 'Legal', desc: 'Guidance' }, b3: { title: 'Finance', desc: 'Credit' } } },
+    shopsLanding: { hero: { title: 'Control', subtitle: 'Intelligence', desc: 'Manage', cta: 'Demo' }, benefits: { title: 'No Guesswork', b1: { title: 'Finance', desc: 'X-Ray' }, b2: { title: 'Metrics', desc: 'Productivity' }, b3: { title: 'Ticket', desc: 'Analysis' } } },
+    hero: { title: 'Occurrence', subtitle: 'Intelligence', description: 'Definitive platform', welcomeUser: 'Hello', descriptionUser: 'Lets solve', steps: { step1: 'Photo', step2: 'Report', step3: 'Solution' } },
+    features: { tag: 'Tech', title: 'Solutions', item1: { title: 'Drivers', desc: 'Guidance' }, item2: { title: 'Restorers', desc: 'Estimates' }, item3: { title: 'Report', desc: 'Unbiased' } },
+    history: { title: 'History', empty: 'Empty', cost: 'Cost', delete: 'Delete' },
+    howItWorks: { tag: 'Flow', title: 'How it Works', step1: 'Diagnosis', desc1: 'Upload', step2: 'Report', desc2: 'Calc', step3: 'Solution', desc3: 'Connect' },
+    video: { overlayTitle: 'AI' },
+    upload: { title: 'Photo', analyzing: 'Analyzing...', dragDrop: 'Drop here', aiSteps: 'Thinking...', button: 'Generate', error: 'Error' },
+    analysis: { title: 'Report', newAnalysis: 'New', severity: 'Severity', summary: 'Summary', parts: { title: 'Parts', replace: 'Replace', repair: 'Repair', check: 'Check' }, legal: { title: 'Legal', assessment: 'Assessment', advice: 'Advice', disclaimer: 'Disclaimer' }, recommendations: { title: 'Nearby' }, costs: { title: 'Estimate', partsTotal: 'Parts', labor: 'Labor', totalEstimated: 'Total', disclaimer: 'Disclaimer', cta: 'Premium', lockedTitle: 'Locked', lockedDesc: 'Upgrade', lockedButton: 'Unlock', unlockedCta: 'Download' }, services: { loan: { title: 'Loan', desc: 'Need cash?', cta: 'Simulate' }, publicProperty: { title: 'Public Property', desc: 'Damage?', cta: 'Guide' } } },
+    pricing: { header: 'Plans', title: 'Choose', subtitle: 'Solutions', b2c: 'Driver', b2b: 'Restorer', cta: 'Select', mostPopular: 'Popular' },
+    admin: { title: 'Dashboard', revenue: 'Revenue', analyses: 'Analyses', users: 'Users', critical: 'Critical', chartVolume: 'Volumen', chartRevenue: 'Conversión', latestInsight: 'Insight', profileLabels: { segment: 'Segmento', churn: 'Abandono', upsell: 'Venta' } },
+    footer: { rights: 'Reserved', madeFor: 'Tech' }
   },
   'es': {
-    nav: {
-      services: 'Servicios',
-      drivers: 'Para Conductores',
-      shops: 'Para Talleres',
-      analysis: 'Comenzar',
-      history: 'Historial',
-      plans: 'Planes',
-      admin: 'Panel',
-      about: 'Quiénes Somos',
-      login: 'Ingresar',
-      logout: 'Salir',
-      welcome: 'Hola,',
-    },
-    auth: {
-      title: 'Acceder a Cuenta',
-      subtitle: 'Elija su perfil para continuar',
-      tabDriver: 'Conductor',
-      tabShop: 'Taller',
-      tabAdmin: 'Admin',
-      emailPlaceholder: 'su@email.com',
-      passwordPlaceholder: '••••••••',
-      button: 'Entrar a Plataforma',
-      basicLabel: 'Login como Básico (Demo)',
-      premiumLabel: 'Login como Premium (Demo)',
-    },
-    superAdmin: {
-      title: 'Gestión de Plataforma',
-      overview: 'Visión General',
-      users: 'Usuarios',
-      financial: 'Financiero',
-      totalUsers: 'Total Usuarios',
-      activeShops: 'Talleres Activos',
-      totalRevenue: 'Ingresos Totales',
-      conversionRate: 'Tasa de Conversión',
-      recentActivity: 'Actividad Reciente',
-      userList: 'Gestión de Usuarios',
-      filterDriver: 'Conductores',
-      filterShop: 'Talleres',
-      role: 'Rol',
-      status: 'Estado',
-      actions: 'Acciones',
-    },
-    shopDashboard: {
-      title: 'Panel del Taller',
-      verifiedBadge: 'Taller Verificado OC+',
-      verifiedDesc: 'Practicas precios justos auditados por OC+.',
-      quickActions: 'Acciones Rápidas',
-      newEstimate: 'Nuevo Presupuesto (Escáner)',
-      checklist: 'Lista de Verificación',
-      whatsapp: 'Enviar por WhatsApp',
-      lastEstimates: 'Últimos Presupuestos',
-      pending: 'Pendiente',
-      approved: 'Aprobado',
-    },
-    aboutPage: {
-      title: 'El Fin de la Incertidumbre',
-      subtitle: 'Descubre cómo OC+ transforma una simple foto en la solución a los problemas generados por la colisión.',
-    },
-    driversLanding: {
-      hero: {
-        title: 'No es Seguro. Es tu Solución Post-Colisión.',
-        subtitle: 'Tu guía técnico y legal cuando ocurre lo inesperado.',
-        desc: '¿Chocaste? Conoce al instante el costo justo de reparación, tus derechos y accede a crédito rápido para resolver el problema sin dolores de cabeza.',
-        cta: 'Generar Informe Ahora',
-      },
-      benefits: {
-        title: '¿Por qué elegir OC+?',
-        b1: { title: 'Verdad Técnica', desc: 'No dependas solo de talleres. Conoce el valor real de la reparación antes de negociar.' },
-        b2: { title: 'Dirección Legal', desc: '¿Chocaste un poste u otro auto? Nuestros informes te guían paso a paso para evitar demandas.' },
-        b3: { title: 'Ayuda Financiera', desc: 'Los suscriptores tienen acceso exclusivo a líneas de crédito para arreglar el auto cuando falta dinero.' }
-      }
-    },
-    shopsLanding: {
-      hero: {
-        title: 'Toma el Control Total de tu Operación',
-        subtitle: 'Inteligencia de Datos para Talleres',
-        desc: 'Deja de gestionar tu taller a ciegas. Ten un panel completo que muestra exactamente dónde estás ganando dinero, tus cuellos de botella y tu Ticket Promedio en tiempo real.',
-        cta: 'Ver Demo del Panel',
-      },
-      benefits: {
-        title: 'El Fin de la Gestión por "Suposición"',
-        b1: { title: 'Radiografía Financiera', desc: 'Visualiza Facturación Bruta, Beneficio Neto y Costo de Piezas en gráficos claros.' },
-        b2: { title: 'Métricas de Productividad', desc: 'Sepa exactamente cuánto tarda cada reparación y la eficiencia de su equipo.' },
-        b3: { title: 'Análisis de Ticket Promedio', desc: 'Descubre qué tipos de auto y servicio traen mayor margen para enfocarte en lo que importa.' }
-      }
-    },
-    hero: {
-      title: 'Ocurrencia',
-      subtitle: 'La inteligencia que guía conductores tras un accidente',
-      description: 'La plataforma definitiva de orientación automotriz. No somos aseguradora: entregamos la verdad técnica y legal para que resuelvas conflictos y arregles tu auto sin ser engañado.',
-      welcomeUser: 'Hola, {name}. Lamentamos lo sucedido.',
-      descriptionUser: 'Vamos a resolver esto juntos. Tome una foto del daño y nos encargaremos de toda la burocracia técnica y legal por usted.',
-      steps: {
-        step1: 'Foto del Daño',
-        step2: 'Informe Inteligente',
-        step3: 'Solución',
-      }
-    },
-    features: {
-      tag: 'Tecnología de Apoyo',
-      title: 'Una App, Dos Soluciones',
-      item1: {
-        title: 'Para Conductores: Guía Total',
-        desc: '¿Chocaste y no sabes qué hacer? Recibe un paso a paso técnico y legal inmediato.'
-      },
-      item2: {
-        title: 'Para Talleres: Presupuesto Automático',
-        desc: 'Reciba el auto ya presupuestado. Ahorre horas de evaluación y acceda a leads calificados.'
-      },
-      item3: {
-        title: 'Informe Imparcial',
-        desc: 'Un documento estandarizado que sirve como base técnica para negociaciones, sin sesgo de aseguradora.'
-      }
-    },
-    history: {
-      title: 'Historial de Siniestros',
-      empty: 'Ningún análisis registrado.',
-      cost: 'Pre-Presupuesto',
-      delete: 'Eliminar',
-    },
-    howItWorks: {
-      tag: 'Flujo Inteligente',
-      title: 'Cómo Funciona OC+',
-      step1: 'Diagnóstico Visual',
-      desc1: 'Sube una foto. La IA detecta daños en carrocería y mecánica instantáneamente.',
-      step2: 'Informe y Guía',
-      desc2: 'Calculamos costos justos y orientamos legalmente sobre culpabilidad y daños públicos.',
-      step3: 'Solución del Problema',
-      desc3: 'Te conectamos con talleres u ofrecemos crédito para reparación inmediata.',
-    },
-    video: {
-      overlayTitle: 'Inteligencia Artificial en el Tráfico',
-    },
-    upload: {
-      title: 'Foto del vehículo',
-      analyzing: 'Generando Informe Técnico y Guía...',
-      dragDrop: 'Toma una foto para iniciar el análisis',
-      aiSteps: 'Identificando piezas, consultando precios y normas de tráfico...',
-      button: 'Generar Informe Ahora',
-      error: 'No se pudo analizar. Intente con mejor iluminación.',
-    },
-    analysis: {
-      title: 'Informe Técnico Integrado',
-      newAnalysis: 'Nuevo Análisis',
-      severity: 'Nivel de Daño',
-      summary: 'Opinión de IA',
-      parts: {
-        title: 'Detalle de Piezas',
-        replace: 'Reemplazar',
-        repair: 'Chapa/Pintura',
-        check: 'Revisión',
-      },
-      legal: {
-        title: 'Orientación Legal (Ley)',
-        assessment: 'Opinión Preliminar',
-        advice: 'Próximos Pasos Recomendados',
-        disclaimer: 'Este informe guía al conductor sobre procedimientos y culpabilidad. No es un seguro.'
-      },
-      recommendations: {
-        title: 'Talleres Asociados Cercanos',
-      },
-      costs: {
-        title: 'Estimación de Mercado Justo',
-        partsTotal: 'Costo Piezas',
-        labor: 'Mano de Obra Prom.',
-        totalEstimated: 'Estimación Final',
-        disclaimer: '*Valores basados en tabla promedio regional.',
-        cta: 'Ver Detalles Premium',
-        lockedTitle: 'Desbloquea Informe Completo',
-        lockedDesc: 'Acceda a precios detallados y guía legal completa para no ser engañado.',
-        lockedButton: 'Desbloquear Informe ($4.00)',
-        unlockedCta: 'Descargar Informe PDF',
-      },
-      services: {
-        loan: {
-          title: '¿Situación incómoda?',
-          desc: '¿Poco dinero para el arreglo? Los suscriptores tienen acceso a préstamos fáciles.',
-          cta: 'Simular Crédito',
-        },
-        publicProperty: {
-          title: '¿Daño a Propiedad Pública?',
-          desc: '¿Chocó un poste o señal? Vea cómo regularizar para evitar demandas.',
-          cta: 'Ver Guía de Conducta',
-        }
-      }
-    },
-    pricing: {
-      header: 'Planes de Acceso',
-      title: 'Elige tu Perfil',
-      subtitle: 'Soluciones accesibles para diagnósticos y facilidad financiera.',
-      b2c: 'Soy Conductor',
-      b2b: 'Tengo Taller',
-      cta: 'Seleccionar Plano',
-      mostPopular: 'Recomendado',
-    },
-    admin: {
-      title: 'Panel del Taller Socio',
-      revenue: 'Potencial de Ventas',
-      analyses: 'Presupuestos Recibidos',
-      users: 'Clientes en Zona',
-      critical: 'Ticket Alto',
-      chartVolume: 'Leads Entrantes',
-      chartRevenue: 'Conversión Servicios',
-      latestInsight: 'Última Oportunidad',
-      profileLabels: {
-        segment: 'Vehículo',
-        churn: 'Prob. Cierre',
-        upsell: 'Servicios Extra',
-      },
-    },
-    footer: {
-      rights: 'Todos los derechos reservados.',
-      madeFor: 'Tecnología de orientación para conductores y reparadores.',
-    }
+    nav: { services: 'Servicios', drivers: 'Conductores', shops: 'Restauradores', analysis: 'Inicio', history: 'Historial', plans: 'Planes', admin: 'Panel', about: 'Nosotros', login: 'Entrar', logout: 'Salir', welcome: 'Hola', shopBadge: 'Restaurador', notifications: 'Notificaciones', markAllRead: 'Limpiar', empty: 'Sin notificaciones' },
+    auth: { title: 'Entrar', subtitle: 'Perfil', tabDriver: 'Conductor', tabShop: 'Restaurador', tabAdmin: 'Admin', emailPlaceholder: 'email', passwordPlaceholder: 'pass', button: 'Entrar', basicLabel: 'Básico', premiumLabel: 'Premium' },
+    emergency: { title: 'Centro de Soporte', subtitle: '¿Cómo ayudar?', btnHelp: 'Solicitar Ayuda', btnHelpDesc: 'Llamar agente', btnSolution: 'Solicitar Solución', btnSolutionDesc: 'Llamar Grúa', questions: { drivable: '¿Conducible?', people: '¿Gente?', injured: '¿Heridos?', kids: '¿Niños?', fire: '¿Fuego?', location: '¿Ubicación?', details: 'Detalles:' }, finding: 'Localizando...', driverFound: '¡Restaurador encontrado!', driverArriving: 'Llegando en', contacting: 'Contactando...', agentCall: 'Agente llamando...', mapBadge: 'Restauradores Activos', cancel: 'Cancelar' },
+    superAdmin: { title: 'Gestión Plataforma', menu: { overview: 'Visión General', history: 'Historial de Ocurrencias', service: 'Servicio', monitoring: 'Monitoreo', costs: 'Costos', earnings: 'Ganancias', sales: 'Ventas', partnerships: 'Alianzas', legal: 'Legal', reports: 'Reportes' }, stats: { activeCalls: 'Llamadas Activas', avgTime: 'Tiempo Prom.', satisfaction: 'CSAT', totalRevenue: 'Ingresos', totalCosts: 'Costos', netProfit: 'Beneficio', activePartners: 'Socios Activos' }, users: 'Usuarios', financial: 'Financiero', totalUsers: 'Total Usuarios', activeShops: 'Talleres Activos', conversionRate: 'Tasa de Conversión', recentActivity: 'Actividad Reciente', userList: 'Gestión de Usuarios', filterDriver: 'Conductores', filterShop: 'Restauradores', role: 'Rol', status: 'Estado', actions: 'Acciones' },
+    shopDashboard: { title: 'Panel Restaurador', verifiedBadge: 'Taller Verificado OC+', verifiedDesc: 'Practicas precios justos auditados por OC+.', quickActions: 'Acciones Rápidas', newEstimate: 'Nuevo Presupuesto (Escáner)', checklist: 'Lista de Verificación', whatsapp: 'Enviar por WhatsApp', lastEstimates: 'Últimos Presupuestos', pending: 'Pendiente', approved: 'Aprobado' },
+    aboutPage: { title: 'El Fin de la Incertidumbre', subtitle: 'Descubre cómo OC+ transforma una simple foto en la solución a los problemas generados por la colisión.', },
+    driversLanding: { hero: { title: 'No es Seguro. Es tu Solución Post-Colisión.', subtitle: 'Tu guía técnico y legal cuando ocurre lo inesperado.', desc: '¿Chocaste? Conoce al instante el costo justo de reparación, tus derechos y accede a crédito rápido para resolver el problema sin dolores de cabeza.', cta: 'Generar Informe Ahora', }, benefits: { title: '¿Por qué elegir OC+?', b1: { title: 'Verdad Técnica', desc: 'No dependas solo de talleres. Conoce el valor real de la reparación antes de negociar.' }, b2: { title: 'Dirección Legal', desc: '¿Chocaste un poste u otro auto? Nuestros informes te guían paso a paso para evitar demandas.' }, b3: { title: 'Ayuda Financiera', desc: 'Los suscriptores tienen acceso exclusivo a líneas de crédito para arreglar el auto cuando falta dinero.' } } },
+    shopsLanding: { hero: { title: 'Toma el Control Total de tu Operación', subtitle: 'Inteligencia de Datos para Talleres', desc: 'Deja de gestionar tu taller a ciegas. Ten un panel completo que muestra exactamente dónde estás ganando dinero, tus cuellos de botella y tu Ticket Promedio en tiempo real.', cta: 'Ver Demo del Panel', }, benefits: { title: 'El Fin de la Gestión por "Suposición"', b1: { title: 'Radiografía Financiera', desc: 'Visualiza Facturación Bruta, Beneficio Neto y Costo de Piezas en gráficos claros.' }, b2: { title: 'Métricas de Productividad', desc: 'Sepa exactamente cuánto tarda cada reparación y la eficiencia de su equipo.' }, b3: { title: 'Análisis de Ticket Promedio', desc: 'Descubre qué tipos de auto y servicio traen mayor margen para enfocarte en lo que importa.' } } },
+    hero: { title: 'Ocurrencia', subtitle: 'La inteligencia que guía conductores tras un accidente', description: 'La plataforma definitiva de orientación automotriz. No somos aseguradora: entregamos la verdad técnica y legal para que resuelvas conflictos y arregles tu auto sin ser engañado.', welcomeUser: 'Hola, {name}. Lamentamos lo sucedido.', descriptionUser: 'Vamos a resolver esto juntos. Tome una foto del daño y nos encargaremos de toda la burocracia técnica y legal por usted.', steps: { step1: 'Foto del Daño', step2: 'Informe Inteligente', step3: 'Solución', } },
+    features: { tag: 'Tecnología de Apoyo', title: 'Una App, Dos Soluciones', item1: { title: 'Para Conductores: Guía Total', desc: '¿Chocaste y no sabes qué hacer? Recibe un paso a paso técnico y legal inmediato.' }, item2: { title: 'Para Talleres: Presupuesto Automático', desc: 'Reciba el auto ya presupuestado. Ahorre horas de evaluación y acceda a leads calificados.' }, item3: { title: 'Informe Imparcial', desc: 'Un documento estandarizado que sirve como base técnica para negociaciones, sin sesgo de aseguradora.' } },
+    history: { title: 'Historial de Siniestros', empty: 'Ningún análisis registrado.', cost: 'Pre-Presupuesto', delete: 'Eliminar', },
+    howItWorks: { tag: 'Flujo Inteligente', title: 'Cómo Funciona OC+', step1: 'Diagnóstico Visual', desc1: 'Sube una foto. La IA detecta daños en carrocería y mecánica instantáneamente.', step2: 'Informe y Guía', desc2: 'Calculamos costos justos y orientamos legalmente sobre culpabilidad y daños públicos.', step3: 'Solución del Problema', desc3: 'Te conectamos con talleres u ofrecemos crédito para reparación inmediata.', },
+    video: { overlayTitle: 'Inteligencia Artificial en el Tráfico', },
+    upload: { title: 'Foto del vehículo', analyzing: 'Generando Informe Técnico y Guía...', dragDrop: 'Toma una foto para iniciar el análisis', aiSteps: 'Identificando piezas, consultando precios y normas de tráfico...', button: 'Generar Informe Ahora', error: 'No se pudo analizar. Intente con mejor iluminación.', },
+    analysis: { title: 'Informe Técnico Integrado', newAnalysis: 'Nuevo Análisis', severity: 'Nivel de Daño', summary: 'Opinión de IA', parts: { title: 'Detalle de Piezas', replace: 'Reemplazar', repair: 'Chapa/Pintura', check: 'Revisión', }, legal: { title: 'Orientación Legal (Ley)', assessment: 'Opinión Preliminar', advice: 'Próximos Pasos Recomendados', disclaimer: 'Este informe guía al conductor sobre procedimientos y culpabilidad. No es un seguro.' }, recommendations: { title: 'Talleres Asociados Cercanos', }, costs: { title: 'Estimación de Mercado Justo', partsTotal: 'Costo Piezas', labor: 'Mano de Obra Prom.', totalEstimated: 'Estimación Final', disclaimer: '*Valores basados en tabla promedio regional.', cta: 'Ver Detalles Premium', lockedTitle: 'Desbloquea Informe Completo', lockedDesc: 'Acceda a precios detallados y guía legal completa para no ser engañado.', lockedButton: 'Desbloquear Informe ($4.00)', unlockedCta: 'Descargar Informe PDF', }, services: { loan: { title: '¿Situación incómoda?', desc: '¿Poco dinero para el arreglo? Los suscriptores tienen acceso a préstamos fáciles.', cta: 'Simular Crédito', }, publicProperty: { title: '¿Daño a Propiedad Pública?', desc: '¿Chocó un poste o señal? Vea cómo regularizar para evitar demandas.', cta: 'Ver Guía de Conducta', } } },
+    pricing: { header: 'Planes de Acceso', title: 'Elige tu Perfil', subtitle: 'Soluciones accesibles para diagnósticos y facilidad financiera.', b2c: 'Soy Conductor', b2b: 'Soy Restaurador', cta: 'Seleccionar Plano', mostPopular: 'Recomendado', },
+    admin: { title: 'Panel del Taller Socio', revenue: 'Potencial de Ventas', analyses: 'Presupuestos Recibidos', users: 'Clientes en Zona', critical: 'Ticket Alto', chartVolume: 'Leads Entrantes', chartRevenue: 'Conversión Servicios', latestInsight: 'Última Oportunidade', profileLabels: { segment: 'Vehículo', churn: 'Prob. Cierre', upsell: 'Servicios Extra', }, },
+    footer: { rights: 'Todos los derechos reservados.', madeFor: 'Tecnología de orientación para conductores y reparadores.', }
   }
 };
 
-export const partActionMap = {
-  'pt-BR': { REPLACE: 'Substituir', REPAIR: 'Reparar', CHECK: 'Verificar' },
-  'en': { REPLACE: 'Replace', REPAIR: 'Repair', CHECK: 'Check' },
-  'es': { REPLACE: 'Reemplazar', REPAIR: 'Reparar', CHECK: 'Verificar' }
+export const partActionMap: Record<Language, Record<string, string>> = {
+  'pt-BR': {
+    REPLACE: 'Substituir',
+    REPAIR: 'Reparar',
+    CHECK: 'Verificar'
+  },
+  'en': {
+    REPLACE: 'Replace',
+    REPAIR: 'Repair',
+    CHECK: 'Check'
+  },
+  'es': {
+    REPLACE: 'Reemplazar',
+    REPAIR: 'Reparar',
+    CHECK: 'Verificar'
+  }
 };

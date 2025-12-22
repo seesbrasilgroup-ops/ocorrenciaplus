@@ -8,11 +8,15 @@ export enum ViewState {
   LANDING_DRIVERS = 'LANDING_DRIVERS',
   LANDING_SHOPS = 'LANDING_SHOPS',
   ABOUT = 'ABOUT',
+  EMERGENCY_FLOW = 'EMERGENCY_FLOW',
+  LIVE_TRACKING = 'LIVE_TRACKING',
 }
 
 export type Language = 'pt-BR' | 'en' | 'es';
 
 export type UserRole = 'DRIVER_BASIC' | 'DRIVER_PREMIUM' | 'SHOP' | 'SUPER_ADMIN';
+
+export type AdminTab = 'OVERVIEW' | 'HISTORY' | 'SERVICE' | 'MONITORING' | 'COSTS' | 'EARNINGS' | 'SALES' | 'PARTNERSHIPS' | 'LEGAL' | 'REPORTS';
 
 export interface User {
   id: string;
