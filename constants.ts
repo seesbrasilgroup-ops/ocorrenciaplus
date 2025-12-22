@@ -40,7 +40,7 @@ export const getPricingPlans = (lang: Language): PricingPlan[] => {
     },
     {
       id: 'b2b-pro',
-      name: isPt ? 'Restaurador Parceiro' : isEn ? 'Partner Shop' : 'Taller Socio',
+      name: isPt ? 'Mecânico Parceiro' : isEn ? 'Partner Mechanic' : 'Mecánico Socio',
       price: isPt ? 'R$ 199' : '$40',
       period: suffix,
       category: 'B2B',

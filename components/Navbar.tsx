@@ -118,7 +118,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     className={`flex items-center px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                      currentView === ViewState.LANDING_DRIVERS || currentView === ViewState.LANDING_SHOPS
+                      currentView === ViewState.LANDING_DRIVERS || currentView === ViewState.LANDING_SHOPS || currentView === ViewState.LANDING_MECHANICS
                         ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10'
                         : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
                     }`}
@@ -140,11 +140,20 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                       </button>
                       <button
                         onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
-                        className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
+                        className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors border-b border-gray-100 dark:border-slate-700/50"
                       >
                         <div>
                           <span className="block text-sm font-bold text-gray-900 dark:text-white">{t.shops}</span>
                           <span className="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">B2B Solution</span>
+                        </div>
+                      </button>
+                      <button
+                        onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)}
+                        className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
+                      >
+                        <div>
+                          <span className="block text-sm font-bold text-gray-900 dark:text-white">{t.mechanics}</span>
+                          <span className="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">Partner Program</span>
                         </div>
                       </button>
                     </div>
@@ -345,6 +354,12 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                   className="block w-full text-left px-4 py-2 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 pl-6 border-l-2 border-transparent hover:border-amber-500"
                >
                   {t.shops}
+               </button>
+               <button
+                  onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)}
+                  className="block w-full text-left px-4 py-2 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 pl-6 border-l-2 border-transparent hover:border-emerald-500"
+               >
+                  {t.mechanics}
                </button>
             </div>
 

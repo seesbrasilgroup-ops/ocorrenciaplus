@@ -9,6 +9,7 @@ import SuperAdminDashboard from './components/SuperAdminDashboard';
 import AnimatedCar from './components/AnimatedCar'; 
 import DriversLanding from './components/DriversLanding';
 import ShopsLanding from './components/ShopsLanding';
+import MechanicsLanding from './components/MechanicsLanding';
 import AboutPage from './components/AboutPage';
 import DemoReportSection from './components/DemoReportSection';
 import EmergencyServiceSection from './components/EmergencyServiceSection';
@@ -206,7 +207,7 @@ const App: React.FC = () => {
                       {!currentUser && (
                         <div className="mb-10 w-full text-center lg:text-left">
                           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-6">
-                            {t.hero.title} <span className="text-brand-600 dark:text-brand-500">Plus</span>
+                            {t.hero.title} <span className="text-brand-600 dark:text-brand-500">Mais</span>
                           </h1>
                           <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg mx-auto lg:mx-0">
                             {t.hero.description}
@@ -319,6 +320,13 @@ const App: React.FC = () => {
 
           {view === ViewState.LANDING_SHOPS && (
             <ShopsLanding 
+              language={language} 
+              onRegister={() => setIsAuthModalOpen(true)} 
+            />
+          )}
+
+          {view === ViewState.LANDING_MECHANICS && (
+            <MechanicsLanding 
               language={language} 
               onRegister={() => setIsAuthModalOpen(true)} 
             />

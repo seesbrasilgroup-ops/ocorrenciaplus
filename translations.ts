@@ -6,6 +6,7 @@ export const translations = {
       services: 'Serviços',
       drivers: 'Para Motoristas',
       shops: 'Para Restauradores',
+      mechanics: 'Para Mecânicos',
       analysis: 'Começar',
       history: 'Meus Laudos',
       plans: 'Planos',
@@ -39,7 +40,7 @@ export const translations = {
       btnHelp: 'Solicitar Ajuda',
       btnHelpDesc: 'Falar com atendente, suporte emocional e orientação.',
       btnSolution: 'Solicitar Solução',
-      btnSolutionDesc: 'Chamar guincho/restaurador parceiro imediatamente.',
+      btnSolutionDesc: 'Chamar guincho/mecânico parceiro imediatamente.',
       questions: {
         drivable: 'O veículo tem condições de rodar?',
         people: 'Quantas pessoas envolvidas?',
@@ -50,11 +51,11 @@ export const translations = {
         details: 'Relate brevemente o ocorrido:',
       },
       finding: 'Localizando parceiros próximos...',
-      driverFound: 'Restaurador a caminho!',
+      driverFound: 'Mecânico a caminho!',
       driverArriving: 'Chegada estimada em',
       contacting: 'Acionando nossa central...',
       agentCall: 'Um atendente especialista ligará em instantes.',
-      mapBadge: 'Restauradores Ativos',
+      mapBadge: 'Mecânicos Ativos',
       cancel: 'Cancelar Solicitação'
     },
     financialAidSection: {
@@ -186,7 +187,7 @@ export const translations = {
     driversLanding: {
       hero: {
         title: 'Solução Pós-Colisão.',
-        subtitle: 'Ocorrência Plus',
+        subtitle: 'Ocorrência Mais',
         desc: 'Obtenha um laudo técnico instantâneo com IA, orientação jurídica sobre culpabilidade e acesso direto a oficinas verificadas para realizar o reparo.',
         cta: 'Gerar Laudo Agora',
       },
@@ -209,6 +210,20 @@ export const translations = {
         b1: { title: 'Raio-X Financeiro', desc: 'Visualize Faturamento Bruto, Lucro Líquido e Custo de Peças em gráficos claros e automáticos.' },
         b2: { title: 'Métricas de Produtividade', desc: 'Saiba exatamente quanto tempo cada reparo leva e qual a eficiência da sua equipe.' },
         b3: { title: 'Análise de Ticket Médio', desc: 'Descubre quais tipos de carro e serviço trazem maior margem de lucro para focar no que importa.' }
+      }
+    },
+    mechanicsLanding: {
+      hero: {
+        title: 'Valorize seu Conhecimento Técnico',
+        subtitle: 'Certificação & Demanda',
+        desc: 'Torne-se um Mecânico Credenciado OC+. Receba diagnósticos pré-aprovados, evite orçamentos recusados e ganhe acesso a treinamentos exclusivos.',
+        cta: 'Credenciar Agora',
+      },
+      benefits: {
+        title: 'Por que ser um Parceiro OC+?',
+        b1: { title: 'Demanda Qualificada', desc: 'Receba clientes que já sabem o que precisa ser feito. Menos tempo explicando, mais tempo consertando.' },
+        b2: { title: 'Selo de Especialista', desc: 'Destaque-se no mercado com nossa badge de verificação. Aumente a confiança dos clientes.' },
+        b3: { title: 'Gestão Inteligente', desc: 'Um painel exclusivo para organizar sua agenda, estoque de peças e histórico de manutenções.' }
       }
     },
     hero: {
@@ -284,7 +299,7 @@ export const translations = {
         disclaimer: 'Este laudo visa orientar o condutor sobre procedimentos e culpabilidade. Não é um seguro.'
       },
       recommendations: {
-        title: 'Restauradores Parceiros Próximos',
+        title: 'Mecânicos Parceiros Próximos',
       },
       costs: {
         title: 'Estimativa de Mercado Justo',
@@ -341,9 +356,9 @@ export const translations = {
     }
   },
   'en': {
-    nav: { services: 'Services', drivers: 'Drivers', shops: 'Restorers', analysis: 'Start', history: 'History', plans: 'Plans', admin: 'Dashboard', about: 'About', login: 'Login', logout: 'Logout', welcome: 'Hello', shopBadge: 'Restorer', mechanicBadge: 'Mechanic', notifications: 'Notifications', markAllRead: 'Clear', empty: 'No new notifications' },
+    nav: { services: 'Services', drivers: 'Drivers', shops: 'Restorers', mechanics: 'Mechanics', analysis: 'Start', history: 'History', plans: 'Plans', admin: 'Dashboard', about: 'About', login: 'Login', logout: 'Logout', welcome: 'Hello', shopBadge: 'Restorer', mechanicBadge: 'Mechanic', notifications: 'Notifications', markAllRead: 'Clear', empty: 'No new notifications' },
     auth: { title: 'Login', subtitle: 'Choose profile', tabDriver: 'Driver', tabShop: 'Restorer', tabMechanic: 'Mechanic', tabAdmin: 'Admin', emailPlaceholder: 'email', passwordPlaceholder: 'pass', button: 'Login', basicLabel: 'Basic', premiumLabel: 'Premium' },
-    emergency: { title: 'Support Center', subtitle: 'How can we help?', btnHelp: 'Request Help', btnHelpDesc: 'Call agent', btnSolution: 'Request Solution', btnSolutionDesc: 'Call Towing', questions: { drivable: 'Drivable?', people: 'People?', injured: 'Injuries?', kids: 'Kids?', fire: 'Fire Risk?', location: 'Location?', details: 'Details:' }, finding: 'Locating...', driverFound: 'Restorer found!', driverArriving: 'Arriving in', contacting: 'Contacting...', agentCall: 'Agent calling...', mapBadge: 'Active Restorers', cancel: 'Cancel' },
+    emergency: { title: 'Support Center', subtitle: 'How can we help?', btnHelp: 'Request Help', btnHelpDesc: 'Call agent', btnSolution: 'Request Solution', btnSolutionDesc: 'Call Towing', questions: { drivable: 'Drivable?', people: 'People?', injured: 'Injuries?', kids: 'Kids?', fire: 'Fire Risk?', location: 'Location?', details: 'Details:' }, finding: 'Locating...', driverFound: 'Mechanic found!', driverArriving: 'Arriving in', contacting: 'Contacting...', agentCall: 'Agent calling...', mapBadge: 'Active Mechanics', cancel: 'Cancel' },
     financialAidSection: {
       badge: 'Financial Peace',
       title: 'No insurance? Or stuck in',
@@ -385,22 +400,22 @@ export const translations = {
         suspension: 'Suspension',
         electronics: 'Electric',
         pending: 'Pending',
-        inProgress: 'In Progress',
+        inProgress: 'En Progreso',
         completed: 'Completed'
       },
       tabs: {
         dashboard: 'Dashboard',
         history: 'History',
-        requests: 'Requests'
+        requests: 'Solicitudes'
       },
       requestsView: {
-        title: 'SOS Calls',
-        subtitle: 'Accept mechanic or tow requests.',
-        empty: 'No mechanic calls in area.',
-        accept: 'Accept',
-        decline: 'Decline',
-        navigating: 'Going to location...',
-        contact: 'Contact',
+        title: 'Llamadas SOS',
+        subtitle: 'Acepta solicitudes de reparación o grúa.',
+        empty: 'No hay llamadas mecánicas.',
+        accept: 'Aceptar',
+        decline: 'Rechazar',
+        navigating: 'Yendo al sitio...',
+        contact: 'Contactar',
         distance: 'away'
       }
     },
@@ -414,6 +429,7 @@ export const translations = {
     aboutPage: { title: 'End Uncertainty', subtitle: 'AI Solution' },
     driversLanding: { hero: { title: 'Post-Collision', subtitle: 'OC+', desc: 'Get an instant technical report via AI, legal guidance on liability, and direct access to verified shops for repairs.', cta: 'Start' }, benefits: { title: 'Why OC+?', b1: { title: 'Truth', desc: 'Real value' }, b2: { title: 'Legal', desc: 'Guidance' }, b3: { title: 'Finance', desc: 'Credit' } } },
     shopsLanding: { hero: { title: 'Control', subtitle: 'Intelligence', desc: 'Manage', cta: 'Demo' }, benefits: { title: 'No Guesswork', b1: { title: 'Finance', desc: 'X-Ray' }, b2: { title: 'Metrics', desc: 'Productivity' }, b3: { title: 'Ticket', desc: 'Analysis' } } },
+    mechanicsLanding: { hero: { title: 'Value Your Technical Knowledge', subtitle: 'Certification & Demand', desc: 'Become an OC+ Certified Mechanic. Receive pre-approved diagnostics, avoid rejected quotes, and access exclusive training.', cta: 'Register Now', }, benefits: { title: 'Why Partner with OC+?', b1: { title: 'Qualified Demand', desc: 'Get customers who already know what needs fixing. Less explaining, more fixing.' }, b2: { title: 'Expert Badge', desc: 'Stand out with our verification badge. Increase customer trust.' }, b3: { title: 'Smart Management', desc: 'An exclusive dashboard to organize your schedule, parts inventory, and maintenance history.' } } },
     hero: { title: 'Occurrence', subtitle: 'Intelligence', description: 'AI technical diagnosis and legal support. The truth you need to resolve conflicts and repair without losses.', welcomeUser: 'Hello', descriptionUser: 'Lets solve', steps: { step1: 'Photo', step2: 'Report', step3: 'Solution' } },
     features: { tag: 'Tech', title: 'Solutions', item1: { title: 'Drivers', desc: 'Guidance' }, item2: { title: 'Restorers', desc: 'Estimates' }, item3: { title: 'Report', desc: 'Unbiased' } },
     history: { title: 'History', empty: 'Empty', cost: 'Cost', delete: 'Delete' },
@@ -426,7 +442,7 @@ export const translations = {
     footer: { rights: 'Reserved', madeFor: 'Tech' }
   },
   'es': {
-    nav: { services: 'Servicios', drivers: 'Conductores', shops: 'Restauradores', analysis: 'Inicio', history: 'Historial', plans: 'Planes', admin: 'Panel', about: 'Nosotros', login: 'Entrar', logout: 'Salir', welcome: 'Hola', shopBadge: 'Restaurador', mechanicBadge: 'Mecánico', notifications: 'Notificaciones', markAllRead: 'Limpiar', empty: 'Sin notificaciones' },
+    nav: { services: 'Servicios', drivers: 'Conductores', shops: 'Restauradores', mechanics: 'Mecánicos', analysis: 'Inicio', history: 'Historial', plans: 'Planes', admin: 'Panel', about: 'Nosotros', login: 'Entrar', logout: 'Salir', welcome: 'Hola', shopBadge: 'Restaurador', mechanicBadge: 'Mecánico', notifications: 'Notificaciones', markAllRead: 'Limpiar', empty: 'Sin notificaciones' },
     auth: { title: 'Entrar', subtitle: 'Perfil', tabDriver: 'Conductor', tabShop: 'Restaurador', tabMechanic: 'Mecánico', tabAdmin: 'Admin', emailPlaceholder: 'email', passwordPlaceholder: 'pass', button: 'Entrar', basicLabel: 'Básico', premiumLabel: 'Premium' },
     emergency: { title: 'Centro de Soporte', subtitle: '¿Cómo ayudar?', btnHelp: 'Solicitar Ayuda', btnHelpDesc: 'Llamar agente', btnSolution: 'Solicitar Solución', btnSolutionDesc: 'Llamar Grúa', questions: { drivable: '¿Conducible?', people: '¿Gente?', injured: '¿Heridos?', kids: '¿Niños?', fire: '¿Fuego?', location: '¿Ubicación?', details: 'Detalles:' }, finding: 'Localizando...', driverFound: '¡Restaurador encontrado!', driverArriving: 'Llegando en', contacting: 'Contactando...', agentCall: 'Agente llamando...', mapBadge: 'Restauradores Activos', cancel: 'Cancelar' },
     financialAidSection: {
@@ -499,6 +515,7 @@ export const translations = {
     aboutPage: { title: 'El Fin de la Incertidumbre', subtitle: 'Descubre cómo OC+ transforma una simple foto en la solución a los problemas generados por la colisión.', },
     driversLanding: { hero: { title: 'No es Seguro. Es tu Solución Post-Colisión.', subtitle: 'Tu guía técnico y legal cuando ocurre lo inesperado.', desc: 'Obtenga un informe técnico instantáneo con IA, orientación legal sobre responsabilidad y acceso directo a talleres verificados para realizar la reparación.', cta: 'Generar Informe Ahora', }, benefits: { title: '¿Por qué elegir OC+?', b1: { title: 'Verdad Técnica', desc: 'No dependas solo de talleres. Conoce el valor real de la reparación antes de negociar.' }, b2: { title: 'Dirección Legal', desc: '¿Chocaste un poste u otro auto? Nuestros informes te guían paso a paso para evitar demandas.' }, b3: { title: 'Ayuda Financiera', desc: 'Los suscriptores tienen acceso exclusivo a líneas de crédito para arreglar el auto cuando falta dinero.' } } },
     shopsLanding: { hero: { title: 'Toma el Control Total de tu Operación', subtitle: 'Inteligencia de Datos para Talleres', desc: 'Deja de gestionar tu taller a ciegas. Ten un panel completo que muestra exactamente dónde estás ganando dinero, tus cuellos de botella y tu Ticket Promedio en tiempo real.', cta: 'Ver Demo del Panel', }, benefits: { title: 'El Fin de la Gestión por "Suposición"', b1: { title: 'Radiografía Financiera', desc: 'Visualiza Facturación Bruta, Beneficio Neto y Costo de Piezas en gráficos claros.' }, b2: { title: 'Métricas de Productividad', desc: 'Sepa exactamente cuánto tarda cada reparación y la eficiencia de su equipo.' }, b3: { title: 'Análisis de Ticket Promedio', desc: 'Descubre qué tipos de auto y servicio traen mayor margen para enfocarte en lo que importa.' } } },
+    mechanicsLanding: { hero: { title: 'Valora tu Conocimiento Técnico', subtitle: 'Certificación y Demanda', desc: 'Conviértete en Mecánico Acreditado OC+. Recibe diagnósticos preaprobados, evita presupuestos rechazados y accede a capacitaciones.', cta: 'Registrar Ahora', }, benefits: { title: '¿Por qué ser Socio OC+?', b1: { title: 'Demanda Calificada', desc: 'Recibe clientes que ya saben lo que necesitan. Menos explicación, más reparación.' }, b2: { title: 'Insignia de Experto', desc: 'Destácate con nuestra insignia de verificación. Aumenta la confianza.' }, b3: { title: 'Gestión Inteligente', desc: 'Panel exclusivo para organizar agenda, stock de piezas e historial.' } } },
     hero: { title: 'Ocurrencia', subtitle: 'La inteligencia que guia conductores tras un accidente', description: 'Diagnóstico técnico via IA y amparo jurídico. La verdad que necesitas para resolver conflictos y reparar sin pérdidas.', welcomeUser: 'Hola, {name}. Lamentamos lo sucedido.', descriptionUser: 'Vamos a resolver esto juntos. Tome una foto del daño y nos encargaremos de toda la burocracia técnica y legal por usted.', steps: { step1: 'Foto del Daño', step2: 'Informe Inteligente', step3: 'Solución', } },
     features: { tag: 'Tecnología de Apoyo', title: 'Una App, Dos Soluciones', item1: { title: 'Para Conductores: Guía Total', desc: '¿Chocaste y no sabes qué hacer? Recibe un paso a paso técnico y legal inmediato.' }, item2: { title: 'Para Talleres: Presupuesto Automático', desc: 'Reciba el auto ya presupuestado. Ahorre horas de evaluación y acceda a leads calificados.' }, item3: { title: 'Informe Imparcial', desc: 'Un documento estandarizado que sirve como base técnica para negociaciones, sin sesgo de aseguradora.' } },
     history: { title: 'Historial de Siniestros', empty: 'Ningún análisis registrado.', cost: 'Pre-Presupuesto', delete: 'Eliminar', },
