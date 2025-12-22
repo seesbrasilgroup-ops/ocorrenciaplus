@@ -285,7 +285,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
               ) : (
                 <button
                   onClick={onOpenAuth}
-                  className="flex items-center px-5 py-2.5 rounded-full text-sm font-bold bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90 transition-all shadow-lg shadow-slate-500/20"
+                  className="flex items-center px-5 py-2.5 rounded-full text-sm font-bold bg-brand-600 dark:bg-brand-500 text-white hover:bg-brand-700 dark:hover:bg-brand-400 transition-all shadow-lg shadow-brand-500/30"
                 >
                   <UserIcon className="w-4 h-4 mr-2" />
                   {t.login}
