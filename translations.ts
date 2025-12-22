@@ -181,8 +181,31 @@ export const translations = {
       }
     },
     aboutPage: {
-      title: 'O Fim da Incerteza no Trânsito',
-      subtitle: 'Descubra como o OC+ transforma uma simples foto na solução dos problemas gerados na colisão.',
+      title: 'Redefinindo a Confiança Automotiva',
+      subtitle: 'Conectamos motoristas, restauradores e mecânicos através da verdade técnica. Somos o ecossistema que elimina o conflito do trânsito.',
+      mission: {
+        title: 'Nossa Missão',
+        text: 'Acidentes e falhas mecânicas geram estresse, desconfiança e prejuízo. A OC+ nasceu para substituir o "achismo" por dados. Usamos Inteligência Artificial para criar um padrão de verdade técnica que protege quem dirige e valoriza quem repara com honestidade.'
+      },
+      pillars: {
+        driver: {
+          title: 'Motoristas',
+          desc: 'Proteção jurídica e técnica na palma da mão. Nunca mais seja refém da falta de conhecimento.'
+        },
+        shop: {
+          title: 'Restauradores',
+          desc: 'Gestão profissional e leads qualificados. Transformamos oficinas em empresas de alta performance.'
+        },
+        mechanic: {
+          title: 'Mecânicos',
+          desc: 'Certificação e demanda direta. Damos voz e ferramentas para quem mantém o mundo rodando.'
+        }
+      },
+      stats: {
+        users: 'Usuários Ativos',
+        partners: 'Parceiros Credenciados',
+        accuracy: 'Precisão da IA'
+      }
     },
     driversLanding: {
       hero: {
@@ -426,7 +449,20 @@ export const translations = {
         title: 'Nearby Calls', subtitle: 'Accept requests to start service.', empty: 'No calls in your area.', accept: 'Accept & Go', decline: 'Decline', navigating: 'Navigating to location...', contact: 'Contact Customer', distance: 'away'
       }
     },
-    aboutPage: { title: 'End Uncertainty', subtitle: 'AI Solution' },
+    aboutPage: { 
+      title: 'Redefining Automotive Trust', 
+      subtitle: 'We connect drivers, restorers, and mechanics through technical truth. We are the ecosystem that eliminates traffic conflict.',
+      mission: {
+        title: 'Our Mission',
+        text: 'Accidents and mechanical failures generate stress, mistrust, and loss. OC+ was born to replace guesswork with data. We use AI to create a standard of technical truth that protects drivers and values honest repairers.'
+      },
+      pillars: {
+        driver: { title: 'Drivers', desc: 'Legal and technical protection in your palm.' },
+        shop: { title: 'Restorers', desc: 'Professional management and qualified leads.' },
+        mechanic: { title: 'Mechanics', desc: 'Certification and direct demand.' }
+      },
+      stats: { users: 'Active Users', partners: 'Partners', accuracy: 'AI Accuracy' }
+    },
     driversLanding: { hero: { title: 'Post-Collision', subtitle: 'OC+', desc: 'Get an instant technical report via AI, legal guidance on liability, and direct access to verified shops for repairs.', cta: 'Start' }, benefits: { title: 'Why OC+?', b1: { title: 'Truth', desc: 'Real value' }, b2: { title: 'Legal', desc: 'Guidance' }, b3: { title: 'Finance', desc: 'Credit' } } },
     shopsLanding: { hero: { title: 'Control', subtitle: 'Intelligence', desc: 'Manage', cta: 'Demo' }, benefits: { title: 'No Guesswork', b1: { title: 'Finance', desc: 'X-Ray' }, b2: { title: 'Metrics', desc: 'Productivity' }, b3: { title: 'Ticket', desc: 'Analysis' } } },
     mechanicsLanding: { hero: { title: 'Value Your Technical Knowledge', subtitle: 'Certification & Demand', desc: 'Become an OC+ Certified Mechanic. Receive pre-approved diagnostics, avoid rejected quotes, and access exclusive training.', cta: 'Register Now', }, benefits: { title: 'Why Partner with OC+?', b1: { title: 'Qualified Demand', desc: 'Get customers who already know what needs fixing. Less explaining, more fixing.' }, b2: { title: 'Expert Badge', desc: 'Stand out with our verification badge. Increase customer trust.' }, b3: { title: 'Smart Management', desc: 'An exclusive dashboard to organize your schedule, parts inventory, and maintenance history.' } } },
@@ -512,7 +548,20 @@ export const translations = {
         title: 'Llamadas Cercanas', subtitle: 'Acepta solicitudes para iniciar.', empty: 'No hay llamadas en tu zona.', accept: 'Aceptar e Ir', decline: 'Rechazar', navigating: 'Navegando al sitio...', contact: 'Contactar Cliente', distance: 'de distancia'
       }
     },
-    aboutPage: { title: 'El Fin de la Incertidumbre', subtitle: 'Descubre cómo OC+ transforma una simple foto en la solución a los problemas generados por la colisión.', },
+    aboutPage: { 
+      title: 'Redefiniendo la Confianza Automotriz', 
+      subtitle: 'Conectamos conductores, restauradores y mecánicos a través de la verdad técnica.',
+      mission: {
+        title: 'Nuestra Misión',
+        text: 'Los accidentes generan estrés y desconfianza. OC+ nació para reemplazar la adivinanza con datos. Utilizamos IA para crear un estándar de verdad técnica que protege a quien conduce y valora a quien repara.'
+      },
+      pillars: {
+        driver: { title: 'Conductores', desc: 'Protección legal y técnica.' },
+        shop: { title: 'Restauradores', desc: 'Gestión profesional y clientes cualificados.' },
+        mechanic: { title: 'Mecánicos', desc: 'Certificación y demanda directa.' }
+      },
+      stats: { users: 'Usuarios', partners: 'Socios', accuracy: 'Precisión IA' }
+    },
     driversLanding: { hero: { title: 'No es Seguro. Es tu Solución Post-Colisión.', subtitle: 'Tu guía técnico y legal cuando ocurre lo inesperado.', desc: 'Obtenga un informe técnico instantáneo con IA, orientación legal sobre responsabilidad y acceso directo a talleres verificados para realizar la reparación.', cta: 'Generar Informe Ahora', }, benefits: { title: '¿Por qué elegir OC+?', b1: { title: 'Verdad Técnica', desc: 'No dependas solo de talleres. Conoce el valor real de la reparación antes de negociar.' }, b2: { title: 'Dirección Legal', desc: '¿Chocaste un poste u otro auto? Nuestros informes te guían paso a paso para evitar demandas.' }, b3: { title: 'Ayuda Financiera', desc: 'Los suscriptores tienen acceso exclusivo a líneas de crédito para arreglar el auto cuando falta dinero.' } } },
     shopsLanding: { hero: { title: 'Toma el Control Total de tu Operación', subtitle: 'Inteligencia de Datos para Talleres', desc: 'Deja de gestionar tu taller a ciegas. Ten un panel completo que muestra exactamente dónde estás ganando dinero, tus cuellos de botella y tu Ticket Promedio en tiempo real.', cta: 'Ver Demo del Panel', }, benefits: { title: 'El Fin de la Gestión por "Suposición"', b1: { title: 'Radiografía Financiera', desc: 'Visualiza Facturación Bruta, Beneficio Neto y Costo de Piezas en gráficos claros.' }, b2: { title: 'Métricas de Productividad', desc: 'Sepa exactamente cuánto tarda cada reparación y la eficiencia de su equipo.' }, b3: { title: 'Análisis de Ticket Promedio', desc: 'Descubre qué tipos de auto y servicio traen mayor margen para enfocarte en lo que importa.' } } },
     mechanicsLanding: { hero: { title: 'Valora tu Conocimiento Técnico', subtitle: 'Certificación y Demanda', desc: 'Conviértete en Mecánico Acreditado OC+. Recibe diagnósticos preaprobados, evita presupuestos rechazados y accede a capacitaciones.', cta: 'Registrar Ahora', }, benefits: { title: '¿Por qué ser Socio OC+?', b1: { title: 'Demanda Calificada', desc: 'Recibe clientes que ya saben lo que necesitan. Menos explicación, más reparación.' }, b2: { title: 'Insignia de Experto', desc: 'Destácate con nuestra insignia de verificación. Aumenta la confianza.' }, b3: { title: 'Gestión Inteligente', desc: 'Panel exclusivo para organizar agenda, stock de piezas e historial.' } } },
