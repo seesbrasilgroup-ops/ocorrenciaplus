@@ -51,18 +51,8 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect, isLoading, langua
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        @keyframes scan-beam {
-          0%, 100% { top: 5%; opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          50% { box-shadow: 0 0 30px 5px rgba(59, 130, 246, 0.6); }
-          100% { top: 95%; opacity: 0; }
-        }
         .animate-border-spin {
           animation: border-spin 4s linear infinite;
-        }
-        .animate-scan {
-          animation: scan-beam 3s ease-in-out infinite;
         }
       `}</style>
 
@@ -105,11 +95,6 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect, isLoading, langua
           <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-blue-500/30 dark:border-blue-500/50 rounded-tr-lg"></div>
           <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-blue-500/30 dark:border-blue-500/50 rounded-bl-lg"></div>
           <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-blue-500/30 dark:border-blue-500/50 rounded-br-lg"></div>
-
-          {/* Scanning Beam */}
-          {!isLoading && (
-            <div className="absolute left-4 right-4 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent shadow-[0_0_15px_rgba(59,130,246,0.5)] animate-scan pointer-events-none z-0 opacity-50 dark:opacity-100"></div>
-          )}
 
           {/* Center Icon Interaction */}
           <div className="relative z-10 mb-6 group-hover:scale-110 transition-transform duration-500">

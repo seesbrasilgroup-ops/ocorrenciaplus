@@ -10,6 +10,7 @@ import DriversLanding from './components/DriversLanding';
 import ShopsLanding from './components/ShopsLanding';
 import AboutPage from './components/AboutPage';
 import DemoReportSection from './components/DemoReportSection';
+import EmergencyServiceSection from './components/EmergencyServiceSection';
 import AuthModal from './components/AuthModal';
 import EmergencyFlow from './components/EmergencyFlow';
 import LiveTrackingMap from './components/LiveTrackingMap';
@@ -287,6 +288,7 @@ const App: React.FC = () => {
               {!currentUser && (
                 <>
                   <DemoReportSection language={language} />
+                  <EmergencyServiceSection language={language} />
                 </>
               )}
             </>
