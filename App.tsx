@@ -37,6 +37,9 @@ const App: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   
+  // UX State: Track if user has accessed system to hide intro animation
+  const [hasAccessedSystem, setHasAccessedSystem] = useState(false);
+  
   // Emergency State
   const [emergencyMode, setEmergencyMode] = useState<'HELP' | 'SOLUTION' | null>(null);
   
@@ -110,6 +113,7 @@ const App: React.FC = () => {
 
   const handleLogin = (user: User) => {
     setCurrentUser(user);
+    setHasAccessedSystem(true); // User has accessed, hide animation frame for future visits in this session
     setIsAuthModalOpen(false);
 
     // Redirect logic
@@ -179,10 +183,10 @@ const App: React.FC = () => {
           {view === ViewState.HOME && (
             <>
               {/* SPLIT SCREEN HERO LAYOUT */}
-              <div className="flex flex-col lg:flex-row w-full min-h-[calc(100vh-64px)]">
+              <div className="flex flex-col lg:flex-row w-full min-h-[calc(100vh-64px)] transition-all duration-500">
                 
                 {/* LEFT SIDE: Scan & Content */}
-                <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-12 lg:px-24 py-12 bg-slate-50 dark:bg-slate-900 z-10 order-2 lg:order-1">
+                <div className={`w-full ${!hasAccessedSystem ? 'lg:w-1/2' : 'lg:w-full max-w-5xl mx-auto'} flex flex-col justify-center px-6 sm:px-12 lg:px-24 py-12 bg-slate-50 dark:bg-slate-900 z-10 order-2 lg:order-1 transition-all duration-500 ease-in-out`}>
                    <div className="max-w-xl mx-auto w-full">
                       
                       {/* Welcome Message */}
@@ -260,36 +264,39 @@ const App: React.FC = () => {
                    </div>
                 </div>
 
-                {/* RIGHT SIDE: Blue Gradient & Animation */}
-                <div className="w-full lg:w-1/2 relative bg-gradient-to-br from-brand-600 via-blue-700 to-indigo-900 overflow-hidden flex items-center justify-center py-20 lg:py-0 order-1 lg:order-2">
-                   {/* Decorative Noise/Pattern */}
-                   <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light"></div>
-                   
-                   {/* Decorative Circles */}
-                   <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/30 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
-                   <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/30 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+                {/* RIGHT SIDE: Blue Gradient & Animation - HIDDEN AFTER ACCESS */}
+                {!hasAccessedSystem && (
+                  <div className="w-full lg:w-1/2 relative bg-gradient-to-br from-brand-600 via-blue-700 to-indigo-900 overflow-hidden flex items-center justify-center py-20 lg:py-0 order-1 lg:order-2 animate-in fade-in duration-700">
+                     {/* Decorative Noise/Pattern */}
+                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light"></div>
+                     
+                     {/* Decorative Circles */}
+                     <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/30 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+                     <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/30 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
 
-                   {/* Floating Elements (Visual Polish) */}
-                   <div className="absolute top-1/4 left-10 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hidden lg:block animate-blob">
-                      <Sparkles className="w-6 h-6 text-yellow-300" />
-                   </div>
-                   
-                   {/* Main Animation Container */}
-                   <div className={`relative z-10 w-full max-w-lg transition-opacity duration-1000 ${!introFinished ? 'opacity-100' : 'opacity-100'}`}>
-                      <AnimatedCar />
-                      
-                      <div className="text-center mt-8 px-4">
-                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white text-sm font-medium">
-                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                            IA System Online
-                         </div>
-                      </div>
-                   </div>
-                </div>
+                     {/* Floating Elements (Visual Polish) */}
+                     <div className="absolute top-1/4 left-10 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hidden lg:block animate-blob">
+                        <Sparkles className="w-6 h-6 text-yellow-300" />
+                     </div>
+                     
+                     {/* Main Animation Container */}
+                     <div className={`relative z-10 w-full max-w-lg transition-opacity duration-1000 ${!introFinished ? 'opacity-100' : 'opacity-100'}`}>
+                        <AnimatedCar />
+                        
+                        <div className="text-center mt-8 px-4">
+                           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white text-sm font-medium">
+                              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                              OC+ System Online
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                )}
 
               </div>
               
-              {!currentUser && (
+              {/* Only show landing sections if NOT logged in/accessed */}
+              {!currentUser && !hasAccessedSystem && (
                 <>
                   <DemoReportSection language={language} />
                   <EmergencyServiceSection language={language} />
