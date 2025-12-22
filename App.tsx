@@ -3,13 +3,15 @@ import Navbar from './components/Navbar';
 import FileUpload from './components/FileUpload';
 import AnalysisResultView from './components/AnalysisResultView';
 import PricingSection from './components/PricingSection';
-import AdminDashboard from './components/AdminDashboard';
+import ShopDashboard from './components/ShopDashboard';
+import SuperAdminDashboard from './components/SuperAdminDashboard';
 import AnimatedCar from './components/AnimatedCar'; 
 import DriversLanding from './components/DriversLanding';
 import ShopsLanding from './components/ShopsLanding';
 import AboutPage from './components/AboutPage';
 import VideoSection from './components/VideoSection';
-import { ViewState, AnalysisResult, Language } from './types';
+import AuthModal from './components/AuthModal';
+import { ViewState, AnalysisResult, Language, User } from './types';
 import { analyzeImage, fileToGenerativePart } from './services/geminiService';
 import { saveAnalysisToHistory } from './services/storageService';
 import { translations } from './translations';
@@ -25,20 +27,32 @@ const App: React.FC = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  
+  // User State
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  
+  // Check premium status based on user role or simulated payment
   const [isPremium, setIsPremium] = useState(false);
   
   // State to control mobile intro animation
   const [introFinished, setIntroFinished] = useState(false);
 
   useEffect(() => {
-    // Only runs once on mount. 
-    // Wait 3.5s for the car animation to play "one frame/loop" on mobile then show content.
     const timer = setTimeout(() => {
       setIntroFinished(true);
     }, 3500);
-
     return () => clearTimeout(timer);
   }, []);
+
+  // Sync premium state with user role
+  useEffect(() => {
+    if (currentUser?.role === 'DRIVER_PREMIUM') {
+      setIsPremium(true);
+    } else if (currentUser?.role === 'DRIVER_BASIC') {
+      setIsPremium(false);
+    }
+  }, [currentUser]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
@@ -47,7 +61,10 @@ const App: React.FC = () => {
   const handleFileSelect = useCallback(async (file: File) => {
     setIsLoading(true);
     setError(null);
-    setIsPremium(false); 
+    // Don't reset premium if user is logged in as premium
+    if (currentUser?.role !== 'DRIVER_PREMIUM') {
+      setIsPremium(false); 
+    }
     
     try {
       const objectUrl = URL.createObjectURL(file);
@@ -63,14 +80,17 @@ const App: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [language]);
+  }, [language, currentUser]);
 
   const handleReset = () => {
     setAnalysisResult(null);
     setImageSrc(null);
     setView(ViewState.HOME);
     setError(null);
-    setIsPremium(false);
+    // Maintain premium if logged in
+    if (currentUser?.role !== 'DRIVER_PREMIUM') {
+       setIsPremium(false);
+    }
   };
   
   const handleUnlock = () => {
@@ -78,6 +98,27 @@ const App: React.FC = () => {
     if(confirm) {
       setIsPremium(true);
     }
+  };
+
+  const handleLogin = (user: User) => {
+    setCurrentUser(user);
+    setIsAuthModalOpen(false);
+
+    // Redirect logic
+    if (user.role === 'SHOP') {
+      setView(ViewState.SHOP_DASHBOARD);
+    } else if (user.role === 'SUPER_ADMIN') {
+      setView(ViewState.SUPER_ADMIN_DASHBOARD);
+    } else {
+      // Drivers go to Home to scan
+      setView(ViewState.HOME);
+    }
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setIsPremium(false);
+    setView(ViewState.HOME);
   };
 
   const t = translations[language];
@@ -91,7 +132,18 @@ const App: React.FC = () => {
           language={language}
           theme={theme}
           toggleTheme={toggleTheme}
+          currentUser={currentUser}
+          onOpenAuth={() => setIsAuthModalOpen(true)}
+          onLogout={handleLogout}
         />
+
+        {isAuthModalOpen && (
+          <AuthModal 
+            language={language} 
+            onLogin={handleLogin} 
+            onClose={() => setIsAuthModalOpen(false)} 
+          />
+        )}
 
         <main className="pt-20 pb-12">
           {error && (
@@ -105,26 +157,40 @@ const App: React.FC = () => {
           {view === ViewState.HOME && (
             <>
               <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-20 pb-12 sm:pb-24">
+                
+                {/* Logged in Welcome Message (Emotional Support) */}
+                {currentUser && (currentUser.role === 'DRIVER_BASIC' || currentUser.role === 'DRIVER_PREMIUM') && (
+                  <div className="mb-8 animate-in slide-in-from-top-4 duration-500">
+                    <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 rounded-r-lg">
+                      <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">
+                        {t.hero.welcomeUser.replace('{name}', currentUser.name.split(' ')[0])}
+                      </h2>
+                      <p className="text-slate-600 dark:text-slate-300">
+                        {t.hero.descriptionUser}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[60vh] lg:min-h-auto">
                   
                   {/* LEFT COLUMN: Info & Upload */}
-                  {/* LOGIC: On mobile, hidden initially until introFinished. On Desktop, always flex. */}
                   <div className={`
                     flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1
                     ${!introFinished ? 'hidden lg:flex' : 'flex animate-in fade-in duration-1000'}
                   `}>
                     
-                    <div className="mb-10 w-full">
-                      <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-6">
-                        {t.hero.title} <span className="text-brand-500">Plus</span>
-                      </h1>
-                    </div>
+                    {!currentUser && (
+                      <div className="mb-10 w-full">
+                        <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-6">
+                          {t.hero.title} <span className="text-brand-500">Plus</span>
+                        </h1>
+                      </div>
+                    )}
 
                     <div className="relative w-full max-w-xl z-10 mb-10">
-                      {/* Glow effects positioned relative to the upload box */}
+                      {/* Glow effects */}
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-brand-400/20 dark:bg-brand-500/10 rounded-full blur-[80px] pointer-events-none opacity-60 animate-pulse-slow"></div>
-                      <div className="absolute -top-10 -left-10 w-40 h-40 bg-brand-300 dark:bg-brand-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-2xl opacity-70 animate-blob"></div>
-                      <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-300 dark:bg-purple-500/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
                       
                       <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl dark:shadow-none transition-colors duration-300 border border-white/50 dark:border-slate-800">
                         <FileUpload 
@@ -134,6 +200,19 @@ const App: React.FC = () => {
                         />
                       </div>
                     </div>
+                    
+                    {/* Upsell for Basic Users */}
+                    {currentUser?.role === 'DRIVER_BASIC' && (
+                      <div className="w-full mb-8 p-4 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800 rounded-xl flex items-center justify-between gap-4">
+                         <div className="text-left">
+                           <p className="text-sm font-bold text-amber-800 dark:text-amber-400">Desbloqueie todos os recursos</p>
+                           <p className="text-xs text-amber-700 dark:text-amber-500">Seja Premium e tenha assessoria jurídica completa.</p>
+                         </div>
+                         <button onClick={() => setView(ViewState.PRICING)} className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-lg transition-colors">
+                            Ver Planos
+                         </button>
+                      </div>
+                    )}
                       
                     <div className="flex flex-row flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 w-full opacity-90">
                       <div className="flex items-center gap-2">
@@ -142,18 +221,14 @@ const App: React.FC = () => {
                         </div>
                         <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.hero.steps.step1}</span>
                       </div>
-
                       <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 hidden sm:block" />
-
                       <div className="flex items-center gap-2">
                         <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">
                           <ScanLine className="w-4 h-4 text-purple-500" />
                         </div>
                         <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.hero.steps.step2}</span>
                       </div>
-
                       <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 hidden sm:block" />
-
                       <div className="flex items-center gap-2">
                         <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">
                           <FileText className="w-4 h-4 text-green-500" />
@@ -164,7 +239,6 @@ const App: React.FC = () => {
                   </div>
 
                   {/* RIGHT COLUMN: Animated Car */}
-                  {/* LOGIC: On mobile, Visible initially. Hidden after introFinished. On Desktop, always flex. */}
                   <div className={`
                     order-1 lg:order-2 justify-center items-center h-full min-h-[300px] lg:min-h-[500px]
                     ${!introFinished ? 'flex' : 'hidden lg:flex'}
@@ -175,10 +249,11 @@ const App: React.FC = () => {
                 </div>
               </div>
               
-              {/* Second Section: Video */}
-              <div className="bg-slate-50 dark:bg-slate-900/50">
-                <VideoSection language={language} />
-              </div>
+              {!currentUser && (
+                <div className="bg-slate-50 dark:bg-slate-900/50">
+                  <VideoSection language={language} />
+                </div>
+              )}
             </>
           )}
 
@@ -196,7 +271,7 @@ const App: React.FC = () => {
           {view === ViewState.LANDING_SHOPS && (
             <ShopsLanding 
               language={language} 
-              onRegister={() => setView(ViewState.ADMIN)} 
+              onRegister={() => setIsAuthModalOpen(true)} 
             />
           )}
 
@@ -213,16 +288,24 @@ const App: React.FC = () => {
           
           {view === ViewState.PRICING && <PricingSection language={language} />}
           
-          {view === ViewState.ADMIN && (
-            <AdminDashboard 
+          {view === ViewState.SHOP_DASHBOARD && (
+            <ShopDashboard 
               language={language} 
               recentAnalysis={analysisResult}
+              currentUser={currentUser}
               onSelectAnalysis={(result) => {
                 setAnalysisResult(result);
                 setImageSrc(null);
                 setView(ViewState.ANALYSIS);
               }}
+              onNewEstimate={() => {
+                setView(ViewState.HOME);
+              }}
             />
+          )}
+
+          {view === ViewState.SUPER_ADMIN_DASHBOARD && (
+            <SuperAdminDashboard language={language} />
           )}
 
         </main>

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ViewState, Language } from '../types';
-import { Sun, Moon, ChevronDown, Menu, X } from 'lucide-react';
+import { ViewState, Language, User } from '../types';
+import { Sun, Moon, ChevronDown, Menu, X, User as UserIcon, LogOut } from 'lucide-react';
 import { translations } from '../translations';
 
 interface NavbarProps {
@@ -9,20 +9,28 @@ interface NavbarProps {
   language: Language;
   theme: 'light' | 'dark';
   toggleTheme: () => void;
+  currentUser: User | null;
+  onOpenAuth: () => void;
+  onLogout: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, toggleTheme }) => {
+const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, toggleTheme, currentUser, onOpenAuth, onLogout }) => {
   const t = translations[language].nav;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const userMenuRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsDropdownOpen(false);
+      }
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setIsUserMenuOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -39,7 +47,13 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    if (!isMobileMenuOpen) setIsMobileServicesOpen(false); // Reset sub-menu when opening
+  };
+
+  const getDashboardView = () => {
+    if (!currentUser) return ViewState.HOME;
+    if (currentUser.role === 'SHOP') return ViewState.SHOP_DASHBOARD;
+    if (currentUser.role === 'SUPER_ADMIN') return ViewState.SUPER_ADMIN_DASHBOARD;
+    return ViewState.HOME; // Basic/Premium users go to Home with updated UI
   };
 
   return (
@@ -50,6 +64,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
             <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
               OC<span className="text-brand-600 dark:text-brand-500">+</span>
             </span>
+            {currentUser?.role === 'SHOP' && <span className="ml-2 text-xs font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded border border-amber-200">SHOP</span>}
+            {currentUser?.role === 'SUPER_ADMIN' && <span className="ml-2 text-xs font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded border border-purple-200">ADMIN</span>}
           </div>
           
           <div className="flex items-center gap-4">
@@ -116,23 +132,13 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
               >
                 {t.plans}
               </button>
-              <button
-                onClick={() => setView(ViewState.ADMIN)}
-                className={`flex items-center px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                  currentView === ViewState.ADMIN 
-                    ? 'bg-blue-600 text-white shadow-md hover:bg-blue-700 dark:bg-brand-600' 
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
-                }`}
-              >
-                {t.admin}
-              </button>
             </div>
 
-            {/* Theme Toggle & Mobile Menu Button */}
-            <div className="flex items-center gap-2">
+            {/* Auth & Theme & Mobile */}
+            <div className="flex items-center gap-2 border-l border-gray-200 dark:border-slate-700 pl-4 ml-2">
               <button 
                 onClick={toggleTheme}
-                className="p-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500"
+                className="p-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700 transition-all focus:outline-none"
                 aria-label="Toggle Theme"
               >
                 {theme === 'light' ? (
@@ -142,10 +148,70 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                 )}
               </button>
 
+              {currentUser ? (
+                <div className="relative" ref={userMenuRef}>
+                  <button
+                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                    className="flex items-center gap-2 p-1 pl-2 pr-3 rounded-full border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800 transition-all"
+                  >
+                    <img 
+                      src={currentUser.avatar || 'https://i.pravatar.cc/150'} 
+                      alt="User" 
+                      className="w-8 h-8 rounded-full bg-gray-200"
+                    />
+                    <span className="text-sm font-bold text-gray-700 dark:text-gray-200 hidden sm:block truncate max-w-[100px]">
+                      {currentUser.name.split(' ')[0]}
+                    </span>
+                    <ChevronDown className="w-4 h-4 text-gray-500" />
+                  </button>
+
+                  {isUserMenuOpen && (
+                    <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                      <div className="px-4 py-3 border-b border-gray-100 dark:border-slate-700">
+                        <p className="text-sm font-bold text-gray-900 dark:text-white">{currentUser.name}</p>
+                        <p className="text-xs text-gray-500 truncate">{currentUser.email}</p>
+                      </div>
+                      
+                      {(currentUser.role === 'SHOP' || currentUser.role === 'SUPER_ADMIN') && (
+                        <button
+                          onClick={() => {
+                            handleNavClick(getDashboardView());
+                            setIsUserMenuOpen(false);
+                          }}
+                          className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 flex items-center"
+                        >
+                          <Menu className="w-4 h-4 mr-2" />
+                          {t.admin}
+                        </button>
+                      )}
+
+                      <button
+                        onClick={() => {
+                          onLogout();
+                          setIsUserMenuOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center"
+                      >
+                        <LogOut className="w-4 h-4 mr-2" />
+                        {t.logout}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <button
+                  onClick={onOpenAuth}
+                  className="flex items-center px-5 py-2.5 rounded-full text-sm font-bold bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90 transition-all shadow-lg shadow-slate-500/20"
+                >
+                  <UserIcon className="w-4 h-4 mr-2" />
+                  {t.login}
+                </button>
+              )}
+
               {/* Mobile Hamburger Button */}
               <button
                 onClick={toggleMobileMenu}
-                className="md:hidden p-2.5 rounded-lg text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800 focus:outline-none"
+                className="md:hidden p-2.5 rounded-lg text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800 focus:outline-none ml-1"
                 aria-label="Open menu"
               >
                 {isMobileMenuOpen ? (
@@ -163,69 +229,23 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-16 left-0 w-full bg-white dark:bg-brand-900 border-b border-gray-200 dark:border-brand-800 shadow-xl animate-in slide-in-from-top-2 duration-200">
           <div className="px-4 py-6 space-y-2">
-            
-            {/* Mobile Services Accordion */}
-            <div className="border border-gray-100 dark:border-slate-800 rounded-xl overflow-hidden bg-gray-50/50 dark:bg-slate-800/50 mb-4">
-              <button
-                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                className="w-full flex items-center justify-between px-4 py-3 text-base font-bold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
-              >
-                <span className="flex items-center">
-                  {t.services}
-                </span>
-                <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              <div className={`overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
-                <div className="px-4 pb-3 space-y-2">
-                  <button
-                    onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)}
-                    className="w-full flex items-center p-3 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-700 shadow-sm"
-                  >
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">{t.drivers}</span>
-                  </button>
-                  <button
-                    onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
-                    className="w-full flex items-center p-3 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-700 shadow-sm"
-                  >
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">{t.shops}</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Standard Links */}
+            <button
+              onClick={() => handleNavClick(ViewState.HOME)}
+              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
+            >
+              Home
+            </button>
             <button
               onClick={() => handleNavClick(ViewState.ABOUT)}
-              className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors flex items-center ${
-                currentView === ViewState.ABOUT
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
-              }`}
+              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
             >
               {t.about}
             </button>
-
             <button
               onClick={() => handleNavClick(ViewState.PRICING)}
-              className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors ${
-                currentView === ViewState.PRICING
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
-              }`}
+              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
             >
               {t.plans}
-            </button>
-
-            <button
-              onClick={() => handleNavClick(ViewState.ADMIN)}
-              className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors flex items-center ${
-                currentView === ViewState.ADMIN
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
-              }`}
-            >
-              {t.admin}
             </button>
           </div>
         </div>

@@ -1,14 +1,28 @@
+
 export enum ViewState {
   HOME = 'HOME',
   ANALYSIS = 'ANALYSIS',
   PRICING = 'PRICING',
-  ADMIN = 'ADMIN',
+  SHOP_DASHBOARD = 'SHOP_DASHBOARD',
+  SUPER_ADMIN_DASHBOARD = 'SUPER_ADMIN_DASHBOARD',
   LANDING_DRIVERS = 'LANDING_DRIVERS',
   LANDING_SHOPS = 'LANDING_SHOPS',
   ABOUT = 'ABOUT',
 }
 
 export type Language = 'pt-BR' | 'en' | 'es';
+
+export type UserRole = 'DRIVER_BASIC' | 'DRIVER_PREMIUM' | 'SHOP' | 'SUPER_ADMIN';
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+  avatar?: string;
+  shopName?: string; // Only for shops
+  verified?: boolean; // Only for shops (OC+ Badge)
+}
 
 export interface VehicleInfo {
   make: string;
