@@ -9,7 +9,7 @@ import AnimatedCar from './components/AnimatedCar';
 import DriversLanding from './components/DriversLanding';
 import ShopsLanding from './components/ShopsLanding';
 import AboutPage from './components/AboutPage';
-import VideoSection from './components/VideoSection';
+import DemoReportSection from './components/DemoReportSection';
 import AuthModal from './components/AuthModal';
 import EmergencyFlow from './components/EmergencyFlow';
 import LiveTrackingMap from './components/LiveTrackingMap';
@@ -17,7 +17,7 @@ import { ViewState, AnalysisResult, Language, User } from './types';
 import { analyzeImage, fileToGenerativePart } from './services/geminiService';
 import { saveAnalysisToHistory } from './services/storageService';
 import { translations } from './translations';
-import { Camera, ScanLine, FileText, ArrowRight } from 'lucide-react';
+import { Camera, ScanLine, FileText, ArrowRight, Sparkles } from 'lucide-react';
 
 const initialResult = null;
 
@@ -161,9 +161,10 @@ const App: React.FC = () => {
           />
         )}
 
-        <main className="pt-20 pb-12">
+        {/* Adjusted main padding only for non-home views or ensure home view handles it */}
+        <main className={`pt-16 ${view === ViewState.HOME ? 'pb-0' : 'pb-12'}`}>
           {error && (
-            <div className="max-w-3xl mx-auto px-4 mb-6">
+            <div className="max-w-3xl mx-auto px-4 mb-6 mt-4">
               <div className="bg-red-100 dark:bg-red-500/10 border border-red-200 dark:border-red-500/50 text-red-700 dark:text-red-200 p-4 rounded-lg flex items-center">
                 <span className="mr-2">⚠️</span> {error}
               </div>
@@ -172,105 +173,121 @@ const App: React.FC = () => {
 
           {view === ViewState.HOME && (
             <>
-              <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-20 pb-12 sm:pb-24">
+              {/* SPLIT SCREEN HERO LAYOUT */}
+              <div className="flex flex-col lg:flex-row w-full min-h-[calc(100vh-64px)]">
                 
-                {/* Logged in Welcome Message (Emotional Support) */}
-                {currentUser && (currentUser.role === 'DRIVER_BASIC' || currentUser.role === 'DRIVER_PREMIUM') && (
-                  <div className="mb-8 animate-in slide-in-from-top-4 duration-500">
-                    <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 rounded-r-lg">
-                      <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">
-                        {t.hero.welcomeUser.replace('{name}', currentUser.name.split(' ')[0])}
-                      </h2>
-                      <p className="text-slate-600 dark:text-slate-300">
-                        {t.hero.descriptionUser}
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[60vh] lg:min-h-auto">
-                  
-                  {/* LEFT COLUMN: Info & Upload */}
-                  <div className={`
-                    flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1
-                    ${!introFinished ? 'hidden lg:flex' : 'flex animate-in fade-in duration-1000'}
-                  `}>
-                    
-                    {!currentUser && (
-                      <div className="mb-10 w-full">
-                        <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-6">
-                          {t.hero.title} <span className="text-brand-500">Plus</span>
-                        </h1>
-                      </div>
-                    )}
-
-                    <div className="relative w-full max-w-xl z-10 mb-10">
-                      {/* Glow effects */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-brand-400/20 dark:bg-brand-500/10 rounded-full blur-[80px] pointer-events-none opacity-60 animate-pulse-slow"></div>
+                {/* LEFT SIDE: Scan & Content */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-12 lg:px-24 py-12 bg-slate-50 dark:bg-slate-900 z-10 order-2 lg:order-1">
+                   <div className="max-w-xl mx-auto w-full">
                       
-                      <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl dark:shadow-none transition-colors duration-300 border border-white/50 dark:border-slate-800">
+                      {/* Welcome Message */}
+                      {currentUser && (currentUser.role === 'DRIVER_BASIC' || currentUser.role === 'DRIVER_PREMIUM') && (
+                        <div className="mb-8 animate-in slide-in-from-top-4 duration-500">
+                          <div className="bg-white dark:bg-slate-800 border-l-4 border-blue-500 p-6 rounded-r-xl shadow-sm">
+                            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">
+                              {t.hero.welcomeUser.replace('{name}', currentUser.name.split(' ')[0])}
+                            </h2>
+                            <p className="text-slate-600 dark:text-slate-300">
+                              {t.hero.descriptionUser}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      {!currentUser && (
+                        <div className="mb-10 w-full text-center lg:text-left">
+                          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-6">
+                            {t.hero.title} <span className="text-brand-600 dark:text-brand-500">Plus</span>
+                          </h1>
+                          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                            {t.hero.description}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* File Upload Component */}
+                      <div className="relative w-full z-10 mb-10">
+                        {/* Subtle glow for scan area */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100 dark:bg-blue-900/20 rounded-full blur-[60px] pointer-events-none opacity-50"></div>
                         <FileUpload 
                           onFileSelect={handleFileSelect} 
                           isLoading={isLoading} 
                           language={language}
                         />
                       </div>
-                    </div>
-                    
-                    {/* Steps Section - Moved Up */}
-                    <div className="flex flex-row flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 w-full opacity-90 mb-8">
-                      <div className="flex items-center gap-2">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">
-                          <Camera className="w-4 h-4 text-brand-500" />
-                        </div>
-                        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.hero.steps.step1}</span>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 hidden sm:block" />
-                      <div className="flex items-center gap-2">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">
-                          <ScanLine className="w-4 h-4 text-purple-500" />
-                        </div>
-                        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.hero.steps.step2}</span>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 hidden sm:block" />
-                      <div className="flex items-center gap-2">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">
-                          <FileText className="w-4 h-4 text-green-500" />
-                        </div>
-                        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.hero.steps.step3}</span>
-                      </div>
-                    </div>
 
-                    {/* Upsell for Basic Users - Moved Down */}
-                    {currentUser?.role === 'DRIVER_BASIC' && (
-                      <div className="w-full mb-8 p-4 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800 rounded-xl flex items-center justify-between gap-4">
-                         <div className="text-left">
-                           <p className="text-sm font-bold text-amber-800 dark:text-amber-400">Desbloqueie todos os recursos</p>
-                           <p className="text-xs text-amber-700 dark:text-amber-500">Seja Premium e tenha assessoria jurídica completa.</p>
-                         </div>
-                         <button onClick={() => setView(ViewState.PRICING)} className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-lg transition-colors">
-                            Ver Planos
-                         </button>
+                      {/* Steps */}
+                      <div className="flex flex-row flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 w-full opacity-90 mb-8">
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700">
+                            <Camera className="w-4 h-4 text-brand-500" />
+                          </div>
+                          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.hero.steps.step1}</span>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 hidden sm:block" />
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700">
+                            <ScanLine className="w-4 h-4 text-purple-500" />
+                          </div>
+                          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.hero.steps.step2}</span>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 hidden sm:block" />
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700">
+                            <FileText className="w-4 h-4 text-green-500" />
+                          </div>
+                          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.hero.steps.step3}</span>
+                        </div>
                       </div>
-                    )}
-                      
-                  </div>
 
-                  {/* RIGHT COLUMN: Animated Car */}
-                  <div className={`
-                    order-1 lg:order-2 justify-center items-center h-full min-h-[300px] lg:min-h-[500px]
-                    ${!introFinished ? 'flex' : 'hidden lg:flex'}
-                  `}>
-                    <AnimatedCar />
-                  </div>
-
+                      {/* Upsell for Basic Users */}
+                      {currentUser?.role === 'DRIVER_BASIC' && (
+                        <div className="w-full p-4 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800 rounded-xl flex items-center justify-between gap-4">
+                           <div className="text-left">
+                             <p className="text-sm font-bold text-amber-800 dark:text-amber-400">Desbloqueie todos os recursos</p>
+                             <p className="text-xs text-amber-700 dark:text-amber-500">Seja Premium e tenha assessoria jurídica completa.</p>
+                           </div>
+                           <button onClick={() => setView(ViewState.PRICING)} className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold rounded-lg transition-colors">
+                              Ver Planos
+                           </button>
+                        </div>
+                      )}
+                   </div>
                 </div>
+
+                {/* RIGHT SIDE: Blue Gradient & Animation */}
+                <div className="w-full lg:w-1/2 relative bg-gradient-to-br from-brand-600 via-blue-700 to-indigo-900 overflow-hidden flex items-center justify-center py-20 lg:py-0 order-1 lg:order-2">
+                   {/* Decorative Noise/Pattern */}
+                   <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light"></div>
+                   
+                   {/* Decorative Circles */}
+                   <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/30 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+                   <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/30 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+
+                   {/* Floating Elements (Visual Polish) */}
+                   <div className="absolute top-1/4 left-10 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hidden lg:block animate-blob">
+                      <Sparkles className="w-6 h-6 text-yellow-300" />
+                   </div>
+                   
+                   {/* Main Animation Container */}
+                   <div className={`relative z-10 w-full max-w-lg transition-opacity duration-1000 ${!introFinished ? 'opacity-100' : 'opacity-100'}`}>
+                      <AnimatedCar />
+                      
+                      <div className="text-center mt-8 px-4">
+                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white text-sm font-medium">
+                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            IA System Online
+                         </div>
+                      </div>
+                   </div>
+                </div>
+
               </div>
               
               {!currentUser && (
-                <div className="bg-slate-50 dark:bg-slate-900/50">
-                  <VideoSection language={language} />
-                </div>
+                <>
+                  <DemoReportSection language={language} />
+                </>
               )}
             </>
           )}
