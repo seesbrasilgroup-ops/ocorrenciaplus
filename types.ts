@@ -4,6 +4,7 @@ export enum ViewState {
   ANALYSIS = 'ANALYSIS',
   PRICING = 'PRICING',
   SHOP_DASHBOARD = 'SHOP_DASHBOARD',
+  MECHANIC_DASHBOARD = 'MECHANIC_DASHBOARD',
   SUPER_ADMIN_DASHBOARD = 'SUPER_ADMIN_DASHBOARD',
   LANDING_DRIVERS = 'LANDING_DRIVERS',
   LANDING_SHOPS = 'LANDING_SHOPS',
@@ -14,7 +15,7 @@ export enum ViewState {
 
 export type Language = 'pt-BR' | 'en' | 'es';
 
-export type UserRole = 'DRIVER_BASIC' | 'DRIVER_PREMIUM' | 'SHOP' | 'SUPER_ADMIN';
+export type UserRole = 'DRIVER_BASIC' | 'DRIVER_PREMIUM' | 'SHOP' | 'MECHANIC' | 'SUPER_ADMIN';
 
 export type AdminTab = 'OVERVIEW' | 'HISTORY' | 'SERVICE' | 'MONITORING' | 'COSTS' | 'EARNINGS' | 'SALES' | 'PARTNERSHIPS' | 'LEGAL' | 'REPORTS';
 
@@ -24,8 +25,8 @@ export interface User {
   email: string;
   role: UserRole;
   avatar?: string;
-  shopName?: string; // Only for shops
-  verified?: boolean; // Only for shops (OC+ Badge)
+  shopName?: string; // Only for shops/mechanics
+  verified?: boolean; // Only for shops/mechanics (OC+ Badge)
 }
 
 export interface VehicleInfo {

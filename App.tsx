@@ -4,6 +4,7 @@ import FileUpload from './components/FileUpload';
 import AnalysisResultView from './components/AnalysisResultView';
 import PricingSection from './components/PricingSection';
 import ShopDashboard from './components/ShopDashboard';
+import MechanicDashboard from './components/MechanicDashboard';
 import SuperAdminDashboard from './components/SuperAdminDashboard';
 import AnimatedCar from './components/AnimatedCar'; 
 import DriversLanding from './components/DriversLanding';
@@ -114,6 +115,8 @@ const App: React.FC = () => {
     // Redirect logic
     if (user.role === 'SHOP') {
       setView(ViewState.SHOP_DASHBOARD);
+    } else if (user.role === 'MECHANIC') {
+      setView(ViewState.MECHANIC_DASHBOARD);
     } else if (user.role === 'SUPER_ADMIN') {
       setView(ViewState.SUPER_ADMIN_DASHBOARD);
     } else {
@@ -358,6 +361,18 @@ const App: React.FC = () => {
                 setView(ViewState.HOME);
               }}
             />
+          )}
+
+          {view === ViewState.MECHANIC_DASHBOARD && (
+             <MechanicDashboard 
+               language={language}
+               currentUser={currentUser}
+               onSelectAnalysis={(result) => {
+                setAnalysisResult(result);
+                setImageSrc(null);
+                setView(ViewState.ANALYSIS);
+              }}
+             />
           )}
 
           {view === ViewState.SUPER_ADMIN_DASHBOARD && (

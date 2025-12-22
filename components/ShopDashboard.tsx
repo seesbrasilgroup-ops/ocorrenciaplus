@@ -1,26 +1,60 @@
 import React, { useState } from 'react';
 import { getAdminStats } from '../constants';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
-import { Users, DollarSign, Activity, AlertCircle, LayoutGrid, History, CheckSquare, MessageCircle, BadgeCheck, ClipboardList, ScanLine } from 'lucide-react';
-import { Language, AnalysisResult, User } from '../types';
+import { Users, DollarSign, Activity, AlertCircle, LayoutGrid, History, CheckSquare, MessageCircle, BadgeCheck, ClipboardList, ScanLine, Bell, MapPin, Navigation, Truck, User, Check, X } from 'lucide-react';
+import { Language, AnalysisResult, User as UserType } from '../types';
 import { translations } from '../translations';
 import HistoryView from './HistoryView';
 
 interface ShopDashboardProps {
   language: Language;
   recentAnalysis: AnalysisResult | null;
-  currentUser: User | null;
+  currentUser: UserType | null;
   onSelectAnalysis: (analysis: AnalysisResult) => void;
   onNewEstimate: () => void;
 }
 
 const ShopDashboard: React.FC<ShopDashboardProps> = ({ language, recentAnalysis, currentUser, onSelectAnalysis, onNewEstimate }) => {
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'history' | 'checklist'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'history' | 'requests'>('dashboard');
   const t = translations[language].shopDashboard;
   const tAdmin = translations[language].admin; // Reuse generic stats translations
   const stats = getAdminStats(language);
 
   const verified = currentUser?.verified;
+
+  // Mock Requests State
+  const [requests, setRequests] = useState([
+    {
+      id: 1,
+      user: 'Ana Silva',
+      vehicle: 'Hyundai HB20 (2022)',
+      distance: '3.2 km',
+      type: 'Guincho / Colisão',
+      urgency: 'HIGH',
+      status: 'PENDING',
+      location: 'Av. Paulista, 1000'
+    },
+    {
+      id: 2,
+      user: 'Roberto Carlos',
+      vehicle: 'Toyota Corolla (2019)',
+      distance: '5.8 km',
+      type: 'Orçamento Presencial',
+      urgency: 'MEDIUM',
+      status: 'PENDING',
+      location: 'Rua Augusta, 500'
+    }
+  ]);
+
+  const handleAcceptRequest = (id: number) => {
+     setRequests(prev => prev.map(req => req.id === id ? { ...req, status: 'ACCEPTED' } : req));
+  };
+
+  const handleDeclineRequest = (id: number) => {
+     setRequests(prev => prev.filter(req => req.id !== id));
+  };
+
+  const pendingRequestsCount = requests.filter(r => r.status === 'PENDING').length;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
@@ -51,7 +85,7 @@ const ShopDashboard: React.FC<ShopDashboardProps> = ({ language, recentAnalysis,
               }`}
             >
               <LayoutGrid className="w-4 h-4 mr-2" />
-              Dashboard
+              {t.tabs.dashboard}
             </button>
             <button 
                onClick={() => setActiveTab('history')}
@@ -62,7 +96,23 @@ const ShopDashboard: React.FC<ShopDashboardProps> = ({ language, recentAnalysis,
               }`}
             >
               <History className="w-4 h-4 mr-2" />
-              History
+              {t.tabs.history}
+            </button>
+            <button 
+               onClick={() => setActiveTab('requests')}
+               className={`flex items-center px-4 py-2 rounded-lg text-sm font-bold transition-all relative ${
+                activeTab === 'requests' 
+                  ? 'bg-white dark:bg-slate-700 text-amber-600 dark:text-amber-400 shadow-sm' 
+                  : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
+              }`}
+            >
+              <Bell className="w-4 h-4 mr-2" />
+              {t.tabs.requests}
+              {pendingRequestsCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center animate-bounce">
+                  {pendingRequestsCount}
+                </span>
+              )}
             </button>
           </div>
         </div>
@@ -89,6 +139,85 @@ const ShopDashboard: React.FC<ShopDashboardProps> = ({ language, recentAnalysis,
       
       {activeTab === 'history' ? (
         <HistoryView language={language} onSelectAnalysis={onSelectAnalysis} />
+      ) : activeTab === 'requests' ? (
+        <div className="animate-in fade-in duration-300">
+           <div className="mb-6">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+                 <Bell className="w-5 h-5 mr-2 text-amber-500" />
+                 {t.requestsView.title}
+              </h2>
+              <p className="text-slate-500 dark:text-slate-400 text-sm">{t.requestsView.subtitle}</p>
+           </div>
+           
+           {requests.length === 0 ? (
+              <div className="p-12 text-center bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 border-dashed">
+                 <Bell className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+                 <p className="text-slate-500">{t.requestsView.empty}</p>
+              </div>
+           ) : (
+              <div className="grid grid-cols-1 gap-6">
+                 {requests.map(req => (
+                    <div key={req.id} className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden transition-all hover:shadow-md">
+                       {req.status === 'ACCEPTED' && (
+                          <div className="absolute inset-0 bg-green-500/10 backdrop-blur-[1px] z-10 flex flex-col items-center justify-center animate-in fade-in">
+                             <div className="bg-green-500 text-white p-3 rounded-full mb-3 shadow-lg">
+                                <Navigation className="w-8 h-8 animate-pulse" />
+                             </div>
+                             <h3 className="text-xl font-bold text-green-700 dark:text-green-400">{t.requestsView.navigating}</h3>
+                             <button className="mt-4 px-6 py-2 bg-white text-green-700 font-bold rounded-full shadow-md flex items-center">
+                                <MessageCircle className="w-4 h-4 mr-2" /> {t.requestsView.contact}
+                             </button>
+                          </div>
+                       )}
+
+                       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                          <div className="flex items-start gap-4">
+                             <div className={`p-4 rounded-xl ${req.urgency === 'HIGH' ? 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400' : 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'}`}>
+                                <Truck className="w-8 h-8" />
+                             </div>
+                             <div>
+                                <div className="flex items-center gap-2 mb-1">
+                                   <h3 className="font-bold text-lg text-slate-900 dark:text-white">{req.user}</h3>
+                                   <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600">
+                                      {req.vehicle}
+                                   </span>
+                                </div>
+                                <div className="flex items-center text-sm text-slate-500 dark:text-slate-400 mb-2">
+                                   <MapPin className="w-4 h-4 mr-1 text-amber-500" />
+                                   {req.location}
+                                </div>
+                                <div className="flex items-center gap-4">
+                                   <span className="text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded">
+                                      {req.type}
+                                   </span>
+                                   <span className="text-sm font-bold text-blue-600 dark:text-blue-400 flex items-center">
+                                      <Navigation className="w-3 h-3 mr-1" />
+                                      {req.distance} {t.requestsView.distance}
+                                   </span>
+                                </div>
+                             </div>
+                          </div>
+
+                          <div className="flex gap-3 w-full md:w-auto">
+                             <button 
+                                onClick={() => handleDeclineRequest(req.id)}
+                                className="flex-1 md:flex-none px-6 py-3 border border-slate-200 dark:border-slate-600 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl font-bold transition-colors flex items-center justify-center gap-2"
+                             >
+                                <X className="w-4 h-4" /> {t.requestsView.decline}
+                             </button>
+                             <button 
+                                onClick={() => handleAcceptRequest(req.id)}
+                                className="flex-1 md:flex-none px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold shadow-lg shadow-green-600/20 transition-all hover:scale-105 flex items-center justify-center gap-2"
+                             >
+                                <Check className="w-4 h-4" /> {t.requestsView.accept}
+                             </button>
+                          </div>
+                       </div>
+                    </div>
+                 ))}
+              </div>
+           )}
+        </div>
       ) : (
         <>
           {/* KPI Cards */}

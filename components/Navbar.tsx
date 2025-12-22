@@ -59,6 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
   const getDashboardView = () => {
     if (!currentUser) return ViewState.HOME;
     if (currentUser.role === 'SHOP') return ViewState.SHOP_DASHBOARD;
+    if (currentUser.role === 'MECHANIC') return ViewState.MECHANIC_DASHBOARD;
     if (currentUser.role === 'SUPER_ADMIN') return ViewState.SUPER_ADMIN_DASHBOARD;
     return ViewState.HOME; // Basic/Premium users go to Home with updated UI
   };
@@ -72,6 +73,13 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
         { id: 1, title: 'Novo Lead Próximo', desc: 'Honda Civic a 2km de você solicitando reparo.', time: '2 min', unread: true },
         { id: 2, title: 'Orçamento Aprovado', desc: 'Cliente João aceitou a proposta #492.', time: '1h', unread: false },
         { id: 3, title: 'Meta Mensal', desc: 'Você atingiu 80% da sua meta de faturamento!', time: '1d', unread: false },
+      ];
+    }
+
+    if (currentUser.role === 'MECHANIC') {
+      return [
+        { id: 1, title: 'Nova Revisão', desc: 'Agendamento para VW Gol às 14h.', time: '10 min', unread: true },
+        { id: 2, title: 'Peça Chegou', desc: 'Filtro de Óleo disponível no estoque.', time: '2h', unread: false },
       ];
     }
     
@@ -95,6 +103,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
               OC<span className="text-brand-600 dark:text-brand-500">+</span>
             </span>
             {currentUser?.role === 'SHOP' && <span className="ml-2 text-xs font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded border border-amber-200">{t.shopBadge.toUpperCase()}</span>}
+            {currentUser?.role === 'MECHANIC' && <span className="ml-2 text-xs font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">{t.mechanicBadge.toUpperCase()}</span>}
             {currentUser?.role === 'SUPER_ADMIN' && <span className="ml-2 text-xs font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded border border-purple-200">ADMIN</span>}
           </div>
           
@@ -256,7 +265,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                         <p className="text-xs text-gray-500 truncate">{currentUser.email}</p>
                       </div>
                       
-                      {(currentUser.role === 'SHOP' || currentUser.role === 'SUPER_ADMIN') && (
+                      {(currentUser.role === 'SHOP' || currentUser.role === 'MECHANIC' || currentUser.role === 'SUPER_ADMIN') && (
                         <button
                           onClick={() => {
                             handleNavClick(getDashboardView());
