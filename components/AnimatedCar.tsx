@@ -42,6 +42,12 @@ const AnimatedCar: React.FC = () => {
           60% { transform: scaleX(1) translateY(0); }
         }
 
+        /* SIREN ANIMATION */
+        @keyframes sirenStrobe {
+          0%, 100% { fill: #b45309; filter: drop-shadow(0 0 0px rgba(245, 158, 11, 0)); opacity: 0.8; }
+          50% { fill: #fcd34d; filter: drop-shadow(0 0 15px rgba(245, 158, 11, 1)); opacity: 1; }
+        }
+
         /* Applying Animations */
         #wholeCar {
           animation: driveTowardsUser 6s ease-in-out infinite;
@@ -74,13 +80,17 @@ const AnimatedCar: React.FC = () => {
         #tyreL, #tyreR {
           animation: wheelBounce 6s ease-in-out infinite;
         }
+
+        #siren-bulb {
+          animation: sirenStrobe 0.4s steps(2, start) infinite;
+        }
       `}</style>
 
       <svg 
         version="1.1"
         xmlns="http://www.w3.org/2000/svg" 
         xmlnsXlink="http://www.w3.org/1999/xlink" 
-        viewBox="250 180 300 300"
+        viewBox="250 160 300 320" 
         className="w-full h-full drop-shadow-2xl"
       >
         <defs>
@@ -111,6 +121,16 @@ const AnimatedCar: React.FC = () => {
             {/* Frame/Windshield: Light Blue Fill (#dbeafe) with Blue Stroke (#2563eb) */}
             <polygon id="frame" fill="#dbeafe" fillOpacity="0.5" stroke="#2563eb" className="dark:fill-brand-900 dark:fill-opacity-50 dark:stroke-brand-400" strokeWidth="16" strokeMiterlimit="10" points="496.429,282.333 323.467,282.333 340.467,202.194 483.429,202.194 "/>
             
+            {/* EMERGENCY SIREN (New Addition) */}
+            <g id="siren-group" transform="translate(0, -5)">
+               {/* Siren Base */}
+               <rect x="396" y="202" width="32" height="6" rx="2" fill="#1e293b" />
+               {/* Siren Light (The Bulb) */}
+               <path id="siren-bulb" d="M400,202 L400,192 Q412,185 424,192 L424,202 Z" fill="#f59e0b" />
+               {/* Reflection line on siren */}
+               <path d="M404,194 Q412,190 420,194" fill="none" stroke="white" strokeWidth="2" opacity="0.4" />
+            </g>
+
             {/* Headlights: Bright Blue (#3b82f6) */}
             <circle id="headlightL" fill="#3b82f6" className="dark:fill-brand-500" cx="331.714" cy="326.858" r="17.5"/>
             <circle id="headlightR" fill="#3b82f6" className="dark:fill-brand-500" cx="487.754" cy="326.858" r="17.5"/>  

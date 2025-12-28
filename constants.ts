@@ -1,6 +1,6 @@
 import { PricingPlan, Language } from './types';
 
-export const APP_NAME = "OC+";
+export const APP_NAME = "OC++";
 
 export const getPricingPlans = (lang: Language): PricingPlan[] => {
   const suffixMonth = lang === 'pt-BR' ? '/mês' : lang === 'es' ? '/mes' : '/mo';
@@ -65,7 +65,7 @@ export const getPricingPlans = (lang: Language): PricingPlan[] => {
       features: [
         { text: isPt ? 'Painel Avançado + BI' : 'Advanced Dashboard + BI', included: true },
         { text: isPt ? 'Leads Ilimitados' : 'Unlimited Leads', included: true },
-        { text: isPt ? 'Selo de Verificado OC+' : 'OC+ Verified Badge', included: true },
+        { text: isPt ? 'Selo de Verificado OC++' : 'OC++ Verified Badge', included: true },
         { text: isPt ? 'API e Multi-lojas' : 'API & Multi-store', included: true },
       ]
     },

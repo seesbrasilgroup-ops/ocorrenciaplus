@@ -35,7 +35,7 @@ export const translations = {
       premiumLabel: 'Login como Premium (Demo)',
     },
     emergency: {
-      title: 'Central de Apoio OC+',
+      title: 'Central de Apoio OC++',
       subtitle: 'Como podemos ajudar você agora?',
       btnHelp: 'Solicitar Ajuda',
       btnHelpDesc: 'Falar com atendente, suporte emocional e orientação.',
@@ -116,7 +116,7 @@ export const translations = {
     },
     mechanicDashboard: {
       title: 'Painel do Mecânico',
-      verifiedBadge: 'Mecânico Certificado OC+',
+      verifiedBadge: 'Mecânico Certificado OC++',
       verifiedDesc: 'Especialista em diagnósticos e revisões.',
       quickActions: 'Ações Rápidas',
       newDiagnostic: 'Novo Diagnóstico',
@@ -155,8 +155,8 @@ export const translations = {
     },
     shopDashboard: {
       title: 'Painel do Restaurador',
-      verifiedBadge: 'Restaurador Verificado OC+',
-      verifiedDesc: 'Você pratica preços justos auditados pela OC+.',
+      verifiedBadge: 'Restaurador Verificado OC++',
+      verifiedDesc: 'Você pratica preços justos auditados pela OC++.',
       quickActions: 'Ações Rápidas',
       newEstimate: 'Novo Orçamento (Scanner)',
       checklist: 'Checklist de Entrada',
@@ -185,7 +185,7 @@ export const translations = {
       subtitle: 'Conectamos motoristas, restauradores e mecânicos através da verdade técnica. Somos o ecossistema que elimina o conflito do trânsito.',
       mission: {
         title: 'Nossa Missão',
-        text: 'Acidentes e falhas mecânicas geram estresse, desconfiança e prejuízo. A OC+ nasceu para substituir o "achismo" por dados. Usamos Inteligência Artificial para criar um padrão de verdade técnica que protege quem dirige e valoriza quem repara com honestidade.'
+        text: 'Acidentes e falhas mecânicas geram estresse, desconfiança e prejuízo. A OC++ nasceu para substituir o "achismo" por dados. Usamos Inteligência Artificial para criar um padrão de verdade técnica que protege quem dirige e valoriza quem repara com honestidade.'
       },
       pillars: {
         driver: {
@@ -209,16 +209,36 @@ export const translations = {
     },
     driversLanding: {
       hero: {
-        title: 'Solução Pós-Colisão.',
-        subtitle: 'Ocorrência Mais',
-        desc: 'Obtenha um laudo técnico instantâneo com IA, orientação jurídica sobre culpabilidade e acesso direto a oficinas verificadas para realizar o reparo.',
-        cta: 'Gerar Laudo Agora',
+        tag: 'Você não está mais sozinho',
+        title: 'Pare de perder dinheiro na oficina.',
+        titleHighlight: 'A verdade técnica que ninguém te conta.',
+        desc: 'Orçamentos superfaturados, diagnósticos errados e medo de ser enganado? Nunca mais. A OC++ é sua "advogada" e "mecânica" de bolso, garantindo que você pague apenas o justo.',
+        cta: 'Gerar Laudo Gratuito',
+        secondaryCta: 'Ver Planos de Proteção',
+        trust: 'Usado por mais de 12.000 motoristas'
       },
-      benefits: {
-        title: 'Por que ter um plano OC+?',
-        b1: { title: 'Verdade Técnica', desc: 'Não fique na mão de orçamentos de oficina. Saiba o valor real do reparo antes de negociar.' },
-        b2: { title: 'Direção Jurídica', desc: 'Bateu em um poste ou outro carro? Nossos laudos orientam passo-a-passo como proceder para evitar processos.' },
-        b3: { title: 'Socorro Financeiro', desc: 'Assinantes têm acesso exclusivo a linhas de crédito para consertar o carro quando a grana está curta.' }
+      problem: {
+        title: 'O ciclo do prejuízo automotivo',
+        p1: { title: 'Orçamentos "Chute"', desc: 'Mecânicos que cobram o que querem, se aproveitando do seu desconhecimento.' },
+        p2: { title: 'Medo e Insegurança', desc: 'A sensação constante de que o carro vai quebrar de novo ou que o reparo foi mal feito.' },
+        p3: { title: 'Burocracia Infinita', desc: 'Bater o carro significa dias perdidos com seguradoras, B.O. e papelada.' }
+      },
+      solution: {
+        title: 'Como a OC++ blinda você',
+        s1: { title: 'Raio-X com IA', desc: 'Nossa IA analisa a foto e diz exatamente o que quebrou e quanto custa a peça.' },
+        s2: { title: 'Proteção Jurídica', desc: 'Não sabe de quem é a culpa? Nós analisamos o acidente com base na lei de trânsito.' },
+        s3: { title: 'Crédito Imediato', desc: 'Dinheiro na mão para consertar o carro agora e pagar parcelado depois.' }
+      },
+      features: {
+        title: 'Tecnologia que devolve sua paz',
+        f1: { title: 'Validação de Orçamento', desc: 'Envie o orçamento da oficina. Nós dizemos se é justo ou golpe.' },
+        f2: { title: 'SOS Estradas', desc: 'Um botão de pânico que traz ajuda real, não robôs de telemarketing.' },
+        f3: { title: 'Histórico Blindado', desc: 'Mantenha um dossiê digital do seu carro. Valoriza na hora da revenda.' }
+      },
+      ctaBox: {
+        title: 'Seu carro protegido, seu bolso agradece',
+        desc: 'Junte-se a quem dirige com inteligência.',
+        button: 'Quero Proteção Total'
       }
     },
     shopsLanding: {
@@ -232,18 +252,18 @@ export const translations = {
         title: 'O Fim da Gestão por "Achismo"',
         b1: { title: 'Raio-X Financeiro', desc: 'Visualize Faturamento Bruto, Lucro Líquido e Custo de Peças em gráficos claros e automáticos.' },
         b2: { title: 'Métricas de Produtividade', desc: 'Saiba exatamente quanto tempo cada reparo leva e qual a eficiência da sua equipe.' },
-        b3: { title: 'Análise de Ticket Médio', desc: 'Descubre quais tipos de carro e serviço trazem maior margem de lucro para focar no que importa.' }
+        b3: { title: 'Análise de Ticket Médio', desc: 'Descubre quais tipos de carro e serviço trazem maior margen de lucro para focar no que importa.' }
       }
     },
     mechanicsLanding: {
       hero: {
         title: 'Valorize seu Conhecimento Técnico',
         subtitle: 'Certificação & Demanda',
-        desc: 'Torne-se um Mecânico Credenciado OC+. Receba diagnósticos pré-aprovados, evite orçamentos recusados e ganhe acesso a treinamentos exclusivos.',
+        desc: 'Torne-se um Mecânico Credenciado OC++. Receba diagnósticos pré-aprovados, evite orçamentos recusados e ganhe acesso a treinamentos exclusivos.',
         cta: 'Credenciar Agora',
       },
       benefits: {
-        title: 'Por que ser um Parceiro OC+?',
+        title: 'Por que ser um Parceiro OC++?',
         b1: { title: 'Demanda Qualificada', desc: 'Receba clientes que já sabem o que precisa ser feito. Menos tempo explicando, mais tempo consertando.' },
         b2: { title: 'Selo de Especialista', desc: 'Destaque-se no mercado com nossa badge de verificação. Aumente a confiança dos clientes.' },
         b3: { title: 'Gestão Inteligente', desc: 'Um painel exclusivo para organizar sua agenda, estoque de peças e histórico de manutenções.' }
@@ -252,7 +272,7 @@ export const translations = {
     hero: {
       title: 'Ocorrência',
       subtitle: 'A inteligência que guia motoristas após o acidente',
-      description: 'Diagnóstico técnico via App e amparo. Evite confusões e brigas desnecessárias no transito.',
+      description: 'Diagnóstico técnico via App e amparo na estrada.',
       welcomeUser: 'Olá, {name}. Sentimos muito pelo ocorrido.',
       descriptionUser: 'Vamos resolver isso juntos. Tire uma foto do dano e nós cuidaremos de toda a burocracia técnica e jurídica para você.',
       steps: {
@@ -285,7 +305,7 @@ export const translations = {
     },
     howItWorks: {
       tag: 'Fluxo Inteligente',
-      title: 'Como o OC+ Funciona',
+      title: 'Como o OC++ Funciona',
       step1: 'Diagnóstico Visual',
       desc1: 'Envie a foto. A IA detecta danos na lataria e peças mecânicas instantaneamente.',
       step2: 'Laudo & Orientação',
@@ -431,7 +451,7 @@ export const translations = {
       },
       tabs: {
         dashboard: 'Dashboard',
-        history: 'History',
+        history: 'Historial',
         requests: 'Solicitudes'
       },
       requestsView: {
@@ -457,7 +477,7 @@ export const translations = {
       subtitle: 'We connect drivers, restorers, and mechanics through technical truth. We are the ecosystem that eliminates traffic conflict.',
       mission: {
         title: 'Our Mission',
-        text: 'Accidents and mechanical failures generate stress, mistrust, and loss. OC+ was born to replace guesswork with data. We use AI to create a standard of technical truth that protects drivers and values honest repairers.'
+        text: 'Accidents and mechanical failures generate stress, mistrust, and loss. OC++ was born to replace guesswork with data. We use AI to create a standard of technical truth that protects drivers and values honest repairers.'
       },
       pillars: {
         driver: { title: 'Drivers', desc: 'Legal and technical protection in your palm.' },
@@ -466,9 +486,42 @@ export const translations = {
       },
       stats: { users: 'Active Users', partners: 'Partners', accuracy: 'AI Accuracy' }
     },
-    driversLanding: { hero: { title: 'Post-Collision', subtitle: 'OC+', desc: 'Get an instant technical report via AI, legal guidance on liability, and direct access to verified shops for repairs.', cta: 'Start' }, benefits: { title: 'Why OC+?', b1: { title: 'Truth', desc: 'Real value' }, b2: { title: 'Legal', desc: 'Guidance' }, b3: { title: 'Finance', desc: 'Credit' } } },
+    driversLanding: { 
+      hero: { 
+        tag: 'You are not alone',
+        title: 'Stop losing money at the shop.', 
+        titleHighlight: 'The technical truth no one tells you.',
+        desc: 'Overcharged estimates, wrong diagnostics, and fear of being scammed? Never again. OC++ is your pocket "lawyer" and "mechanic", ensuring you only pay what\'s fair.', 
+        cta: 'Free AI Check',
+        secondaryCta: 'View Protection Plans',
+        trust: 'Used by 12,000+ drivers'
+      }, 
+      problem: {
+        title: 'The cycle of automotive loss',
+        p1: { title: 'Guesswork Estimates', desc: 'Mechanics charging whatever they want, exploiting lack of knowledge.' },
+        p2: { title: 'Fear & Insecurity', desc: 'The constant feeling that the car will break again or the repair was poorly done.' },
+        p3: { title: 'Endless Paperwork', desc: 'Crashing means lost days with insurance companies and police reports.' }
+      },
+      solution: {
+        title: 'How OC++ shields you',
+        s1: { title: 'AI X-Ray', desc: 'Our AI analyzes the photo and tells you exactly what broke and the fair part cost.' },
+        s2: { title: 'Legal Protection', desc: 'Don\'t know whose fault it is? We analyze the accident based on traffic laws.' },
+        s3: { title: 'Instant Credit', desc: 'Cash in hand to fix the car now and pay later.' }
+      },
+      features: {
+        title: 'Technology that restores peace',
+        f1: { title: 'Estimate Validation', desc: 'Upload the shop quote. We tell you if it\'s fair or a scam.' },
+        f2: { title: 'Roadside SOS', desc: 'A panic button that brings real help, not telemarketing robots.' },
+        f3: { title: 'Armored History', desc: 'Keep a digital dossier of your car. Increases resale value.' }
+      },
+      ctaBox: {
+        title: 'Car protected, wallet grateful',
+        desc: 'Join those who drive with intelligence.',
+        button: 'Get Total Protection'
+      }
+    },
     shopsLanding: { hero: { title: 'Control', subtitle: 'Intelligence', desc: 'Manage', cta: 'Demo' }, benefits: { title: 'No Guesswork', b1: { title: 'Finance', desc: 'X-Ray' }, b2: { title: 'Metrics', desc: 'Productivity' }, b3: { title: 'Ticket', desc: 'Analysis' } } },
-    mechanicsLanding: { hero: { title: 'Value Your Technical Knowledge', subtitle: 'Certification & Demand', desc: 'Become an OC+ Certified Mechanic. Receive pre-approved diagnostics, avoid rejected quotes, and access exclusive training.', cta: 'Register Now', }, benefits: { title: 'Why Partner with OC+?', b1: { title: 'Qualified Demand', desc: 'Get customers who already know what needs fixing. Less explaining, more fixing.' }, b2: { title: 'Expert Badge', desc: 'Stand out with our verification badge. Increase customer trust.' }, b3: { title: 'Smart Management', desc: 'An exclusive dashboard to organize your schedule, parts inventory, and maintenance history.' } } },
+    mechanicsLanding: { hero: { title: 'Value Your Technical Knowledge', subtitle: 'Certification & Demand', desc: 'Become an OC++ Certified Mechanic. Receive pre-approved diagnostics, avoid rejected quotes, and access exclusive training.', cta: 'Register Now', }, benefits: { title: 'Why Partner with OC++?', b1: { title: 'Qualified Demand', desc: 'Get customers who already know what needs fixing. Less explaining, more fixing.' }, b2: { title: 'Expert Badge', desc: 'Stand out with our verification badge. Increase customer trust.' }, b3: { title: 'Smart Management', desc: 'An exclusive dashboard to organize your schedule, parts inventory, and maintenance history.' } } },
     hero: { title: 'Occurrence', subtitle: 'Intelligence', description: 'AI technical diagnosis and legal support. The truth you need to resolve conflicts and repair without losses.', welcomeUser: 'Hello', descriptionUser: 'Lets solve', steps: { step1: 'Photo', step2: 'Report', step3: 'Solution' } },
     features: { tag: 'Tech', title: 'Solutions', item1: { title: 'Drivers', desc: 'Guidance' }, item2: { title: 'Restorers', desc: 'Estimates' }, item3: { title: 'Report', desc: 'Unbiased' } },
     history: { title: 'History', empty: 'Empty', cost: 'Cost', delete: 'Delete' },
@@ -512,7 +565,7 @@ export const translations = {
       quickActions: 'Acciones Rápidas',
       newDiagnostic: 'Nuevo Diagnóstico',
       maintenance: 'Plan Servicio',
-      partsOrder: 'Pedir Piezas',
+      partsOrder: 'Pedido de Peças',
       stats: {
         activeJobs: 'Trabajos Activos',
         partsStock: 'Stock Piezas',
@@ -545,7 +598,7 @@ export const translations = {
       }
     },
     shopDashboard: { 
-      title: 'Panel Restaurador', verifiedBadge: 'Taller Verificado OC+', verifiedDesc: 'Practicas precios justos auditados por OC+.', quickActions: 'Acciones Rápidas', newEstimate: 'Nuevo Presupuesto (Escáner)', checklist: 'Lista de Verificación', whatsapp: 'Enviar por WhatsApp', lastEstimates: 'Últimos Presupuestos', pending: 'Pendiente', approved: 'Aprobado',
+      title: 'Panel Restaurador', verifiedBadge: 'Taller Verificado OC++', verifiedDesc: 'Practicas precios justos auditados por OC++.', quickActions: 'Acciones Rápidas', newEstimate: 'Nuevo Presupuesto (Escáner)', checklist: 'Lista de Verificación', whatsapp: 'Enviar por WhatsApp', lastEstimates: 'Últimos Presupuestos', pending: 'Pendiente', approved: 'Aprobado',
       tabs: { dashboard: 'Dashboard', history: 'Historial', requests: 'Solicitudes' },
       requestsView: {
         title: 'Llamadas Cercanas', subtitle: 'Acepta solicitudes para iniciar.', empty: 'No hay llamadas en tu zona.', accept: 'Aceptar e Ir', decline: 'Rechazar', navigating: 'Navegando al sitio...', contact: 'Contactar Cliente', distance: 'de distancia'
@@ -556,7 +609,7 @@ export const translations = {
       subtitle: 'Conectamos conductores, restauradores y mecánicos a través de la verdad técnica.',
       mission: {
         title: 'Nuestra Misión',
-        text: 'Los accidentes generan estrés y desconfianza. OC+ nació para reemplazar la adivinanza con datos. Utilizamos IA para crear un estándar de verdad técnica que protege a quien conduce y valora a quien repara.'
+        text: 'Los accidentes generan estrés y desconfianza. OC++ nació para reemplazar la adivinanza con datos. Utilizamos IA para crear un estándar de verdad técnica que protege a quien conduce y valora a quien repara.'
       },
       pillars: {
         driver: { title: 'Conductores', desc: 'Protección legal y técnica.' },
@@ -565,16 +618,49 @@ export const translations = {
       },
       stats: { users: 'Usuarios', partners: 'Socios', accuracy: 'Precisión IA' }
     },
-    driversLanding: { hero: { title: 'No es Seguro. Es tu Solución Post-Colisión.', subtitle: 'Tu guía técnico y legal cuando ocurre lo inesperado.', desc: 'Obtenga un informe técnico instantáneo con IA, orientación legal sobre responsabilidad y acceso directo a talleres verificados para realizar la reparación.', cta: 'Generar Informe Ahora', }, benefits: { title: '¿Por qué elegir OC+?', b1: { title: 'Verdad Técnica', desc: 'No dependas solo de talleres. Conoce el valor real de la reparación antes de negociar.' }, b2: { title: 'Dirección Legal', desc: '¿Chocaste un poste u otro auto? Nuestros informes te guían paso a paso para evitar demandas.' }, b3: { title: 'Ayuda Financiera', desc: 'Los suscriptores tienen acceso exclusivo a líneas de crédito para arreglar el auto cuando falta dinero.' } } },
+    driversLanding: { 
+      hero: { 
+        tag: 'No estás solo',
+        title: 'Deja de perder dinero en el taller.', 
+        titleHighlight: 'La verdad técnica que nadie te cuenta.',
+        desc: '¿Presupuestos inflados, diagnósticos erróneos y miedo a ser estafado? Nunca más. OC++ es tu "abogado" y "mecánico" de bolsillo, asegurando que pagues solo lo justo.', 
+        cta: 'Generar Informe Gratis',
+        secondaryCta: 'Ver Planes de Protección',
+        trust: 'Usado por más de 12.000 conductores'
+      }, 
+      problem: {
+        title: 'El ciclo de la pérdida automotriz',
+        p1: { title: 'Presupuestos "Adivinados"', desc: 'Mecánicos que cobran lo que quieren, aprovechando tu desconocimiento.' },
+        p2: { title: 'Miedo e Inseguridad', desc: 'La sensación constante de que el auto volverá a fallar o que la reparación fue mala.' },
+        p3: { title: 'Burocracia Infinita', desc: 'Chocar significa días perdidos con aseguradoras y trámites.' }
+      },
+      solution: {
+        title: 'Cómo OC++ te blinda',
+        s1: { title: 'Rayos-X con IA', desc: 'Nuestra IA analiza la foto e dice exactamente qué se rompió y el costo justo.' },
+        s2: { title: 'Protección Legal', desc: '¿No sabes de quién es la culpa? Analizamos el accidente según la ley de tránsito.' },
+        s3: { title: 'Crédito Inmediato', desc: 'Dinero en mano para arreglar el auto ya y pagar después.' }
+      },
+      features: {
+        title: 'Tecnología que devuelve tu paz',
+        f1: { title: 'Validación de Presupuesto', desc: 'Sube la cotización del taller. Te decimos si es justa o estafa.' },
+        f2: { title: 'SOS Carreteras', desc: 'Un botón de pánico que trae ayuda real, no robots.' },
+        f3: { title: 'Historial Blindado', desc: 'Mantén un expediente digital de tu auto. Aumenta el valor de reventa.' }
+      },
+      ctaBox: {
+        title: 'Auto protegido, billetera agradecida',
+        desc: 'Únete a quienes conducen con inteligencia.',
+        button: 'Quiero Protección Total'
+      }
+    },
     shopsLanding: { hero: { title: 'Toma el Control Total de tu Operación', subtitle: 'Inteligencia de Datos para Talleres', desc: 'Deja de gestionar tu taller a ciegas. Ten un panel completo que muestra exactamente dónde estás ganando dinero, tus cuellos de botella y tu Ticket Promedio en tiempo real.', cta: 'Ver Demo del Panel', }, benefits: { title: 'El Fin de la Gestión por "Suposición"', b1: { title: 'Radiografía Financiera', desc: 'Visualiza Facturación Bruta, Beneficio Neto y Costo de Piezas en gráficos claros.' }, b2: { title: 'Métricas de Productividad', desc: 'Sepa exactamente cuánto tarda cada reparación y la eficiencia de su equipo.' }, b3: { title: 'Análisis de Ticket Promedio', desc: 'Descubre qué tipos de auto y servicio traen mayor margen para enfocarte en lo que importa.' } } },
-    mechanicsLanding: { hero: { title: 'Valora tu Conocimiento Técnico', subtitle: 'Certificación y Demanda', desc: 'Conviértete en Mecánico Acreditado OC+. Recibe diagnósticos preaprobados, evita presupuestos rechazados y accede a capacitaciones.', cta: 'Registrar Ahora', }, benefits: { title: '¿Por qué ser Socio OC+?', b1: { title: 'Demanda Calificada', desc: 'Recibe clientes que ya saben lo que necesitan. Menos explicación, más reparación.' }, b2: { title: 'Insignia de Experto', desc: 'Destácate con nuestra insignia de verificación. Aumenta la confianza.' }, b3: { title: 'Gestión Inteligente', desc: 'Panel exclusivo para organizar agenda, stock de piezas e historial.' } } },
-    hero: { title: 'Ocurrencia', subtitle: 'La inteligencia que guia conductores tras un accidente', description: 'Diagnóstico técnico via IA y amparo jurídico. La verdad que necesitas para resolver conflictos y reparar sin pérdidas.', welcomeUser: 'Hola, {name}. Lamentamos lo sucedido.', descriptionUser: 'Vamos a resolver esto juntos. Tome una foto del daño y nos encargaremos de toda la burocracia técnica y legal por usted.', steps: { step1: 'Foto del Daño', step2: 'Informe Inteligente', step3: 'Solución', } },
+    mechanicsLanding: { hero: { title: 'Valora tu Conocimiento Técnico', subtitle: 'Certificación y Demanda', desc: 'Conviértete en Mecánico Acreditado OC++. Recibe diagnósticos preaprobados, evita presupuestos rechazados y accede a capacitaciones.', cta: 'Registrar Ahora', }, benefits: { title: '¿Por qué ser Socio OC++?', b1: { title: 'Demanda Calificada', desc: 'Recibe clientes que ya saben lo que necesitan. Menos explicación, más reparación.' }, b2: { title: 'Insignia de Experto', desc: 'Destácate con nuestra insignia de verificación. Aumenta la confianza.' }, b3: { title: 'Gestión Inteligente', desc: 'Panel exclusivo para organizar agenda, stock de piezas e historial.' } } },
+    hero: { title: 'Ocurrencia', subtitle: 'La inteligencia que guia conductores tras un accidente', description: 'Diagnóstico técnico via IA y amparo jurídico. La verdad que necesitas para resolver conflictos y reparar sin pérdidas.', welcomeUser: 'Hola, {name}. Lamentamos lo sucedido.', descriptionUser: 'Vamos a resolver esto juntos. Tome una foto del daño y nos encargaremos de toda la burocracia técnica e legal por usted.', steps: { step1: 'Foto del Daño', step2: 'Informe Inteligente', step3: 'Solución', } },
     features: { tag: 'Tecnología de Apoyo', title: 'Una App, Dos Soluciones', item1: { title: 'Para Conductores: Guía Total', desc: '¿Chocaste y no sabes qué hacer? Recibe un paso a paso técnico y legal inmediato.' }, item2: { title: 'Para Talleres: Presupuesto Automático', desc: 'Reciba el auto ya presupuestado. Ahorre horas de evaluación y acceda a leads calificados.' }, item3: { title: 'Informe Imparcial', desc: 'Un documento estandarizado que sirve como base técnica para negociaciones, sin sesgo de aseguradora.' } },
     history: { title: 'Historial de Siniestros', empty: 'Ningún análisis registrado.', cost: 'Pre-Presupuesto', delete: 'Eliminar', },
-    howItWorks: { tag: 'Flujo Inteligente', title: 'Cómo Funciona OC+', step1: 'Diagnóstico Visual', desc1: 'Sube una foto. La IA detecta daños en carrocería y mecánica instantáneamente.', step2: 'Informe y Guía', desc2: 'Calculamos costos justos y orientamos legalmente sobre culpabilidad y daños públicos.', step3: 'Solución del Problema', desc3: 'Te conectamos con talleres u ofrecemos crédito para reparación inmediata.', },
+    howItWorks: { tag: 'Flujo Inteligente', title: 'Cómo Funciona OC++', step1: 'Diagnóstico Visual', desc1: 'Sube una foto. La IA detecta daños en carrocería y mecánica instantáneamente.', step2: 'Informe y Guía', desc2: 'Calculamos costos justos y orientamos legalmente sobre culpabilidad y daños públicos.', step3: 'Solución del Problema', desc3: 'Te conectamos con talleres u ofrecemos crédito para reparación inmediata.', },
     video: { overlayTitle: 'Inteligencia Artificial en el Tráfico', },
     upload: { title: 'Foto del vehículo', analyzing: 'Generando Informe Técnico y Guía...', dragDrop: 'Toma una foto para iniciar el análisis', aiSteps: 'Identificando piezas, consultando precios y normas de tráfico...', button: 'Generar Informe Ahora', error: 'No se pudo analizar. Intente con mejor iluminación.', },
-    analysis: { title: 'Informe Técnico Integrado', newAnalysis: 'Nuevo Análisis', severity: 'Nivel de Daño', summary: 'Opinión de IA', parts: { title: 'Detalle de Piezas', replace: 'Reemplazar', repair: 'Chapa/Pintura', check: 'Revisión', }, legal: { title: 'Orientación Legal (Ley)', assessment: 'Opinión Preliminar', advice: 'Próximos Pasos Recomendados', disclaimer: 'Este informe guía al conductor sobre procedimientos y culpabilidad. No es un seguro.' }, recommendations: { title: 'Talleres Asociados Cercanos', }, costs: { title: 'Estimación de Mercado Justo', partsTotal: 'Costo Piezas', labor: 'Mano de Obra Prom.', totalEstimated: 'Estimación Final', disclaimer: '*Valores basados en tabla promedio regional.', cta: 'Ver Detalles Premium', lockedTitle: 'Desbloquea Informe Completo', lockedDesc: 'Acceda a precios detallados y guía legal completa para no ser engañado.', lockedButton: 'Desbloquear Informe ($4.00)', unlockedCta: 'Descargar Informe PDF', }, services: { loan: { title: '¿Situación incómoda?', desc: '¿Poco dinero para el arreglo? Los suscriptores tienen acceso a préstamos fáciles.', cta: 'Simular Crédito', }, publicProperty: { title: '¿Daño a Propiedad Pública?', desc: '¿Chocó un poste o señal? Vea cómo regularizar para evitar demandas.', cta: 'Ver Guía de Conducta', } } },
+    analysis: { title: 'Informe Técnico Integrado', newAnalysis: 'Nuevo Análisis', severity: 'Nivel de Daño', summary: 'Opinión de IA', parts: { title: 'Detalle de Piezas', replace: 'Reemplazar', repair: 'Chapa/Pintura', check: 'Revisión', }, legal: { title: 'Orientación Legal (Ley)', assessment: 'Opinión Preliminar', advice: 'Próximos Pasos Recomendados', disclaimer: 'Este informe guía al conductor sobre procedimientos y culpabilidad. No es un seguro.' }, recommendations: { title: 'Talleres Asociados Cercanos', }, costs: { title: 'Estimación de Mercado Justo', partsTotal: 'Costo Piezas', labor: 'Mano de Obra Prom.', totalEstimated: 'Estimación Final', disclaimer: '*Valores basados en tabla promedio regional.', cta: 'Ver Detalles Premium', lockedTitle: 'Desbloquea Informe Completo', lockedDesc: 'Acceda a precios detallados y guía legal completa para no ser engañado.', lockedButton: 'Desbloquear Informe ($4.00)', unlockedCta: 'Descargar Informe PDF', }, services: { loan: { title: '¿Situación incómoda?', desc: '¿Poco dinero para el arreglo? Los suscriptores tienen acceso a préstamos fáciles.', cta: 'Simular Crédito', }, publicProperty: { title: '¿Daño a Propiedad Pública?', desc: '¿Chocó un poste o señal? Vea cómo regularizar para evitar demandas.', cta: 'Ver Guia de Conducta', } } },
     pricing: { header: 'Planes', title: 'Choose', subtitle: 'Solutions', tabs: { driver: 'Driver', shop: 'Restorer', mechanic: 'Mechanic' }, cta: 'Select', mostPopular: 'Popular' },
     admin: { title: 'Panel del Taller Socio', revenue: 'Potencial de Ventas', analyses: 'Presupuestos Recibidos', users: 'Clientes en Zona', critical: 'Ticket Alto', chartVolume: 'Leads Entrantes', chartRevenue: 'Conversión Servicios', latestInsight: 'Última Oportunidade', profileLabels: { segment: 'Vehículo', churn: 'Prob. Cierre', upsell: 'Servicios Extra', }, },
     footer: { rights: 'Todos los derechos reservados.', madeFor: 'Tecnología de orientación para conductores y reparadores.', }

@@ -53,7 +53,7 @@ const ShopsLanding: React.FC<ShopsLandingProps> = ({ language, onRegister }) => 
                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
-                    <div className="text-slate-400 text-xs font-mono">OC+ Analytics Center</div>
+                    <div className="text-slate-400 text-xs font-mono">OC++ Analytics Center</div>
                  </div>
                  
                  {/* Top Stats Row */}

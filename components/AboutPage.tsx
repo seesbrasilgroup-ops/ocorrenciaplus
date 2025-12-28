@@ -26,7 +26,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ language }) => {
          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/5 dark:bg-white/10 border border-slate-200 dark:border-white/10 backdrop-blur-sm mb-8 animate-fade-in-up">
             <Sparkles className="w-4 h-4 text-amber-500 fill-current" />
             <span className="text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-widest">
-              Tecnologia OC+
+              Tecnologia OC++
             </span>
          </div>
 

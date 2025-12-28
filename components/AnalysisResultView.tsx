@@ -45,7 +45,7 @@ const AnalysisResultView: React.FC<AnalysisResultViewProps> = ({ result, imageSr
                <span className="px-2 py-1 rounded bg-brand-100 dark:bg-brand-500/20 text-brand-700 dark:text-brand-400 text-xs border border-brand-200 dark:border-brand-500/50 font-bold">PREMIUM</span>
              )}
           </div>
-          <p className="text-gray-500 dark:text-gray-400">ID: #OC-{result.id.slice(0, 6).toUpperCase()} • {new Date().toLocaleDateString()}</p>
+          <p className="text-gray-500 dark:text-gray-400">ID: #OC++-{result.id.slice(0, 6).toUpperCase()} • {new Date().toLocaleDateString()}</p>
         </div>
         <button 
           onClick={onReset}

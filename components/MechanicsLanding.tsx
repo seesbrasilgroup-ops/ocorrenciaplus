@@ -53,7 +53,7 @@ const MechanicsLanding: React.FC<MechanicsLandingProps> = ({ language, onRegiste
                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
-                    <div className="text-slate-400 text-xs font-mono">OC+ Mechanic Center</div>
+                    <div className="text-slate-400 text-xs font-mono">OC++ Mechanic Center</div>
                  </div>
                  
                  {/* Top Stats Row */}

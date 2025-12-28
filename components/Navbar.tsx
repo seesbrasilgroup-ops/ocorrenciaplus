@@ -16,7 +16,6 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, toggleTheme, currentUser, onOpenAuth, onLogout }) => {
   const t = translations[language].nav;
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
@@ -24,15 +23,11 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const notificationRef = useRef<HTMLDivElement>(null);
   
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
       if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
         setIsUserMenuOpen(false);
       }
@@ -48,7 +43,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
 
   const handleNavClick = (view: ViewState) => {
     setView(view);
-    setIsDropdownOpen(false);
     setIsMobileMenuOpen(false);
   };
 
@@ -87,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
     return [
       { id: 1, title: 'Laudo Concluído', desc: 'A análise do seu veículo foi finalizada.', time: '5 min', unread: true },
       { id: 2, title: 'Profissional a Caminho', desc: 'O guincho está a 10 minutos da sua localização.', time: '15 min', unread: true },
-      { id: 3, title: 'Bem-vindo ao OC+', desc: 'Complete seu cadastro para ganhar descontos.', time: '2d', unread: false },
+      { id: 3, title: 'Bem-vindo ao OC++', desc: 'Complete seu cadastro para ganhar descontos.', time: '2d', unread: false },
     ];
   };
 
@@ -98,9 +92,12 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
     <nav className="fixed top-0 w-full z-50 bg-white/90 dark:bg-brand-900/90 backdrop-blur-md border-b border-gray-200 dark:border-brand-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center cursor-pointer" onClick={() => handleNavClick(ViewState.HOME)}>
-            <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-              OC<span className="text-brand-600 dark:text-brand-500">+</span>
+          <div className="flex items-center cursor-pointer group" onClick={() => handleNavClick(ViewState.HOME)}>
+            <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight flex items-center">
+              OC
+              {/* Siren Effect: One Blue, One Yellow pulsing alternately */}
+              <span className="text-blue-600 dark:text-blue-500 animate-siren ml-0.5" style={{ animationDelay: '0s' }}>+</span>
+              <span className="text-amber-500 animate-siren" style={{ animationDelay: '0.4s' }}>+</span>
             </span>
             {currentUser?.role === 'SHOP' && <span className="ml-2 text-xs font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded border border-amber-200">{t.shopBadge.toUpperCase()}</span>}
             {currentUser?.role === 'MECHANIC' && <span className="ml-2 text-xs font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">{t.mechanicBadge.toUpperCase()}</span>}
@@ -111,75 +108,51 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
             
             {/* Desktop Menu - ONLY SHOW IF NOT LOGGED IN */}
             {!currentUser && (
-              <div className="hidden md:flex items-center space-x-2">
-                
-                {/* Dropdown Menu */}
-                <div className="relative" ref={dropdownRef}>
-                  <button
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className={`flex items-center px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                      currentView === ViewState.LANDING_DRIVERS || currentView === ViewState.LANDING_SHOPS || currentView === ViewState.LANDING_MECHANICS
-                        ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10'
-                        : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
-                    }`}
-                  >
-                    {t.services}
-                    <ChevronDown className={`ml-1 w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-                  </button>
-
-                  {isDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
-                      <button
-                        onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)}
-                        className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors border-b border-gray-100 dark:border-slate-700/50"
-                      >
-                        <div>
-                          <span className="block text-sm font-bold text-gray-900 dark:text-white">{t.drivers}</span>
-                          <span className="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">B2C Solution</span>
-                        </div>
-                      </button>
-                      <button
-                        onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
-                        className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors border-b border-gray-100 dark:border-slate-700/50"
-                      >
-                        <div>
-                          <span className="block text-sm font-bold text-gray-900 dark:text-white">{t.shops}</span>
-                          <span className="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">B2B Solution</span>
-                        </div>
-                      </button>
-                      <button
-                        onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)}
-                        className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
-                      >
-                        <div>
-                          <span className="block text-sm font-bold text-gray-900 dark:text-white">{t.mechanics}</span>
-                          <span className="block text-xs text-gray-500 dark:text-gray-400 mt-0.5">Partner Program</span>
-                        </div>
-                      </button>
-                    </div>
-                  )}
-                </div>
-
+              <div className="hidden lg:flex items-center space-x-1">
                 <button
-                  onClick={() => setView(ViewState.ABOUT)}
-                  className={`flex items-center px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                    currentView === ViewState.ABOUT 
-                      ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10' 
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
+                  onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)}
+                  className={`px-3 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
+                    currentView === ViewState.LANDING_DRIVERS
+                      ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10'
+                      : 'text-gray-600 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
                   }`}
                 >
-                  {t.about}
+                  {t.drivers}
+                </button>
+                
+                <button
+                  onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
+                  className={`px-3 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
+                    currentView === ViewState.LANDING_SHOPS
+                      ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10'
+                      : 'text-gray-600 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
+                  }`}
+                >
+                  {t.shops}
                 </button>
 
                 <button
-                  onClick={() => setView(ViewState.PRICING)}
-                  className={`px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                    currentView === ViewState.PRICING 
-                      ? 'bg-blue-600 text-white shadow-md shadow-brand-500/20 dark:bg-brand-600' 
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
+                  onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)}
+                  className={`px-3 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
+                    currentView === ViewState.LANDING_MECHANICS
+                      ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10'
+                      : 'text-gray-600 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
                   }`}
                 >
-                  {t.plans}
+                  {t.mechanics}
+                </button>
+
+                <div className="h-4 w-px bg-gray-200 dark:bg-slate-700 mx-2"></div>
+
+                <button
+                  onClick={() => setView(ViewState.ABOUT)}
+                  className={`px-3 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
+                    currentView === ViewState.ABOUT 
+                      ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10' 
+                      : 'text-gray-600 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
+                  }`}
+                >
+                  {t.about}
                 </button>
               </div>
             )}
@@ -314,7 +287,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
               {!currentUser && (
                 <button
                   onClick={toggleMobileMenu}
-                  className="md:hidden p-2.5 rounded-lg text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800 focus:outline-none ml-1"
+                  className="lg:hidden p-2.5 rounded-lg text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800 focus:outline-none ml-1"
                   aria-label="Open menu"
                 >
                   {isMobileMenuOpen ? (
@@ -331,7 +304,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && !currentUser && (
-        <div className="md:hidden absolute top-16 left-0 w-full bg-white dark:bg-brand-900 border-b border-gray-200 dark:border-brand-800 shadow-xl animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden absolute top-16 left-0 w-full bg-white dark:bg-brand-900 border-b border-gray-200 dark:border-brand-800 shadow-xl animate-in slide-in-from-top-2 duration-200">
           <div className="px-4 py-6 space-y-2">
             <button
               onClick={() => handleNavClick(ViewState.HOME)}
@@ -340,40 +313,32 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
               Home
             </button>
             
-            {/* Mobile Services Section */}
-            <div className="py-2">
-               <p className="px-4 text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">{t.services}</p>
-               <button
-                  onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)}
-                  className="block w-full text-left px-4 py-2 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 pl-6 border-l-2 border-transparent hover:border-brand-500"
-               >
-                  {t.drivers}
-               </button>
-               <button
-                  onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
-                  className="block w-full text-left px-4 py-2 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 pl-6 border-l-2 border-transparent hover:border-amber-500"
-               >
-                  {t.shops}
-               </button>
-               <button
-                  onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)}
-                  className="block w-full text-left px-4 py-2 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 pl-6 border-l-2 border-transparent hover:border-emerald-500"
-               >
-                  {t.mechanics}
-               </button>
-            </div>
+            <button
+              onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)}
+              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
+            >
+              {t.drivers}
+            </button>
+            
+            <button
+              onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
+              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
+            >
+              {t.shops}
+            </button>
+            
+            <button
+              onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)}
+              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
+            >
+              {t.mechanics}
+            </button>
 
             <button
               onClick={() => handleNavClick(ViewState.ABOUT)}
               className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
             >
               {t.about}
-            </button>
-            <button
-              onClick={() => handleNavClick(ViewState.PRICING)}
-              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
-            >
-              {t.plans}
             </button>
           </div>
         </div>

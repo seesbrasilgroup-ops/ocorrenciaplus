@@ -78,7 +78,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
 
         <div className="p-8 pb-4 text-center">
           <div className="w-16 h-16 bg-brand-100 dark:bg-brand-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 text-brand-600 dark:text-brand-400">
-             <span className="text-2xl font-black">OC+</span>
+             <span className="text-2xl font-black">OC++</span>
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">{t.title}</h2>
           <p className="text-slate-500 dark:text-slate-400">{t.subtitle}</p>
