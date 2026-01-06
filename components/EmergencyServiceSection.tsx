@@ -73,10 +73,14 @@ const EmergencyServiceSection: React.FC<EmergencyServiceSectionProps> = ({ langu
   return (
     <div className="py-24 bg-slate-50 dark:bg-slate-950 overflow-hidden relative border-t border-slate-200 dark:border-slate-800">
       
-      {/* Abstract Background Shapes */}
+      {/* Background Ambience with Map Texture */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[120px]"></div>
+        {/* Fictional Map Overlay */}
+        <div className="absolute inset-0 bg-[url('https://api.mapbox.com/styles/v1/mapbox/light-v10/static/-46.6333,-23.5505,12,0,0/1600x900?access_token=pk.eyJ1IjoiZGVtbyIsImEiOiJja2VuaGZ5cm8wMDB4MnJ0Z3Z4b214aXBiIn0.7b1-M3Z-1')] bg-cover bg-center opacity-20 dark:opacity-5 grayscale"></div>
+        {/* Gradients to fade map at edges */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-transparent to-slate-50 dark:from-slate-950 dark:via-transparent dark:to-slate-950"></div>
+        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-normal"></div>
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-normal"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -84,7 +88,7 @@ const EmergencyServiceSection: React.FC<EmergencyServiceSectionProps> = ({ langu
           
           {/* Right Text Content (Now on Right for Desktop due to row-reverse, visually creates zigzag) */}
           <div className="lg:w-1/2 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-widest mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-widest mb-6 border border-emerald-200 dark:border-emerald-800">
               <Navigation className="w-4 h-4" />
               {t.badge}
             </div>
@@ -101,12 +105,12 @@ const EmergencyServiceSection: React.FC<EmergencyServiceSectionProps> = ({ langu
             
             <div className="grid gap-6">
               {t.features.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-4">
-                  <div className="mt-1 min-w-[40px] h-10 rounded-full bg-white dark:bg-slate-800 shadow-md border border-slate-100 dark:border-slate-700 flex items-center justify-center text-emerald-500">
+                <div key={idx} className="flex items-start gap-4 group">
+                  <div className="mt-1 min-w-[40px] h-10 rounded-full bg-white dark:bg-slate-800 shadow-md border border-slate-100 dark:border-slate-700 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
                     {idx === 0 ? <ShieldCheck className="w-5 h-5" /> : idx === 1 ? <Star className="w-5 h-5" /> : <Clock className="w-5 h-5" />}
                   </div>
                   <div className="text-left">
-                    <h4 className="text-lg font-bold text-slate-900 dark:text-white">{item.title}</h4>
+                    <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{item.title}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400">{item.desc}</p>
                   </div>
                 </div>

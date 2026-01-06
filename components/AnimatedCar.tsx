@@ -1,146 +1,126 @@
+
 import React from 'react';
 
 const AnimatedCar: React.FC = () => {
   return (
-    <div className="w-full max-w-[280px] h-[200px] lg:max-w-full lg:h-[450px] mx-auto overflow-hidden relative flex items-center justify-center">
+    <div className="w-full h-[300px] flex items-center justify-center bg-transparent perspective-1000">
       <style>{`
-        /* Animation Sequence Definitions */
-        @keyframes drawLine {
-          0% { stroke-dashoffset: 240; opacity: 0; }
-          10% { opacity: 1; }
-          40% { stroke-dashoffset: 0; }
-          80% { stroke-dashoffset: 0; opacity: 1; }
-          100% { stroke-dashoffset: 0; opacity: 0; }
+        /* The entire sequence duration */
+        :root {
+            --anim-duration: 4s;
         }
 
-        @keyframes assembleBody {
-          0%, 20% { opacity: 0; transform: translateY(-20px) scale(0.9); }
-          40% { opacity: 1; transform: translateY(0) scale(1); }
-          80% { opacity: 1; transform: translateY(0) scale(1); }
-          100% { opacity: 0; transform: translateY(50px) scale(1.5); }
+        /* 1. Drive Off Animation (The Container) */
+        @keyframes drive-off {
+            0%, 60% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            80% {
+                transform: translateY(100px) scale(1.5); /* Anticipation */
+            }
+            100% {
+                transform: translateY(500px) scale(4); /* Zoom towards camera/bottom */
+                opacity: 0;
+            }
+        }
+
+        /* 2. Assembly Animations */
+        @keyframes assemble-chassis {
+            0% { transform: scale(0); opacity: 0; }
+            15% { transform: scale(1.1); opacity: 1; }
+            20% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes assemble-wheels {
+            0%, 20% { transform: translateX(50px); opacity: 0; }
+            30% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(0); opacity: 1; }
         }
         
-        @keyframes popIn {
-          0%, 35% { transform: scale(0); opacity: 0; }
-          45% { transform: scale(1.1); opacity: 1; }
-          50% { transform: scale(1); }
-          80% { opacity: 1; transform: scale(1); }
-          100% { opacity: 0; transform: scale(1.5); }
+        @keyframes assemble-cabin {
+            0%, 30% { transform: translateY(-50px); opacity: 0; }
+            40% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
-        @keyframes driveTowardsUser {
-          0%, 70% { transform: scale(1) translateY(0); opacity: 1; }
-          /* Zoom effect towards camera: Huge scale up to simulate getting very close */
-          95% { opacity: 1; }
-          100% { transform: scale(5) translateY(40px); opacity: 0; }
+        .car-container {
+            animation: drive-off 4s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+            transform-origin: center center;
         }
 
-        @keyframes wheelBounce {
-          0%, 40% { transform: translateY(-10px); }
-          50% { transform: translateY(0); }
-          55% { transform: scaleX(1.1) translateY(2px); }
-          60% { transform: scaleX(1) translateY(0); }
-        }
+        .anim-chassis { animation: assemble-chassis 4s ease-out infinite; }
+        .anim-wheels-left { animation: assemble-wheels 4s ease-out infinite; }
+        .anim-wheels-right { animation: assemble-wheels 4s ease-out infinite reverse; } 
+        .anim-cabin { animation: assemble-cabin 4s ease-out infinite; }
 
-        /* SIREN ANIMATION */
-        @keyframes sirenStrobe {
-          0%, 100% { fill: #b45309; filter: drop-shadow(0 0 0px rgba(245, 158, 11, 0)); opacity: 0.8; }
-          50% { fill: #fcd34d; filter: drop-shadow(0 0 15px rgba(245, 158, 11, 1)); opacity: 1; }
-        }
-
-        /* Applying Animations */
-        #wholeCar {
-          animation: driveTowardsUser 6s ease-in-out infinite;
-          transform-origin: center bottom;
-        }
-
-        #bumper {
-          stroke-dasharray: 240;
-          stroke-dashoffset: 240;
-          animation: drawLine 6s ease-in-out infinite;
-        }
-
-        #chassis-group {
-          animation: assembleBody 6s ease-in-out infinite;
-        }
-
-        #headlightL, #headlightR {
-          transform-box: fill-box;
-          transform-origin: center;
-          animation: popIn 6s ease-in-out infinite;
-        }
-
-        #mirrorL, #mirrorR {
-          transform-box: fill-box;
-          transform-origin: bottom;
-          animation: popIn 6s ease-in-out infinite;
-          animation-delay: 0.2s; /* Mirrors pop slightly later */
-        }
-
-        #tyreL, #tyreR {
-          animation: wheelBounce 6s ease-in-out infinite;
-        }
-
-        #siren-bulb {
-          animation: sirenStrobe 0.4s steps(2, start) infinite;
-        }
       `}</style>
 
-      <svg 
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg" 
-        xmlnsXlink="http://www.w3.org/1999/xlink" 
-        viewBox="250 160 300 320" 
-        className="w-full h-full drop-shadow-2xl"
-      >
-        <defs>
-          <clipPath id="bonnetMask">
-            <rect x="290" y="282.333" fill="#691BE2" width="239.833" height="74.914"/>    
-          </clipPath>
-          <clipPath id="tyreMask">
-            <rect x="290" y="383.333" fill="#691BE2" width="239.833" height="74.914"/>
-          </clipPath>
-        </defs>
-        
-        <g id="wholeCar">
-          <g clipPath="url(#tyreMask)">
-            {/* Tires: Dark Blue/Grey (#1e293b) */}
-            <path id="tyreL" fill="#1e293b" className="dark:fill-slate-400" d="M345.763,410.936h-29.098c-2.2,0-4-1.8-4-4v-40.935c0-2.2,1.8-4,4-4h29.098c2.2,0,4,1.8,4,4	v40.935C349.763,409.136,347.963,410.936,345.763,410.936z"/>
-            <path id="tyreR" fill="#1e293b" className="dark:fill-slate-400" d="M502.303,410.936h-29.098c-2.2,0-4-1.8-4-4v-40.935c0-2.2,1.8-4,4-4h29.098c2.2,0,4,1.8,4,4	v40.935C506.303,409.136,504.503,410.936,502.303,410.936z"/>  
-          </g>
-          
-          <g id="chassis-group">   
-            {/* Bumper Line: Electric Blue (#2563eb) */}
-            <line id="bumper" fill="none" stroke="#2563eb" className="dark:stroke-brand-400" strokeWidth="26" strokeLinecap="round" strokeMiterlimit="10" x1="290" y1="370" x2="528" y2="370"/>
-            
-            <g clipPath="url(#bonnetMask)">
-              {/* Bonnet: Off-white/Light Blue (#eff6ff) */}
-              <path id="bonnet" fill="#eff6ff" className="dark:fill-slate-200" d="M378,361.167v-47.833c0-17.05,13.95-31,31-31h1.833c17.05,0,31,13.95,31,31v47.833H290v-47.833c0-17.05,13.95-31,31-31h177.833c17.05,0,31,13.95,31,31v47.833"/>
-            </g>
-            
-            {/* Frame/Windshield: Light Blue Fill (#dbeafe) with Blue Stroke (#2563eb) */}
-            <polygon id="frame" fill="#dbeafe" fillOpacity="0.5" stroke="#2563eb" className="dark:fill-brand-900 dark:fill-opacity-50 dark:stroke-brand-400" strokeWidth="16" strokeMiterlimit="10" points="496.429,282.333 323.467,282.333 340.467,202.194 483.429,202.194 "/>
-            
-            {/* EMERGENCY SIREN (New Addition) */}
-            <g id="siren-group" transform="translate(0, -5)">
-               {/* Siren Base */}
-               <rect x="396" y="202" width="32" height="6" rx="2" fill="#1e293b" />
-               {/* Siren Light (The Bulb) */}
-               <path id="siren-bulb" d="M400,202 L400,192 Q412,185 424,192 L424,202 Z" fill="#f59e0b" />
-               {/* Reflection line on siren */}
-               <path d="M404,194 Q412,190 420,194" fill="none" stroke="white" strokeWidth="2" opacity="0.4" />
-            </g>
+      <div className="car-container relative w-48 h-72">
+        <svg viewBox="0 0 200 300" className="w-full h-full overflow-visible">
+             {/* Wheels */}
+             <g className="anim-wheels-left">
+                <rect x="10" y="50" width="30" height="50" rx="10" fill="#1e293b" /> {/* Front Left */}
+                <rect x="10" y="210" width="30" height="50" rx="10" fill="#1e293b" /> {/* Rear Left */}
+             </g>
+             <g className="anim-wheels-right" style={{transformOrigin: 'center'}}>
+                 <style>{`
+                    @keyframes assemble-wheels-right {
+                        0%, 20% { transform: translateX(-50px); opacity: 0; }
+                        30% { transform: translateX(0); opacity: 1; }
+                        100% { transform: translateX(0); opacity: 1; }
+                    }
+                    .anim-wheels-right { animation: assemble-wheels-right 4s ease-out infinite; }
+                 `}</style>
+                <rect x="160" y="50" width="30" height="50" rx="10" fill="#1e293b" /> {/* Front Right */}
+                <rect x="160" y="210" width="30" height="50" rx="10" fill="#1e293b" /> {/* Rear Right */}
+             </g>
 
-            {/* Headlights: Bright Blue (#3b82f6) */}
-            <circle id="headlightL" fill="#3b82f6" className="dark:fill-brand-500" cx="331.714" cy="326.858" r="17.5"/>
-            <circle id="headlightR" fill="#3b82f6" className="dark:fill-brand-500" cx="487.754" cy="326.858" r="17.5"/>  
-            
-            {/* Mirrors: Off-white (#eff6ff) with Blue Stroke */}
-            <rect id="mirrorR" x="514.21" y="262.76" width="28.59" height="20.16" rx="6" ry="6" fill="#eff6ff" stroke="#2563eb" strokeWidth="2" className="dark:fill-slate-200 dark:stroke-transparent"/>
-            <rect id="mirrorL" x="276.94" y="262.76" width="28.59" height="20.16" rx="6" ry="6" fill="#eff6ff" stroke="#2563eb" strokeWidth="2" className="dark:fill-slate-200 dark:stroke-transparent"/>      
-          </g>
-        </g>
-      </svg>
+             {/* Chassis */}
+             <g className="anim-chassis" style={{transformOrigin: 'center'}}>
+                <path 
+                    d="M 40 20 
+                       L 160 20 
+                       Q 180 20 180 60 
+                       L 180 240 
+                       Q 180 280 160 280 
+                       L 40 280 
+                       Q 20 280 20 240 
+                       L 20 60 
+                       Q 20 20 40 20 Z" 
+                    fill="#2563eb" 
+                />
+                {/* Hood details */}
+                <path d="M 30 220 Q 100 210 170 220" stroke="rgba(0,0,0,0.1)" strokeWidth="3" fill="none" />
+             </g>
+
+             {/* Cabin/Glass */}
+             <g className="anim-cabin" style={{transformOrigin: 'center'}}>
+                {/* Windshield */}
+                <path d="M 35 180 L 165 180 L 155 130 L 45 130 Z" fill="#1e293b" />
+                <path d="M 38 178 L 162 178 L 153 132 L 47 132 Z" fill="#60a5fa" />
+                
+                {/* Roof */}
+                <rect x="40" y="80" width="120" height="50" rx="10" fill="#1d4ed8" />
+                
+                {/* Rear Window */}
+                <path d="M 45 80 L 155 80 L 160 60 L 40 60 Z" fill="#1e293b" />
+                <path d="M 48 78 L 152 78 L 156 62 L 44 62 Z" fill="#60a5fa" />
+             </g>
+
+             {/* Lights */}
+             <g className="anim-chassis">
+                 {/* Headlights (Yellow) - facing bottom */}
+                 <rect x="30" y="260" width="30" height="10" rx="2" fill="#fef08a" />
+                 <rect x="140" y="260" width="30" height="10" rx="2" fill="#fef08a" />
+                 
+                 {/* Tail lights (Red) - Top */}
+                 <rect x="30" y="20" width="30" height="6" rx="2" fill="#ef4444" />
+                 <rect x="140" y="20" width="30" height="6" rx="2" fill="#ef4444" />
+             </g>
+        </svg>
+      </div>
     </div>
   );
 };

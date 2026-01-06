@@ -1,9 +1,9 @@
+
 import React, { useRef } from 'react';
 import { Language } from '../types';
 import { translations } from '../translations';
-import { ShieldCheck, Scale, Car, ArrowRight, CheckCircle2, AlertTriangle, FileText, DollarSign, CreditCard, ChevronDown, Lock, Shield, Zap } from 'lucide-react';
+import { ArrowRight, AlertTriangle, Check, Wallet, CheckCircle, UtilityPole, Truck } from 'lucide-react';
 import PricingSection from './PricingSection';
-import AnimatedCar from './AnimatedCar';
 
 interface DriversLandingProps {
   language: Language;
@@ -19,265 +19,245 @@ const DriversLanding: React.FC<DriversLandingProps> = ({ language, onStart }) =>
   };
 
   return (
-    <div className="pt-8 overflow-hidden">
+    <div className="pt-20 bg-white dark:bg-slate-950 text-slate-900 dark:text-white">
       
-      {/* 1. HERO SECTION: Emotional Hook & Immediate Solution */}
-      <div className="relative bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 text-white pb-20 pt-10 sm:pt-20 rounded-b-[3rem] shadow-2xl z-10">
-        
-        {/* Dynamic Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] -translate-y-1/3 translate-x-1/3"></div>
-           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/3"></div>
-           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* 1. Hero Section - 2 Columns */}
+      <div className="max-w-7xl mx-auto px-6 py-12 md:py-24">
+         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
             
-            {/* Copywriting Column */}
-            <div className="text-center lg:text-left animate-in slide-in-from-left-4 duration-700">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-md">
-                <Shield className="w-4 h-4" />
-                {t.hero.tag}
-              </div>
-              
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.1]">
-                {t.hero.title} <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-                  {t.hero.titleHighlight}
-                </span>
-              </h1>
-              
-              <p className="text-lg text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                {t.hero.desc}
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                <button 
-                  onClick={onStart}
-                  className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold text-lg shadow-lg shadow-blue-600/30 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
-                >
-                  <Zap className="w-5 h-5 fill-current" />
-                  {t.hero.cta}
-                </button>
-                <button 
-                  onClick={scrollToPricing}
-                  className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl font-bold text-lg backdrop-blur-sm transition-all flex items-center justify-center gap-2"
-                >
-                  {t.hero.secondaryCta}
-                  <ChevronDown className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="mt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-slate-400">
-                <div className="flex -space-x-2">
-                   {[1,2,3,4].map(i => (
-                     <div key={i} className="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-700 flex items-center justify-center text-xs font-bold relative z-10">
-                        <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="User" className="w-full h-full rounded-full" />
-                     </div>
-                   ))}
-                </div>
-                <span>{t.hero.trust}</span>
-              </div>
-            </div>
-
-            {/* Visual Hook Column */}
-            <div className="relative flex justify-center animate-in slide-in-from-right-4 duration-1000">
-              <div className="w-full max-w-md relative z-10 transform hover:scale-105 transition-transform duration-500">
-                 <AnimatedCar />
-                 
-                 {/* Floating Benefits */}
-                 <div className="absolute -top-4 -right-4 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20 shadow-xl flex items-center gap-3 animate-[bounce_3s_infinite]">
-                    <div className="bg-green-500 p-2 rounded-lg text-white">
-                       <DollarSign className="w-5 h-5" />
-                    </div>
-                    <div>
-                       <p className="text-xs text-slate-300 font-bold uppercase">Economia</p>
-                       <p className="text-sm font-bold text-white">Orçamento Justo</p>
-                    </div>
-                 </div>
-
-                 <div className="absolute bottom-10 -left-8 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20 shadow-xl flex items-center gap-3 animate-[pulse_4s_infinite]">
-                    <div className="bg-amber-500 p-2 rounded-lg text-white">
-                       <Scale className="w-5 h-5" />
-                    </div>
-                    <div>
-                       <p className="text-xs text-slate-300 font-bold uppercase">Proteção</p>
-                       <p className="text-sm font-bold text-white">Sem Processos</p>
-                    </div>
-                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. THE PROBLEM (Agitate Pain) */}
-      <div className="py-20 bg-slate-50 dark:bg-slate-950 relative">
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">{t.problem.title}</h2>
-               <div className="w-24 h-1 bg-red-500 mx-auto rounded-full"></div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-               <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border-t-4 border-red-500 hover:-translate-y-1 transition-transform">
-                  <div className="w-14 h-14 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-full flex items-center justify-center mb-6 mx-auto">
-                     <AlertTriangle className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white text-center mb-3">{t.problem.p1.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-center leading-relaxed">
-                     {t.problem.p1.desc}
-                  </p>
-               </div>
-
-               <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border-t-4 border-red-500 hover:-translate-y-1 transition-transform">
-                  <div className="w-14 h-14 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-full flex items-center justify-center mb-6 mx-auto">
-                     <Lock className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white text-center mb-3">{t.problem.p2.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-center leading-relaxed">
-                     {t.problem.p2.desc}
-                  </p>
-               </div>
-
-               <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border-t-4 border-red-500 hover:-translate-y-1 transition-transform">
-                  <div className="w-14 h-14 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-full flex items-center justify-center mb-6 mx-auto">
-                     <FileText className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white text-center mb-3">{t.problem.p3.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-center leading-relaxed">
-                     {t.problem.p3.desc}
-                  </p>
-               </div>
-            </div>
-         </div>
-      </div>
-
-      {/* 3. THE SOLUTION (Bento Grid Style) */}
-      <div className="py-24 bg-white dark:bg-slate-900">
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-               <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
-                  {t.solution.title}
-               </h2>
-               <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-                  A tecnologia que inverte o jogo a seu favor.
+            {/* Left: Content */}
+            <div className="flex-1 text-center lg:text-left">
+               <span className="inline-block bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+                  {t.hero.tag}
+               </span>
+               <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-[1.1] text-slate-900 dark:text-white">
+                  {t.hero.title} <br className="hidden md:block"/>
+                  <span className="text-blue-600 dark:text-blue-500">{t.hero.titleHighlight}</span>
+               </h1>
+               <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                  {t.hero.desc}
                </p>
+               <button 
+                  onClick={onStart}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-lg shadow-lg shadow-blue-600/30 transition-all hover:scale-105 inline-flex items-center gap-2"
+               >
+                  {t.hero.cta} <ArrowRight className="w-5 h-5" />
+               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
-               {/* Card 1: AI X-Ray (Large) */}
-               <div className="md:col-span-2 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-8 text-white relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[60px] -mr-16 -mt-16 transition-all group-hover:bg-white/20"></div>
-                  <div className="relative z-10 h-full flex flex-col justify-between">
-                     <div>
-                        <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center mb-4">
-                           <Zap className="w-6 h-6 text-yellow-300 fill-current" />
-                        </div>
-                        <h3 className="text-2xl font-bold mb-2">{t.solution.s1.title}</h3>
-                        <p className="text-blue-100 max-w-md">{t.solution.s1.desc}</p>
-                     </div>
-                     <div className="mt-4 bg-white/10 backdrop-blur rounded-xl p-4 border border-white/20 max-w-sm transform group-hover:translate-x-2 transition-transform">
-                        <div className="flex justify-between items-center text-sm">
-                           <span>Para-choque</span>
-                           <span className="font-bold text-green-300">R$ 450,00</span>
-                        </div>
-                        <div className="w-full bg-white/20 h-1.5 rounded-full mt-2">
-                           <div className="bg-green-400 h-1.5 rounded-full w-[75%]"></div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+            {/* Right: Floating Card Mockup */}
+            <div className="flex-1 w-full max-w-md lg:max-w-none relative">
+                {/* Background Decor */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100/50 dark:bg-slate-800/50 rounded-full blur-3xl -z-10"></div>
+                
+                {/* The Card */}
+                <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl p-6 md:p-8 border border-slate-100 dark:border-slate-800 relative transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                   
+                   {/* Card Header */}
+                   <div className="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100 dark:border-slate-800">
+                      <div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center text-red-600 dark:text-red-400">
+                         <AlertTriangle className="w-6 h-6" />
+                      </div>
+                      <div>
+                         <h3 className="font-bold text-slate-900 dark:text-white text-lg">{t.hero.cardTitle}</h3>
+                         <p className="text-xs text-slate-500 dark:text-slate-400">{t.hero.cardSubtitle}</p>
+                      </div>
+                   </div>
 
-               {/* Card 2: Legal Protection */}
-               <div className="bg-slate-50 dark:bg-slate-800 rounded-3xl p-8 border border-slate-100 dark:border-slate-700 relative overflow-hidden group hover:shadow-lg transition-shadow">
-                  <div className="relative z-10 h-full flex flex-col">
-                     <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center mb-4 text-amber-600 dark:text-amber-400">
-                        <Scale className="w-6 h-6" />
-                     </div>
-                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.solution.s2.title}</h3>
-                     <p className="text-slate-600 dark:text-slate-400 text-sm flex-grow">
-                        {t.solution.s2.desc}
-                     </p>
-                     <div className="mt-4 flex items-center gap-2 text-xs font-bold text-amber-600 dark:text-amber-500 bg-amber-50 dark:bg-amber-900/10 p-2 rounded-lg w-fit">
-                        <ShieldCheck className="w-4 h-4" /> Baseado no CTB
-                     </div>
-                  </div>
-               </div>
+                   {/* Card List Items */}
+                   <div className="space-y-4">
+                      {/* Item 1 */}
+                      <div className="flex justify-between items-center">
+                         <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{t.hero.cardItem1}</span>
+                         <span className="text-lg font-bold text-slate-900 dark:text-white">{t.hero.cardValue1}</span>
+                      </div>
+                      {/* Item 2 */}
+                      <div className="flex justify-between items-center">
+                         <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{t.hero.cardItem2}</span>
+                         <span className="text-sm font-bold text-amber-500 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/10 px-2 py-1 rounded">{t.hero.cardValue2}</span>
+                      </div>
+                      {/* Item 3 */}
+                      <div className="flex justify-between items-center">
+                         <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{t.hero.cardItem3}</span>
+                         <span className="text-sm font-bold text-green-600 dark:text-green-400 flex items-center gap-1 bg-green-50 dark:bg-green-900/10 px-2 py-1 rounded">
+                            <Check className="w-3 h-3" /> {t.hero.cardValue3}
+                         </span>
+                      </div>
+                   </div>
 
-               {/* Card 3: Instant Credit */}
-               <div className="bg-slate-50 dark:bg-slate-800 rounded-3xl p-8 border border-slate-100 dark:border-slate-700 relative overflow-hidden group hover:shadow-lg transition-shadow">
-                   <div className="relative z-10 h-full flex flex-col">
-                     <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center mb-4 text-emerald-600 dark:text-emerald-400">
-                        <CreditCard className="w-6 h-6" />
-                     </div>
-                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.solution.s3.title}</h3>
-                     <p className="text-slate-600 dark:text-slate-400 text-sm flex-grow">
-                        {t.solution.s3.desc}
-                     </p>
-                     <div className="mt-4 flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-500">
-                        <CheckCircle2 className="w-4 h-4" /> Pré-aprovado
-                     </div>
-                  </div>
-               </div>
-
-               {/* Card 4: Features List (Large) */}
-               <div className="md:col-span-2 bg-slate-900 text-white rounded-3xl p-8 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
-                  <div className="relative z-10 h-full flex flex-col justify-center">
-                     <h3 className="text-2xl font-bold mb-6">{t.features.title}</h3>
-                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div className="flex gap-4">
-                           <div className="mt-1 w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400 shrink-0">1</div>
-                           <div>
-                              <h4 className="font-bold mb-1">{t.features.f1.title}</h4>
-                              <p className="text-sm text-slate-400">{t.features.f1.desc}</p>
-                           </div>
-                        </div>
-                        <div className="flex gap-4">
-                           <div className="mt-1 w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400 shrink-0">2</div>
-                           <div>
-                              <h4 className="font-bold mb-1">{t.features.f2.title}</h4>
-                              <p className="text-sm text-slate-400">{t.features.f2.desc}</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-
+                </div>
             </div>
+
          </div>
       </div>
 
-      {/* 4. PRICING ANCHOR */}
-      <div ref={pricingRef} className="bg-slate-50 dark:bg-slate-950 py-10">
-         <PricingSection language={language} fixedCategory="DRIVER" />
+      {/* 2. Credit/Financial Section */}
+      <div className="py-24 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-900">
+         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Left: Visual Card with Green Background */}
+            <div className="relative order-2 lg:order-1">
+               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-[2.5rem] p-12 relative overflow-hidden flex items-center justify-center">
+                  
+                  {/* Central Card */}
+                  <div className="w-full max-w-sm relative z-10 flex flex-col items-center">
+                     {/* Faded background icon */}
+                     <div className="mb-8 opacity-20">
+                        <div className="w-32 h-20 border-4 border-emerald-400 rounded-2xl flex items-center justify-center gap-4">
+                           <div className="w-4 h-4 rounded-full bg-emerald-400"></div>
+                           <div className="w-8 h-8 rounded-full border-4 border-emerald-400"></div>
+                           <div className="w-4 h-4 rounded-full bg-emerald-400"></div>
+                        </div>
+                     </div>
+
+                     {/* The floating card */}
+                     <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl w-full p-6 border border-slate-100 dark:border-slate-800">
+                        <div className="flex justify-between items-center mb-4">
+                           <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">{t.creditSection.card.label}</span>
+                           <span className="text-lg font-bold text-slate-900 dark:text-white">{t.creditSection.card.value}</span>
+                        </div>
+                        
+                        {/* Progress Bar */}
+                        <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded-full mb-6 overflow-hidden">
+                           <div className="h-full bg-emerald-500 w-[75%] rounded-full"></div>
+                        </div>
+
+                        <button className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors">
+                           {t.creditSection.card.button}
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            {/* Right: Text Content */}
+            <div className="order-1 lg:order-2">
+               <div className="inline-flex items-center justify-center w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl text-emerald-600 dark:text-emerald-400 mb-6">
+                  <Wallet className="w-6 h-6" />
+               </div>
+               
+               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                  {t.creditSection.title}
+               </h2>
+               
+               <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
+                  {t.creditSection.desc}
+               </p>
+
+               <ul className="space-y-4">
+                  {t.creditSection.items.map((item, index) => (
+                     <li key={index} className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-emerald-500 fill-emerald-500/10" />
+                        <span className="text-slate-700 dark:text-slate-300 font-medium">{item}</span>
+                     </li>
+                  ))}
+               </ul>
+            </div>
+
+         </div>
       </div>
 
-      {/* 5. FINAL CTA (Emotional Closure) */}
-      <div className="relative bg-blue-600 overflow-hidden py-24">
-         <div className="absolute inset-0 bg-blue-600">
-             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-400/30 to-transparent"></div>
+      {/* 3. Public Property Damage / Legal */}
+      <div className="py-24 bg-white dark:bg-slate-950">
+         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Left: Text Content */}
+            <div>
+               <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center text-yellow-600 dark:text-yellow-400 mb-6">
+                  <UtilityPole className="w-6 h-6" />
+               </div>
+               
+               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                  {t.legalSection.title}
+               </h2>
+               
+               <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
+                  {t.legalSection.desc}
+               </p>
+
+               <ul className="space-y-4">
+                  {t.legalSection.items.map((item, index) => (
+                     <li key={index} className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-yellow-500" />
+                        <span className="text-slate-700 dark:text-slate-300 font-medium">{item}</span>
+                     </li>
+                  ))}
+               </ul>
+            </div>
+
+            {/* Right: Card */}
+            <div>
+               <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-3xl p-8">
+                  <h3 className="text-yellow-800 dark:text-yellow-400 font-bold text-xl mb-6 flex items-center gap-2">
+                     <AlertTriangle className="w-5 h-5" /> {t.legalSection.cardTitle}
+                  </h3>
+                  
+                  <div className="space-y-4">
+                     {/* Sub-card 1 */}
+                     <div className="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 border-l-4 border-l-yellow-500">
+                        <h4 className="font-bold text-slate-900 dark:text-white mb-1">{t.legalSection.cardItem1Title}</h4>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">{t.legalSection.cardItem1Desc}</p>
+                     </div>
+                     
+                     {/* Sub-card 2 */}
+                     <div className="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 border-l-4 border-l-blue-500">
+                        <h4 className="font-bold text-slate-900 dark:text-white mb-1">{t.legalSection.cardItem2Title}</h4>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">{t.legalSection.cardItem2Desc}</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
          </div>
-         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
-               {t.ctaBox.title}
+      </div>
+
+      {/* 4. NEW SECTION: Tow Service / Guincho */}
+      <div className="py-24 bg-blue-600 dark:bg-blue-800 text-white">
+         <div className="max-w-7xl mx-auto px-6 text-center">
+            
+            {/* Header Icon */}
+            <div className="flex justify-center mb-6">
+                <Truck className="w-12 h-12 text-white/90" strokeWidth={1.5} />
+            </div>
+
+            {/* Title */}
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+               {t.towSection.title}
             </h2>
-            <p className="text-xl text-blue-100 mb-10">
-               {t.ctaBox.desc}
+
+            {/* Subtitle */}
+            <p className="text-lg text-blue-100 max-w-3xl mx-auto mb-16 leading-relaxed">
+               {t.towSection.desc}
             </p>
-            <button 
-               onClick={onStart}
-               className="px-10 py-5 bg-white text-blue-600 rounded-full font-bold text-xl shadow-2xl hover:bg-blue-50 hover:scale-105 transition-all flex items-center justify-center gap-3 mx-auto"
-            >
-               {t.ctaBox.button}
-               <ArrowRight className="w-6 h-6" />
-            </button>
-            <p className="mt-6 text-sm text-blue-200/80">
-               Cancelamento grátis a qualquer momento. Sem letras miúdas.
-            </p>
+
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               
+               {/* Card 1 */}
+               <div className="bg-blue-500/30 border border-blue-400/30 rounded-xl p-8 backdrop-blur-sm">
+                  <h3 className="text-xl font-bold mb-3">{t.towSection.card1Title}</h3>
+                  <p className="text-sm text-blue-100 leading-relaxed">{t.towSection.card1Desc}</p>
+               </div>
+
+               {/* Card 2 */}
+               <div className="bg-blue-500/30 border border-blue-400/30 rounded-xl p-8 backdrop-blur-sm">
+                  <h3 className="text-xl font-bold mb-3">{t.towSection.card2Title}</h3>
+                  <p className="text-sm text-blue-100 leading-relaxed">{t.towSection.card2Desc}</p>
+               </div>
+
+               {/* Card 3 */}
+               <div className="bg-blue-500/30 border border-blue-400/30 rounded-xl p-8 backdrop-blur-sm">
+                  <h3 className="text-xl font-bold mb-3">{t.towSection.card3Title}</h3>
+                  <p className="text-sm text-blue-100 leading-relaxed">{t.towSection.card3Desc}</p>
+               </div>
+
+            </div>
+
          </div>
+      </div>
+
+      <div ref={pricingRef}>
+         <PricingSection language={language} fixedCategory="DRIVER" />
       </div>
 
     </div>

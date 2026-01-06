@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { User, UserRole, Language } from '../types';
 import { translations } from '../translations';
@@ -77,8 +78,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
         </button>
 
         <div className="p-8 pb-4 text-center">
-          <div className="w-16 h-16 bg-brand-100 dark:bg-brand-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 text-brand-600 dark:text-brand-400">
-             <span className="text-2xl font-black">OC++</span>
+          <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-600/30">
+             <span className="text-white font-bold text-2xl tracking-tighter">OC</span>
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">{t.title}</h2>
           <p className="text-slate-500 dark:text-slate-400">{t.subtitle}</p>
@@ -90,7 +91,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
             onClick={() => setActiveTab('DRIVER')}
             className={`flex-1 min-w-[80px] pb-3 text-sm font-bold border-b-2 transition-colors ${
               activeTab === 'DRIVER' 
-                ? 'border-brand-500 text-brand-600 dark:text-brand-400' 
+                ? 'border-blue-600 text-blue-600 dark:text-blue-400' 
                 : 'border-transparent text-slate-400 hover:text-slate-600'
             }`}
           >
@@ -148,7 +149,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
               <input 
                 type="email" 
                 placeholder={t.emailPlaceholder}
-                className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-brand-500 outline-none text-slate-900 dark:text-white transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all"
               />
             </div>
             <div className="relative">
@@ -156,7 +157,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
               <input 
                 type="password" 
                 placeholder={t.passwordPlaceholder}
-                className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-brand-500 outline-none text-slate-900 dark:text-white transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all"
               />
             </div>
           </div>
@@ -173,7 +174,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
                 </button>
                 <button 
                   onClick={() => handleLogin('PREMIUM')}
-                  className="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-lg shadow-brand-500/30 transition-all"
+                  className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/30 transition-all"
                 >
                   {t.premiumLabel}
                 </button>

@@ -1,6 +1,7 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { ViewState, Language, User } from '../types';
-import { Sun, Moon, ChevronDown, Menu, X, User as UserIcon, LogOut, Bell, Check } from 'lucide-react';
+import { Sun, Moon, ChevronDown, Menu, X, User as UserIcon, LogOut, Bell, Check, Zap } from 'lucide-react';
 import { translations } from '../translations';
 
 interface NavbarProps {
@@ -18,14 +19,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
   const t = translations[language].nav;
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  // Notification State
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const notificationRef = useRef<HTMLDivElement>(null);
-  
   const userMenuRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
@@ -55,33 +52,14 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
     if (currentUser.role === 'SHOP') return ViewState.SHOP_DASHBOARD;
     if (currentUser.role === 'MECHANIC') return ViewState.MECHANIC_DASHBOARD;
     if (currentUser.role === 'SUPER_ADMIN') return ViewState.SUPER_ADMIN_DASHBOARD;
-    return ViewState.HOME; // Basic/Premium users go to Home with updated UI
+    return ViewState.HOME;
   };
 
   const getNotifications = () => {
     if (!currentUser) return [];
-    
-    // Mock Notifications based on Role
-    if (currentUser.role === 'SHOP') {
-      return [
-        { id: 1, title: 'Novo Lead Próximo', desc: 'Honda Civic a 2km de você solicitando reparo.', time: '2 min', unread: true },
-        { id: 2, title: 'Orçamento Aprovado', desc: 'Cliente João aceitou a proposta #492.', time: '1h', unread: false },
-        { id: 3, title: 'Meta Mensal', desc: 'Você atingiu 80% da sua meta de faturamento!', time: '1d', unread: false },
-      ];
-    }
-
-    if (currentUser.role === 'MECHANIC') {
-      return [
-        { id: 1, title: 'Nova Revisão', desc: 'Agendamento para VW Gol às 14h.', time: '10 min', unread: true },
-        { id: 2, title: 'Peça Chegou', desc: 'Filtro de Óleo disponível no estoque.', time: '2h', unread: false },
-      ];
-    }
-    
-    // Driver or Admin default
+    // Mock Notifications
     return [
-      { id: 1, title: 'Laudo Concluído', desc: 'A análise do seu veículo foi finalizada.', time: '5 min', unread: true },
-      { id: 2, title: 'Profissional a Caminho', desc: 'O guincho está a 10 minutos da sua localização.', time: '15 min', unread: true },
-      { id: 3, title: 'Bem-vindo ao OC++', desc: 'Complete seu cadastro para ganhar descontos.', time: '2d', unread: false },
+      { id: 1, title: 'Bem-vindo', desc: 'Configure seu perfil.', time: 'Agora', unread: true },
     ];
   };
 
@@ -89,212 +67,95 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
   const unreadCount = notifications.filter(n => n.unread).length;
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white/90 dark:bg-brand-900/90 backdrop-blur-md border-b border-gray-200 dark:border-brand-800 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed top-0 w-full z-50 bg-white/95 dark:bg-slate-950/95 border-b border-gray-100 dark:border-slate-800 backdrop-blur-sm transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          
+          {/* MINIMALIST LOGO */}
           <div className="flex items-center cursor-pointer group" onClick={() => handleNavClick(ViewState.HOME)}>
-            <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight flex items-center">
-              OC
-              {/* Siren Effect: One Blue, One Yellow pulsing alternately */}
-              <span className="text-blue-600 dark:text-blue-500 animate-siren ml-0.5" style={{ animationDelay: '0s' }}>+</span>
-              <span className="text-amber-500 animate-siren" style={{ animationDelay: '0.4s' }}>+</span>
+            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-2 transition-transform group-hover:scale-95 shadow-lg shadow-blue-600/20">
+                <span className="text-white font-bold text-lg tracking-tighter">OC</span>
+            </div>
+            <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+              OC<span className="text-blue-600 font-bold">+</span>
             </span>
-            {currentUser?.role === 'SHOP' && <span className="ml-2 text-xs font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded border border-amber-200">{t.shopBadge.toUpperCase()}</span>}
-            {currentUser?.role === 'MECHANIC' && <span className="ml-2 text-xs font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">{t.mechanicBadge.toUpperCase()}</span>}
-            {currentUser?.role === 'SUPER_ADMIN' && <span className="ml-2 text-xs font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded border border-purple-200">ADMIN</span>}
+            
+            {/* Badges for logged users only */}
+            {currentUser?.role === 'SHOP' && <span className="ml-3 text-[10px] font-medium bg-gray-100 dark:bg-slate-800 text-gray-500 px-2 py-1 rounded-md tracking-wide">PARTNER</span>}
+            {currentUser?.role === 'MECHANIC' && <span className="ml-3 text-[10px] font-medium bg-gray-100 dark:bg-slate-800 text-gray-500 px-2 py-1 rounded-md tracking-wide">EXPERT</span>}
+            {currentUser?.role === 'SUPER_ADMIN' && <span className="ml-3 text-[10px] font-medium bg-gray-100 dark:bg-slate-800 text-gray-500 px-2 py-1 rounded-md tracking-wide">ADMIN</span>}
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-8">
             
-            {/* Desktop Menu - ONLY SHOW IF NOT LOGGED IN */}
+            {/* Minimal Desktop Menu */}
             {!currentUser && (
-              <div className="hidden lg:flex items-center space-x-1">
-                <button
-                  onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)}
-                  className={`px-3 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                    currentView === ViewState.LANDING_DRIVERS
-                      ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10'
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
-                  }`}
-                >
-                  {t.drivers}
-                </button>
-                
-                <button
-                  onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
-                  className={`px-3 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                    currentView === ViewState.LANDING_SHOPS
-                      ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10'
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
-                  }`}
-                >
-                  {t.shops}
-                </button>
-
-                <button
-                  onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)}
-                  className={`px-3 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                    currentView === ViewState.LANDING_MECHANICS
-                      ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10'
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
-                  }`}
-                >
-                  {t.mechanics}
-                </button>
-
-                <div className="h-4 w-px bg-gray-200 dark:bg-slate-700 mx-2"></div>
-
-                <button
-                  onClick={() => setView(ViewState.ABOUT)}
-                  className={`px-3 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                    currentView === ViewState.ABOUT 
-                      ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10' 
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-brand-700 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white'
-                  }`}
-                >
-                  {t.about}
-                </button>
+              <div className="hidden lg:flex items-center space-x-8">
+                <button onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)} className={`text-sm font-medium transition-colors ${currentView === ViewState.LANDING_DRIVERS ? 'text-slate-900 dark:text-white' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'}`}>{t.drivers}</button>
+                <button onClick={() => handleNavClick(ViewState.LANDING_SHOPS)} className={`text-sm font-medium transition-colors ${currentView === ViewState.LANDING_SHOPS ? 'text-slate-900 dark:text-white' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'}`}>{t.shops}</button>
+                <button onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)} className={`text-sm font-medium transition-colors ${currentView === ViewState.LANDING_MECHANICS ? 'text-slate-900 dark:text-white' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'}`}>{t.mechanics}</button>
               </div>
             )}
 
-            {/* Auth & Theme & Mobile */}
-            <div className="flex items-center gap-2 border-l border-gray-200 dark:border-slate-700 pl-4 ml-2">
+            {/* Actions */}
+            <div className="flex items-center gap-4">
               
-              {/* Notifications Button (Only if logged in) */}
               {currentUser && (
                 <div className="relative" ref={notificationRef}>
-                   <button
-                      onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
-                      className="p-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700 transition-all focus:outline-none relative"
-                      aria-label="Notifications"
-                   >
+                   <button onClick={() => setIsNotificationsOpen(!isNotificationsOpen)} className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                       <Bell className="w-5 h-5" />
-                      {unreadCount > 0 && (
-                        <span className="absolute top-2 right-2.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white dark:border-slate-900 animate-pulse"></span>
-                      )}
+                      {unreadCount > 0 && <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>}
                    </button>
-
                    {isNotificationsOpen && (
-                      <div className="absolute top-full right-0 mt-2 w-80 sm:w-96 bg-white dark:bg-slate-900 rounded-xl shadow-2xl border border-gray-200 dark:border-slate-800 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-                         <div className="px-4 py-3 border-b border-gray-100 dark:border-slate-800 flex justify-between items-center bg-gray-50 dark:bg-slate-800/50">
-                            <span className="font-bold text-sm text-gray-900 dark:text-white">{t.notifications}</span>
-                            <button className="text-xs text-brand-600 dark:text-brand-400 hover:underline flex items-center">
-                              <Check className="w-3 h-3 mr-1" /> {t.markAllRead}
-                            </button>
-                         </div>
-                         <div className="max-h-80 overflow-y-auto">
-                            {notifications.length > 0 ? (
-                              notifications.map((note) => (
-                                <div key={note.id} className={`p-4 border-b border-gray-100 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors cursor-pointer ${note.unread ? 'bg-blue-50/50 dark:bg-blue-900/10' : ''}`}>
-                                  <div className="flex justify-between items-start mb-1">
-                                    <h4 className={`text-sm ${note.unread ? 'font-bold text-gray-900 dark:text-white' : 'font-medium text-gray-700 dark:text-gray-300'}`}>
-                                      {note.title}
-                                    </h4>
-                                    <span className="text-[10px] text-gray-400">{note.time}</span>
-                                  </div>
-                                  <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{note.desc}</p>
-                                </div>
-                              ))
-                            ) : (
-                              <div className="p-8 text-center text-gray-400 text-sm">
-                                {t.empty}
-                              </div>
-                            )}
-                         </div>
-                         <div className="p-2 text-center border-t border-gray-100 dark:border-slate-800 bg-gray-50 dark:bg-slate-800/50">
-                            <button className="text-xs font-bold text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400">
-                               Ver todas
-                            </button>
-                         </div>
+                      <div className="absolute top-full right-0 mt-4 w-72 bg-white dark:bg-slate-900 rounded-lg shadow-xl border border-gray-100 dark:border-slate-800 overflow-hidden z-50 py-2">
+                         {notifications.map((n) => (
+                            <div key={n.id} className="px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-800 cursor-pointer">
+                               <p className="text-sm font-medium text-slate-900 dark:text-white">{n.title}</p>
+                               <p className="text-xs text-slate-500">{n.desc}</p>
+                            </div>
+                         ))}
                       </div>
                    )}
                 </div>
               )}
 
-              <button 
-                onClick={toggleTheme}
-                className="p-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700 transition-all focus:outline-none"
-                aria-label="Toggle Theme"
-              >
-                {theme === 'light' ? (
-                  <Moon className="w-5 h-5" />
-                ) : (
-                  <Sun className="w-5 h-5" />
-                )}
+              <button onClick={toggleTheme} className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+                {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
               </button>
 
               {currentUser ? (
                 <div className="relative" ref={userMenuRef}>
-                  <button
-                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className="flex items-center gap-2 p-1 pl-2 pr-3 rounded-full border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800 transition-all"
-                  >
-                    <img 
-                      src={currentUser.avatar || 'https://i.pravatar.cc/150'} 
-                      alt="User" 
-                      className="w-8 h-8 rounded-full bg-gray-200"
-                    />
-                    <span className="text-sm font-bold text-gray-700 dark:text-gray-200 hidden sm:block truncate max-w-[100px]">
-                      {currentUser.name.split(' ')[0]}
-                    </span>
-                    <ChevronDown className="w-4 h-4 text-gray-500" />
+                  <button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} className="flex items-center gap-2 pl-2">
+                    <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white font-bold text-xs">
+                        {currentUser.name.charAt(0)}
+                    </div>
                   </button>
-
                   {isUserMenuOpen && (
-                    <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-                      <div className="px-4 py-3 border-b border-gray-100 dark:border-slate-700">
-                        <p className="text-sm font-bold text-gray-900 dark:text-white">{currentUser.name}</p>
-                        <p className="text-xs text-gray-500 truncate">{currentUser.email}</p>
+                    <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-xl border border-gray-100 dark:border-slate-800 overflow-hidden z-50 py-1">
+                      <div className="px-4 py-3 border-b border-gray-100 dark:border-slate-800">
+                        <p className="text-sm font-medium text-slate-900 dark:text-white">{currentUser.name}</p>
+                        <p className="text-xs text-slate-500 truncate">{currentUser.email}</p>
                       </div>
-                      
                       {(currentUser.role === 'SHOP' || currentUser.role === 'MECHANIC' || currentUser.role === 'SUPER_ADMIN') && (
-                        <button
-                          onClick={() => {
-                            handleNavClick(getDashboardView());
-                            setIsUserMenuOpen(false);
-                          }}
-                          className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 flex items-center"
-                        >
-                          <Menu className="w-4 h-4 mr-2" />
-                          {t.admin}
+                        <button onClick={() => { handleNavClick(getDashboardView()); setIsUserMenuOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800 flex items-center">
+                          <Menu className="w-4 h-4 mr-2" /> {t.admin}
                         </button>
                       )}
-
-                      <button
-                        onClick={() => {
-                          onLogout();
-                          setIsUserMenuOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center"
-                      >
-                        <LogOut className="w-4 h-4 mr-2" />
-                        {t.logout}
+                      <button onClick={() => { onLogout(); setIsUserMenuOpen(false); }} className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/10 flex items-center">
+                        <LogOut className="w-4 h-4 mr-2" /> {t.logout}
                       </button>
                     </div>
                   )}
                 </div>
               ) : (
-                <button
-                  onClick={onOpenAuth}
-                  className="flex items-center px-5 py-2.5 rounded-full text-sm font-bold bg-brand-600 dark:bg-brand-500 text-white hover:bg-brand-700 dark:hover:bg-brand-400 transition-all shadow-lg shadow-brand-500/30"
-                >
-                  <UserIcon className="w-4 h-4 mr-2" />
+                <button onClick={onOpenAuth} className="text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 px-5 py-2.5 rounded-lg transition-all shadow-md shadow-blue-600/20">
                   {t.login}
                 </button>
               )}
 
-              {/* Mobile Hamburger Button - ONLY SHOW IF NOT LOGGED IN */}
               {!currentUser && (
-                <button
-                  onClick={toggleMobileMenu}
-                  className="lg:hidden p-2.5 rounded-lg text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800 focus:outline-none ml-1"
-                  aria-label="Open menu"
-                >
-                  {isMobileMenuOpen ? (
-                    <X className="w-6 h-6" />
-                  ) : (
-                    <Menu className="w-6 h-6" />
-                  )}
+                <button onClick={toggleMobileMenu} className="lg:hidden text-slate-900 dark:text-white">
+                  {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
               )}
             </div>
@@ -302,44 +163,13 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && !currentUser && (
-        <div className="lg:hidden absolute top-16 left-0 w-full bg-white dark:bg-brand-900 border-b border-gray-200 dark:border-brand-800 shadow-xl animate-in slide-in-from-top-2 duration-200">
-          <div className="px-4 py-6 space-y-2">
-            <button
-              onClick={() => handleNavClick(ViewState.HOME)}
-              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
-            >
-              Home
-            </button>
-            
-            <button
-              onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)}
-              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
-            >
-              {t.drivers}
-            </button>
-            
-            <button
-              onClick={() => handleNavClick(ViewState.LANDING_SHOPS)}
-              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
-            >
-              {t.shops}
-            </button>
-            
-            <button
-              onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)}
-              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
-            >
-              {t.mechanics}
-            </button>
-
-            <button
-              onClick={() => handleNavClick(ViewState.ABOUT)}
-              className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800"
-            >
-              {t.about}
-            </button>
+        <div className="lg:hidden absolute top-20 left-0 w-full bg-white dark:bg-slate-950 border-b border-gray-100 dark:border-slate-800">
+          <div className="px-6 py-4 space-y-4">
+            <button onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)} className="block w-full text-left text-lg font-medium text-slate-900 dark:text-white">{t.drivers}</button>
+            <button onClick={() => handleNavClick(ViewState.LANDING_SHOPS)} className="block w-full text-left text-lg font-medium text-slate-900 dark:text-white">{t.shops}</button>
+            <button onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)} className="block w-full text-left text-lg font-medium text-slate-900 dark:text-white">{t.mechanics}</button>
           </div>
         </div>
       )}
