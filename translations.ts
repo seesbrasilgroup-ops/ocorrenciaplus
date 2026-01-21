@@ -25,15 +25,24 @@ export const translations = {
     auth: {
       title: 'Acesse o Sistema',
       subtitle: 'Inteligência automotiva.',
+      registerTitle: 'Crie sua conta',
+      registerSubtitle: 'Junte-se ao ecossistema OC+.',
       tabDriver: 'Motorista',
       tabShop: 'Oficina',
       tabMechanic: 'Mecânico',
       tabAdmin: 'Admin',
       emailPlaceholder: 'email@exemplo.com',
       passwordPlaceholder: 'senha',
+      namePlaceholder: 'Seu nome completo',
+      phonePlaceholder: '(11) 99999-9999',
+      shopNamePlaceholder: 'Nome da Oficina',
+      docPlaceholder: 'CPF ou CNPJ',
       button: 'Entrar',
-      basicLabel: 'Motorista (Grátis)',
-      premiumLabel: 'Motorista (Premium)',
+      registerButton: 'Cadastrar',
+      toggleToRegister: 'Não tem conta? Cadastre-se',
+      toggleToLogin: 'Já tem conta? Entrar',
+      error: 'Credenciais inválidas. Tente novamente.',
+      demoHint: 'Dica: Use os e-mails de teste (ex: motorista@ocplus.com) e senha "12345678"',
     },
     emergency: {
       title: 'Emergência',
@@ -292,14 +301,33 @@ export const translations = {
       hero: {
         title: 'Mais Lucro. Zero Ruído.',
         subtitle: 'B2B Intelligence',
-        desc: 'Clientes chegam com diagnóstico e dinheiro. Você só executa.',
+        desc: 'Clientes chegam com diagnóstico técnico pronto e dinheiro aprovado. Você só executa o serviço.',
         cta: 'Cadastrar Oficina',
       },
       benefits: {
-        title: 'Eficiência',
-        b1: { title: 'Financeiro', desc: 'Gestão automática.' },
-        b2: { title: 'Produtividade', desc: 'Controle de tempo.' },
-        b3: { title: 'Foco', desc: 'Serviços rentáveis.' }
+        title: 'Resultados Comprovados',
+        b1: { title: 'Receita', desc: 'Aumento médio de faturamento.' },
+        b2: { title: 'Ociosidade', desc: 'Redução de tempo sem serviço.' },
+        b3: { title: 'Conversão', desc: 'Mais orçamentos aprovados.' }
+      },
+      process: {
+        title: 'Pare de caçar clientes.',
+        subtitle: 'O OC+ entrega o serviço vendido.',
+        step1: { title: 'Lead Qualificado', desc: 'Motorista faz o scan do dano via App.' },
+        step2: { title: 'Orçamento Rápido', desc: 'Você valida os custos em 2 cliques.' },
+        step3: { title: 'Execução', desc: 'Cliente chega com crédito aprovado.' }
+      },
+      management: {
+        title: 'Seu escritório no bolso.',
+        desc: 'Uma suíte completa para gerir sua oficina, do estoque ao pós-venda.',
+        card1: { title: 'CRM Automático', desc: 'Lembretes de revisão para clientes antigos.' },
+        card2: { title: 'Gestão Financeira', desc: 'Fluxo de caixa e notas fiscais.' },
+        card3: { title: 'Cotação de Peças', desc: 'Busca automática em fornecedores.' }
+      },
+      finance: {
+        title: 'Receba à vista.',
+        desc: 'O cliente parcela em até 24x no App. O OC+ te paga o valor integral na entrega do veículo. Sem risco de inadimplência.',
+        badge: 'Risco Zero'
       }
     },
     mechanicsLanding: {
@@ -470,7 +498,7 @@ export const translations = {
     },
     footer: {
       desc: 'Tecnologia líder em orçamentação automotiva e inteligência de mercado para reparadoras e motoristas.',
-      col1: 'Soluções',
+      col1: 'Soluciones',
       link1: 'Para Motoristas',
       link2: 'Para Oficinas',
       link3: 'Scanner OC+',
@@ -483,7 +511,28 @@ export const translations = {
   },
   'en': {
     nav: { services: 'Solutions', drivers: 'Drivers', shops: 'Shops', mechanics: 'Mechanics', analysis: 'Start', history: 'History', plans: 'Pricing', admin: 'Dashboard', about: 'About', login: 'Login', logout: 'Logout', welcome: 'Hi', shopBadge: 'Partner', mechanicBadge: 'Expert', notifications: 'Alerts', markAllRead: 'Clear', empty: 'Empty' },
-    auth: { title: 'System Access', subtitle: 'Auto Intelligence.', tabDriver: 'Driver', tabShop: 'Shop', tabMechanic: 'Mechanic', tabAdmin: 'Admin', emailPlaceholder: 'email', passwordPlaceholder: 'pass', button: 'Enter', basicLabel: 'Driver (Free)', premiumLabel: 'Driver (Premium)' },
+    auth: { 
+      title: 'System Access', 
+      subtitle: 'Auto Intelligence.', 
+      registerTitle: 'Create Account',
+      registerSubtitle: 'Join the OC+ ecosystem.',
+      tabDriver: 'Driver', 
+      tabShop: 'Shop', 
+      tabMechanic: 'Mechanic', 
+      tabAdmin: 'Admin', 
+      emailPlaceholder: 'email', 
+      passwordPlaceholder: 'pass', 
+      namePlaceholder: 'Full Name',
+      phonePlaceholder: 'Phone Number',
+      shopNamePlaceholder: 'Shop Name',
+      docPlaceholder: 'ID / Tax ID',
+      button: 'Enter', 
+      registerButton: 'Register',
+      toggleToRegister: 'New? Register here',
+      toggleToLogin: 'Have an account? Login',
+      error: 'Invalid credentials. Try again.',
+      demoHint: 'Hint: Use test emails (e.g. motorista@ocplus.com) and password "12345678"'
+    },
     emergency: { title: 'Emergency', subtitle: 'We are here.', btnHelp: 'Guide', btnHelpDesc: 'Talk to expert.', btnSolution: 'Solve Now', btnSolutionDesc: 'Tow or Mech.', questions: { drivable: 'Drivable?', people: 'People?', injured: 'Injuries?', kids: 'Kids?', fire: 'Fire?', location: 'Location?', details: 'Summary:' }, finding: 'Searching...', driverFound: 'Found.', driverArriving: 'Arriving in', contacting: 'Connecting...', agentCall: 'Wait for call.', mapBadge: 'Active', cancel: 'Cancel' },
     financialAidSection: { badge: 'Credit', title: 'Fix now.', titleHighlight: 'Pay later.', subtitle: 'Approved capital.', desc: 'Immediate credit lines.', cards: { loan: { title: 'Installments', desc: 'Instant credit.', highlight: 'Up to 24x' }, insurance: { title: 'Insurance', desc: 'We handle paperwork.', highlight: 'Fast Refund' } }, cta: 'Check Credit' },
     superAdmin: { title: 'Global Command', menu: { overview: 'View', history: 'Incidents', service: 'Support', monitoring: 'Real-time', costs: 'Costs', earnings: 'Revenue', sales: 'Sales', partnerships: 'Partners', legal: 'Legal', reports: 'BI' }, stats: { activeCalls: 'Calls', avgTime: 'AHT', satisfaction: 'NPS', totalRevenue: 'Revenue', totalCosts: 'Costs', netProfit: 'Profit', activePartners: 'Online' }, users: 'Users', financial: 'Finance', totalUsers: 'Total', activeShops: 'Shops', conversionRate: 'Conversion', recentActivity: 'Feed', userList: 'Accounts', filterDriver: 'Drivers', filterShop: 'Shops', role: 'Role', status: 'Status', actions: 'Action' },
@@ -491,7 +540,13 @@ export const translations = {
     shopDashboard: { title: 'Management', verifiedBadge: 'Verified', verifiedDesc: 'Audited.', quickActions: 'Actions', newEstimate: 'Estimate', checklist: 'Checklist', whatsapp: 'Whatsapp', lastEstimates: 'Recientes', pending: 'Pendiente', approved: 'Approved', tabs: { dashboard: 'Panel', history: 'History', requests: 'Leads' }, requestsView: { title: 'Leads', subtitle: 'Clients nearby.', empty: 'Searching...', accept: 'Capture', decline: 'Dismiss', navigating: 'En route...', contact: 'Talk', distance: 'km' } },
     aboutPage: { title: 'Automotive Truth', subtitle: 'Connecting via data.', mission: { title: 'Purpose', text: 'Radical transparency.' }, pillars: { driver: { title: 'Driver', desc: 'Scam shield.' }, shop: { title: 'Shops', desc: 'Ready clients.' }, mechanic: { title: 'Mechanics', desc: 'Real value.' } }, stats: { users: 'Users', partners: 'Partners', accuracy: 'Accuracy' } },
     driversLanding: { hero: { tag: 'FOR PREPARED DRIVERS', title: 'Crashed your car?', titleHighlight: 'OC+ solves it all.', desc: 'From repair money to bureaucracy. We are your copilot when everything goes wrong.', cta: 'Use Free Scanner', secondaryCta: 'Plans', trust: '12k+ protected', cardTitle: 'Incident Report', cardSubtitle: 'Generated by OC+ in 2s', cardItem1: 'Estimated Cost', cardValue1: '$ 850.00', cardItem2: 'Infra Risk', cardValue2: 'High (Pole)', cardItem3: 'Credit Approved', cardValue3: 'Yes (24x)' }, creditSection: { title: 'Crashed and broke?', desc: 'Accidents do not warn when they arrive. That\'s why OC+ offers immediate credit for your repair.', items: ['Installments up to 24x', 'Direct payment to shop', 'Approval in seconds'], card: { label: 'Repair Cost', value: '$ 2,500.00', button: 'Request Installments' } }, legalSection: { title: 'Hit a pole or sign?', desc: 'Damage to public property generates fines and lawsuits if not handled correctly. OC+ guides you.', items: ['Automatic legal walkthrough', 'Emergency contacts (Utility/Traffic)', 'Avoid hit-and-run charges'], cardTitle: 'OC+ Alert Activated', cardItem1Title: 'Power Grid Damage Detected', cardItem1Desc: 'DO NOT EXIT CAR. Risk of electric shock. Wait for help.', cardItem2Title: 'Legal Protocol', cardItem2Desc: 'Your location has been saved. The online police report has been pre-filled.' }, towSection: { title: "Car won't start? The tow truck is coming.", desc: "Our partner network covers the entire national territory. With OC+ Prime, you get discounts and priority.", card1Title: "Geolocation", card1Desc: "We find the nearest tow truck via GPS in seconds.", card2Title: "Fixed Price", card2Desc: "No surprises when paying. You approve the value beforehand.", card3Title: "Tracking", card3Desc: "See the rescue displacement in real time on the map." }, problem: { title: 'The Problem', p1: { title: 'Guesswork', desc: 'Random prices.' }, p2: { title: 'Insecurity', desc: 'Doubts.' }, p3: { title: 'Red Tape', desc: 'Wasted time.' } }, solution: { title: 'The Solution', s1: { title: 'X-Ray', desc: 'Photo diagnosis.' }, s2: { title: 'Law', desc: 'Liability check.' }, s3: { title: 'Credit', desc: 'Money to fix.' } }, features: { title: 'Why OC++?', f1: { title: 'Validator', desc: 'We audit quotes.' }, f2: { title: 'SOS', desc: 'Real help.' }, f3: { title: 'Dossier', desc: 'Car value.' } }, ctaBox: { title: 'Protect your asset.', desc: '', button: 'Start' } },
-    shopsLanding: { hero: { title: 'More Profit. Zero Noise.', subtitle: 'B2B Intelligence', desc: 'Clients arrive with diagnosis and money. You just execute.', cta: 'Register Shop' }, benefits: { title: 'Efficiency', b1: { title: 'Finance', desc: 'Auto mgmt.' }, b2: { title: 'Productivity', desc: 'Time control.' }, b3: { title: 'Foco', desc: 'Profitable services.' } } },
+    shopsLanding: { 
+      hero: { title: 'More Profit. Zero Noise.', subtitle: 'B2B Intelligence', desc: 'Clients arrive with diagnosis and money. You just execute.', cta: 'Register Shop' }, 
+      benefits: { title: 'Proven Results', b1: { title: 'Revenue', desc: 'Average increase.' }, b2: { title: 'Idle Time', desc: 'Drastic reduction.' }, b3: { title: 'Conversion', desc: 'More approvals.' } },
+      process: { title: 'Stop chasing clients.', subtitle: 'OC+ delivers sold services.', step1: { title: 'Qualified Lead', desc: 'Driver scans damage via App.' }, step2: { title: 'Fast Estimate', desc: 'You validate costs in 2 clicks.' }, step3: { title: 'Execution', desc: 'Client arrives with approved credit.' } },
+      management: { title: 'Your office in your pocket.', desc: 'Complete suite to manage your shop, from stock to after-sales.', card1: { title: 'Auto CRM', desc: 'Service reminders.' }, card2: { title: 'Finance', desc: 'Cash flow & invoices.' }, card3: { title: 'Parts Quote', desc: 'Auto search suppliers.' } },
+      finance: { title: 'Receive upfront.', desc: 'Client pays in installments via App. OC+ pays you in full upon delivery. Zero risk.', badge: 'Zero Risk' }
+    },
     mechanicsLanding: { hero: { title: 'Your Career. Your Command.', subtitle: 'Be a Partner', desc: 'Get calls. Execute. Get paid. No boss.', cta: 'Join' }, benefits: { title: 'Perks', b1: { title: 'Quality', desc: 'Ready jobs.' }, b2: { title: 'Status', desc: 'Expert badge.' }, b3: { title: 'Mgmt', desc: 'Pocket schedule.' } } },
     hero: {
       tag: 'OC+ TECHNOLOGY 3.0',
@@ -553,7 +608,28 @@ export const translations = {
   },
   'es': {
     nav: { services: 'Soluciones', drivers: 'Conductores', shops: 'Talleres', mechanics: 'Mecánicos', analysis: 'Análisis', history: 'Historial', plans: 'Precios', admin: 'Gestión', about: 'Sobre', login: 'Entrar', logout: 'Salir', welcome: 'Hola', shopBadge: 'Socio', mechanicBadge: 'Experto', notifications: 'Alertas', markAllRead: 'Limpiar', empty: 'Vacío' },
-    auth: { title: 'Acceso', subtitle: 'Inteligencia Auto.', tabDriver: 'Conductor', tabShop: 'Taller', tabMechanic: 'Mecánico', tabAdmin: 'Admin', emailPlaceholder: 'email', passwordPlaceholder: 'clave', button: 'Entrar', basicLabel: 'Conductor (Gratis)', premiumLabel: 'Conductor (Premium)' },
+    auth: { 
+      title: 'Acceso', 
+      subtitle: 'Inteligencia Auto.', 
+      registerTitle: 'Crear Cuenta',
+      registerSubtitle: 'Únete a OC+.',
+      tabDriver: 'Conductor', 
+      tabShop: 'Taller', 
+      tabMechanic: 'Mecánico', 
+      tabAdmin: 'Admin', 
+      emailPlaceholder: 'email', 
+      passwordPlaceholder: 'clave',
+      namePlaceholder: 'Nombre Completo',
+      phonePlaceholder: 'Teléfono',
+      shopNamePlaceholder: 'Nombre del Taller',
+      docPlaceholder: 'ID / RUC', 
+      button: 'Entrar', 
+      registerButton: 'Registrar',
+      toggleToRegister: '¿Nuevo? Regístrate',
+      toggleToLogin: '¿Ya tienes cuenta? Entrar',
+      error: 'Credenciales inválidas.',
+      demoHint: 'Pista: usa emails de prueba (ej: motorista@ocplus.com) y clave "12345678"'
+    },
     emergency: { title: 'Emergencia', subtitle: 'Estamos contigo.', btnHelp: 'Guía', btnHelpDesc: 'Habla con experto.', btnSolution: 'Resolver', btnSolutionDesc: 'Grúa o Mec.', questions: { drivable: '¿Anda?', people: '¿Gente?', injured: '¿Heridos?', kids: '¿Niños?', fire: '¿Fuego?', location: '¿Ubicación?', details: 'Resumen:' }, finding: 'Buscando...', driverFound: 'Encontrado.', driverArriving: 'Llegando en', contacting: 'Conectando...', agentCall: 'Espera llamada.', mapBadge: 'Activa', cancel: 'Cancelar' },
     financialAidSection: { badge: 'Crédito', title: 'Arregla ya.', titleHighlight: 'Paga luego.', subtitle: 'Capital aprobado.', desc: 'Crédito inmediato.', cards: { loan: { title: 'Cuotas', desc: 'Crédito ya.', highlight: 'Hasta 24x' }, insurance: { title: 'Seguro', desc: 'Hacemos el trámite.', highlight: 'Reembolso Rápido' } }, cta: 'Ver Crédito' },
     superAdmin: { title: 'Comando Global', menu: { overview: 'Visión', history: 'Incidentes', service: 'Atención', monitoring: 'Tiempo Real', costs: 'Costos', earnings: 'Ingresos', sales: 'Ventas', partnerships: 'Socios', legal: 'Legal', reports: 'BI' }, stats: { activeCalls: 'Llamadas', avgTime: 'TMA', satisfaction: 'NPS', totalRevenue: 'Ingresos', totalCosts: 'Costos', netProfit: 'Lucro', activePartners: 'Online' }, users: 'Usuarios', financial: 'Finanzas', totalUsers: 'Total', activeShops: 'Talleres', conversionRate: 'Conversión', recentActivity: 'Feed', userList: 'Cuentas', filterDriver: 'Conductores', filterShop: 'Talleres', role: 'Rol', status: 'Estado', actions: 'Acción' },
@@ -561,7 +637,13 @@ export const translations = {
     shopDashboard: { title: 'Gestión', verifiedBadge: 'Verificado', verifiedDesc: 'Auditado.', quickActions: 'Acciones', newEstimate: 'Presupuesto', checklist: 'Checklist', whatsapp: 'Whatsapp', lastEstimates: 'Recientes', pending: 'Pendiente', approved: 'Aprobado', tabs: { dashboard: 'Panel', history: 'Historial', requests: 'Leads' }, requestsView: { title: 'Leads', subtitle: 'Clientes cerca.', empty: 'Buscando...', accept: 'Captar', decline: 'Descartar', navigating: 'En camino...', contact: 'Hablar', distance: 'km' } },
     aboutPage: { title: 'Verdad Automotriz', subtitle: 'Conexión vía datos.', mission: { title: 'Propósito', text: 'Transparencia radical.' }, pillars: { driver: { title: 'Conductor', desc: 'Blindaje.' }, shop: { title: 'Talleres', desc: 'Clientes listos.' }, mechanic: { title: 'Mecánicos', desc: 'Valor real.' } }, stats: { users: 'Usuarios', partners: 'Socios', accuracy: 'Precisión' } },
     driversLanding: { hero: { tag: 'PARA CONDUCTORES PREVENIDOS', title: '¿Chocaste?', titleHighlight: 'OC+ lo resuelve.', desc: 'Del dinero para el arreglo a la burocracia. Somos tu copiloto.', cta: 'Usar Escáner Gratis', secondaryCta: 'Planes', trust: '12k+ protegidos', cardTitle: 'Informe de Incidente', cardSubtitle: 'Generado por OC+ en 2s', cardItem1: 'Costo Estimado', cardValue1: '$ 850.00', cardItem2: 'Riesgo Infra', cardValue2: 'Alto (Poste)', cardItem3: 'Crédito Aprobado', cardValue3: 'Sí (24x)' }, creditSection: { title: '¿Chocaste y sin dinero?', desc: 'Los accidentes no avisan. Por eso, OC+ ofrece crédito inmediato para tu reparación.', items: ['Cuotas hasta 24x', 'Pago directo al taller', 'Aprobación en segundos'], card: { label: 'Costo Reparación', value: '$ 2,500.00', button: 'Solicitar Cuotas' } }, legalSection: { title: '¿Golpeaste un poste o señal?', desc: 'Los daños al patrimonio público generan multas y demandas si no se manejan correctamente. OC+ te guía.', items: ['Guía legal automática', 'Contactos de emergencia (Servicios/Tráfico)', 'Evita demandas por fuga'], cardTitle: 'Alerta OC+ Activada', cardItem1Title: 'Daño a Red Eléctrica Detectado', cardItem1Desc: 'NO SALGA DEL AUTO. Riesgo de descarga eléctrica. Espere ayuda.', cardItem2Title: 'Protocolo Legal', cardItem2Desc: 'Tu ubicación fue guardada. El informe policial online fue prellenado.' }, towSection: { title: "¿El auto no arranca? La grúa llega.", desc: "Nuestra red de socios cubre todo el territorio nacional. Con OC+ Prime, tienes descuento y prioridad.", card1Title: "Geolocalización", card1Desc: "Encontramos la grúa más cercana vía GPS en segundos.", card2Title: "Precio Fijo", card2Desc: "Sin sorpresas a la hora de pagar. Apruebas el valor antes.", card3Title: "Seguimiento", card3Desc: "Ve el desplazamiento del auxilio en tiempo real en el mapa." }, problem: { title: 'El Problema', p1: { title: 'Adivinanzas', desc: 'Precios al azar.' }, p2: { title: 'Inseguridad', desc: 'Dudas.' }, p3: { title: 'Burocracia', desc: 'Tiempo perdido.' } }, solution: { title: 'La Solución', s1: { title: 'Rayos-X', desc: 'Diagnóstico foto.' }, s2: { title: 'Ley', desc: 'Análisis culpa.' }, s3: { title: 'Crédito', desc: 'Dinero ya.' } }, features: { title: '¿Por qué OC++?', f1: { title: 'Validador', desc: 'Auditamos seu orçamento.' }, f2: { title: 'SOS', desc: 'Ajuda real, rápido.' }, f3: { title: 'Dossiê', desc: 'Valorize seu carro.' } }, ctaBox: { title: 'Protege tu patrimonio.', desc: '', button: 'Empezar' } },
-    shopsLanding: { hero: { title: 'Más Lucro. Cero Ruido.', subtitle: 'B2B Intelligence', desc: 'Clientes llegan con diagnóstico y dinero. Solo ejecutas.', cta: 'Registrar Taller' }, benefits: { title: 'Eficiencia', b1: { title: 'Finanzas', desc: 'Gestión auto.' }, b2: { title: 'Productividad', desc: 'Time control.' }, b3: { title: 'Foco', desc: 'Serviços rentables.' } } },
+    shopsLanding: { 
+      hero: { title: 'Más Lucro. Cero Ruido.', subtitle: 'B2B Intelligence', desc: 'Clientes llegan con diagnóstico y dinero. Solo ejecutas.', cta: 'Registrar Taller' }, 
+      benefits: { title: 'Resultados Comprobados', b1: { title: 'Ingresos', desc: 'Aumento promedio.' }, b2: { title: 'Ociosidad', desc: 'Reducción drástica.' }, b3: { title: 'Conversión', desc: 'Más aprobaciones.' } },
+      process: { title: 'Deja de buscar clientes.', subtitle: 'OC+ entrega el servicio vendido.', step1: { title: 'Lead Calificado', desc: 'Conductor escanea daño vía App.' }, step2: { title: 'Presupuesto Rápido', desc: 'Validas costos en 2 clics.' }, step3: { title: 'Ejecución', desc: 'Cliente llega con crédito aprobado.' } },
+      management: { title: 'Tu oficina en tu bolsillo.', desc: 'Suite completa para gestionar tu taller.', card1: { title: 'Auto CRM', desc: 'Recordatorios de servicio.' }, card2: { title: 'Finanzas', desc: 'Flujo de caja y facturas.' }, card3: { title: 'Cotización', desc: 'Búsqueda auto de piezas.' } },
+      finance: { title: 'Recibe al contado.', desc: 'El cliente paga a plazos en la App. OC+ te paga el total al entregar. Cero riesgo.', badge: 'Riesgo Cero' }
+    },
     mechanicsLanding: { hero: { title: 'Tu Carrera. Tu Mando.', subtitle: 'Sé Socio', desc: 'Recibe llamadas. Ejecuta. Cobra. Sin jefe.', cta: 'Unirme' }, benefits: { title: 'Ventajas', b1: { title: 'Calidad', desc: 'Trabajos listos.' }, b2: { title: 'Estatus', desc: 'Sello Experto.' }, b3: { title: 'Gestión', desc: 'Agenda móvil.' } } },
     hero: {
       tag: 'TECNOLOGIA OC+ 3.0',

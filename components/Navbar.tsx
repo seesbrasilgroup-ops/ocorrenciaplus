@@ -69,14 +69,14 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/95 dark:bg-slate-950/95 border-b border-gray-100 dark:border-slate-800 backdrop-blur-sm transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           
-          {/* MINIMALIST LOGO */}
+          {/* LOGO - Restored to Solid Blue Style (Compact) */}
           <div className="flex items-center cursor-pointer group" onClick={() => handleNavClick(ViewState.HOME)}>
-            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-2 transition-transform group-hover:scale-95 shadow-lg shadow-blue-600/20">
-                <span className="text-white font-bold text-lg tracking-tighter">OC</span>
+            <div className="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center mr-2 shadow-lg shadow-blue-600/20 transition-transform group-hover:scale-95">
+                <span className="text-white font-bold text-base tracking-tighter">OC</span>
             </div>
-            <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+            <span className="text-lg font-bold text-slate-900 dark:text-white tracking-tight">
               OC<span className="text-blue-600 font-bold">+</span>
             </span>
             
@@ -86,11 +86,11 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
             {currentUser?.role === 'SUPER_ADMIN' && <span className="ml-3 text-[10px] font-medium bg-gray-100 dark:bg-slate-800 text-gray-500 px-2 py-1 rounded-md tracking-wide">ADMIN</span>}
           </div>
           
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6">
             
-            {/* Minimal Desktop Menu */}
+            {/* Minimal Desktop Menu (Compact Text) */}
             {!currentUser && (
-              <div className="hidden lg:flex items-center space-x-8">
+              <div className="hidden lg:flex items-center space-x-6">
                 <button onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)} className={`text-sm font-medium transition-colors ${currentView === ViewState.LANDING_DRIVERS ? 'text-slate-900 dark:text-white' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'}`}>{t.drivers}</button>
                 <button onClick={() => handleNavClick(ViewState.LANDING_SHOPS)} className={`text-sm font-medium transition-colors ${currentView === ViewState.LANDING_SHOPS ? 'text-slate-900 dark:text-white' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'}`}>{t.shops}</button>
                 <button onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)} className={`text-sm font-medium transition-colors ${currentView === ViewState.LANDING_MECHANICS ? 'text-slate-900 dark:text-white' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'}`}>{t.mechanics}</button>
@@ -98,11 +98,11 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
             )}
 
             {/* Actions */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               
               {currentUser && (
                 <div className="relative" ref={notificationRef}>
-                   <button onClick={() => setIsNotificationsOpen(!isNotificationsOpen)} className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+                   <button onClick={() => setIsNotificationsOpen(!isNotificationsOpen)} className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors p-1">
                       <Bell className="w-5 h-5" />
                       {unreadCount > 0 && <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>}
                    </button>
@@ -119,7 +119,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                 </div>
               )}
 
-              <button onClick={toggleTheme} className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+              <button onClick={toggleTheme} className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors p-1">
                 {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
               </button>
 
@@ -148,13 +148,13 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
                   )}
                 </div>
               ) : (
-                <button onClick={onOpenAuth} className="text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 px-5 py-2.5 rounded-lg transition-all shadow-md shadow-blue-600/20">
+                <button onClick={onOpenAuth} className="hidden lg:block text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-all shadow-md shadow-blue-600/20">
                   {t.login}
                 </button>
               )}
 
               {!currentUser && (
-                <button onClick={toggleMobileMenu} className="lg:hidden text-slate-900 dark:text-white">
+                <button onClick={toggleMobileMenu} className="lg:hidden text-slate-900 dark:text-white p-1">
                   {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
               )}
@@ -165,11 +165,17 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, language, theme, 
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && !currentUser && (
-        <div className="lg:hidden absolute top-20 left-0 w-full bg-white dark:bg-slate-950 border-b border-gray-100 dark:border-slate-800">
+        <div className="lg:hidden absolute top-16 left-0 w-full bg-white dark:bg-slate-950 border-b border-gray-100 dark:border-slate-800 shadow-xl">
           <div className="px-6 py-4 space-y-4">
-            <button onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)} className="block w-full text-left text-lg font-medium text-slate-900 dark:text-white">{t.drivers}</button>
-            <button onClick={() => handleNavClick(ViewState.LANDING_SHOPS)} className="block w-full text-left text-lg font-medium text-slate-900 dark:text-white">{t.shops}</button>
-            <button onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)} className="block w-full text-left text-lg font-medium text-slate-900 dark:text-white">{t.mechanics}</button>
+            <button onClick={() => handleNavClick(ViewState.LANDING_DRIVERS)} className="block w-full text-left text-base font-medium text-slate-900 dark:text-white">{t.drivers}</button>
+            <button onClick={() => handleNavClick(ViewState.LANDING_SHOPS)} className="block w-full text-left text-base font-medium text-slate-900 dark:text-white">{t.shops}</button>
+            <button onClick={() => handleNavClick(ViewState.LANDING_MECHANICS)} className="block w-full text-left text-base font-medium text-slate-900 dark:text-white">{t.mechanics}</button>
+            
+            <div className="pt-4 mt-4 border-t border-gray-100 dark:border-slate-800">
+                <button onClick={() => { onOpenAuth(); setIsMobileMenuOpen(false); }} className="w-full text-center font-bold text-white bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-lg transition-all shadow-md shadow-blue-600/20">
+                  {t.login}
+                </button>
+            </div>
           </div>
         </div>
       )}

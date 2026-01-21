@@ -151,7 +151,7 @@ const App: React.FC = () => {
           />
         )}
 
-        <main className={`pt-20 flex-grow ${view === ViewState.HOME ? 'pb-0' : 'pb-24'}`}>
+        <main className={`pt-16 flex-grow ${view === ViewState.HOME ? 'pb-0' : 'pb-24'}`}>
           {error && (
             <div className="max-w-lg mx-auto px-6 mb-8 animate-in fade-in slide-in-from-top-4 pt-4">
               <div className="bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/50 text-red-600 dark:text-red-300 p-4 rounded-lg flex items-center text-sm">
@@ -162,8 +162,8 @@ const App: React.FC = () => {
 
           {view === ViewState.HOME && (
             <>
-              {/* NEW HERO SECTION - 2 COLUMNS WITH MAP BACKGROUND */}
-              <div className="relative w-full overflow-hidden bg-slate-50 dark:bg-slate-950 min-h-[85vh] flex items-center">
+              {/* NEW HERO SECTION - 2 COLUMNS WITH MAP BACKGROUND - Compacted */}
+              <div className="relative w-full overflow-hidden bg-slate-50 dark:bg-slate-950 min-h-[80vh] flex items-center">
                 
                 {/* FICTIONAL MAP BACKGROUND */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
@@ -173,42 +173,42 @@ const App: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/50 dark:from-slate-950/80 dark:via-transparent dark:to-slate-950/50"></div>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-0 w-full relative z-10">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-0 w-full relative z-10">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     
                     {/* LEFT COLUMN: TEXT CONTENT */}
                     <div className="w-full max-w-lg mx-auto flex flex-col items-center text-center animate-in fade-in slide-in-from-left-8 duration-700">
                        
                        {/* Tag */}
-                       <div className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide mb-8 border border-blue-100 dark:border-blue-800 backdrop-blur-sm">
+                       <div className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full text-[10px] font-bold tracking-wide mb-6 border border-blue-100 dark:border-blue-800 backdrop-blur-sm">
                           <Zap className="w-3 h-3 fill-current" />
                           {t.hero.tag}
                        </div>
 
-                       {/* Headline */}
-                       <h1 className="text-5xl lg:text-7xl font-bold tracking-tighter text-slate-900 dark:text-white leading-[1.1] mb-6 drop-shadow-sm">
+                       {/* Headline - Smaller Size */}
+                       <h1 className="text-4xl lg:text-6xl font-bold tracking-tighter text-slate-900 dark:text-white leading-[1.1] mb-5 drop-shadow-sm">
                           {t.hero.titlePrefix} <span className="text-blue-600 dark:text-blue-400">{t.hero.titleHighlight}</span>
                        </h1>
 
-                       {/* Description */}
-                       <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+                       {/* Description - Smaller Size */}
+                       <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
                           {t.hero.description}
                        </p>
 
-                       {/* Buttons - Full Width */}
-                       <div className="flex flex-col gap-4 w-full">
+                       {/* Buttons - Compacted */}
+                       <div className="flex flex-col gap-3 w-full">
                           <button 
                              onClick={() => setView(ViewState.LANDING_DRIVERS)}
-                             className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5"
+                             className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 text-sm"
                           >
-                             <Car className="w-5 h-5" />
+                             <Car className="w-4 h-4" />
                              {t.hero.btnDriver}
                           </button>
                           <button 
                              onClick={() => setView(ViewState.LANDING_SHOPS)}
-                             className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5"
+                             className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 text-sm"
                           >
-                             <Wrench className="w-5 h-5" />
+                             <Wrench className="w-4 h-4" />
                              {t.hero.btnShop}
                           </button>
                        </div>
@@ -217,31 +217,31 @@ const App: React.FC = () => {
 
                     {/* RIGHT COLUMN: SCANNER CARD */}
                     <div className="relative animate-in fade-in slide-in-from-right-8 duration-700 delay-100">
-                       {/* Gradient Shadow/Glow Effect - Blue to Orange */}
-                       <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-amber-500 rounded-[2.5rem] blur-xl opacity-60 dark:opacity-40"></div>
+                       {/* Gradient Shadow/Glow Effect */}
+                       <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-amber-500 rounded-[2rem] blur-xl opacity-60 dark:opacity-40"></div>
 
-                       {/* The Card */}
-                       <div className="relative bg-white dark:bg-slate-900 rounded-[2rem] shadow-2xl border border-slate-100 dark:border-slate-800 p-8">
+                       {/* The Card - More Compact Padding */}
+                       <div className="relative bg-white dark:bg-slate-900 rounded-[1.5rem] shadow-2xl border border-slate-100 dark:border-slate-800 p-6">
                           
                           {/* Card Header */}
-                          <div className="flex items-center justify-between mb-8">
+                          <div className="flex items-center justify-between mb-6">
                              <div className="flex items-center gap-3">
                                 <div className="bg-red-50 dark:bg-red-900/20 p-2 rounded-full">
                                   <Target className="w-5 h-5 text-red-500" />
                                 </div>
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t.hero.scannerTitle}</h3>
+                                <h3 className="text-base font-bold text-slate-900 dark:text-white">{t.hero.scannerTitle}</h3>
                              </div>
                              <div className="flex items-center gap-2">
                                 <span className="relative flex h-2 w-2">
                                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                                 </span>
-                                <span className="text-xs font-bold text-green-600 dark:text-green-400">{t.hero.scannerOnline}</span>
+                                <span className="text-[10px] font-bold text-green-600 dark:text-green-400">{t.hero.scannerOnline}</span>
                              </div>
                           </div>
 
-                          {/* Card Body (Upload Area) */}
-                          <div className="h-64 mb-8">
+                          {/* Card Body (Upload Area) - Reduced Height */}
+                          <div className="h-56 mb-6">
                              <FileUpload 
                                 onFileSelect={handleFileSelect} 
                                 isLoading={isLoading} 
@@ -250,24 +250,24 @@ const App: React.FC = () => {
                           </div>
 
                           {/* Card Footer */}
-                          <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-100 dark:border-slate-800">
+                          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
                              <div className="text-center">
-                                <div className="flex justify-center mb-2 text-slate-400">
-                                   <Clock className="w-5 h-5" />
+                                <div className="flex justify-center mb-1 text-slate-400">
+                                   <Clock className="w-4 h-4" />
                                 </div>
-                                <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.hero.scannerFooter1}</span>
+                                <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider">{t.hero.scannerFooter1}</span>
                              </div>
                              <div className="text-center border-l border-slate-100 dark:border-slate-800">
-                                <div className="flex justify-center mb-2 text-slate-400">
-                                   <ShieldCheck className="w-5 h-5" />
+                                <div className="flex justify-center mb-1 text-slate-400">
+                                   <ShieldCheck className="w-4 h-4" />
                                 </div>
-                                <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.hero.scannerFooter2}</span>
+                                <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider">{t.hero.scannerFooter2}</span>
                              </div>
                              <div className="text-center border-l border-slate-100 dark:border-slate-800">
-                                <div className="flex justify-center mb-2 text-slate-400">
-                                   <CreditCard className="w-5 h-5" />
+                                <div className="flex justify-center mb-1 text-slate-400">
+                                   <CreditCard className="w-4 h-4" />
                                 </div>
-                                <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.hero.scannerFooter3}</span>
+                                <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider">{t.hero.scannerFooter3}</span>
                              </div>
                           </div>
 
@@ -322,8 +322,8 @@ const App: React.FC = () => {
             {/* Col 1: Brand & Desc */}
             <div className="space-y-6">
                <div className="flex items-center mb-2">
-                  <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mr-2 shadow-lg">
-                      <span className="text-white font-bold text-sm tracking-tighter">OC</span>
+                  <div className="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mr-2 shadow-lg">
+                      <span className="text-white font-bold text-base tracking-tighter">OC</span>
                   </div>
                   <h3 className="text-2xl font-black text-white">
                       OC<span className="text-blue-200">+</span>
