@@ -42,6 +42,17 @@ const App: React.FC = () => {
   const [hasAccessedSystem, setHasAccessedSystem] = useState(false);
   const [emergencyMode, setEmergencyMode] = useState<'HELP' | 'SOLUTION' | null>(null);
   const [isPremium, setIsPremium] = useState(false);
+  
+  // Splash Screen State
+  const [isSplashVisible, setIsSplashVisible] = useState(true);
+
+  useEffect(() => {
+    // Simulate Platform Boot Sequence
+    const timer = setTimeout(() => {
+      setIsSplashVisible(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (currentUser?.role === 'DRIVER_PREMIUM') {
@@ -129,9 +140,27 @@ const App: React.FC = () => {
 
   const t = translations[language];
 
+  // SPLASH SCREEN RENDER
+  if (isSplashVisible) {
+    return (
+      <div className={`fixed inset-0 z-[100] flex items-center justify-center bg-slate-950 transition-opacity duration-500 ${!isSplashVisible ? 'opacity-0' : 'opacity-100'}`}>
+        <div className="text-center">
+          <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-blue-500/50 animate-bounce">
+             <span className="text-white font-black text-3xl tracking-tighter">OC</span>
+          </div>
+          <h1 className="text-3xl font-bold text-white tracking-widest mb-2">OC+ PLATAFORMA</h1>
+          <div className="flex justify-center items-center gap-2 text-blue-400 text-sm font-mono">
+             <div className="w-2 h-2 bg-blue-500 rounded-full animate-ping"></div>
+             Inicializando Sistema...
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={theme === 'dark' ? 'dark' : ''}>
-      <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors duration-300 font-sans selection:bg-slate-200 dark:selection:bg-slate-800 flex flex-col">
+      <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors duration-300 font-sans selection:bg-slate-200 dark:selection:bg-slate-800 flex flex-col animate-fade-in">
         <Navbar 
           currentView={view} 
           setView={setView} 
@@ -162,13 +191,12 @@ const App: React.FC = () => {
 
           {view === ViewState.HOME && (
             <>
-              {/* NEW HERO SECTION - 2 COLUMNS WITH MAP BACKGROUND - Compacted */}
+              {/* HERO SECTION */}
               <div className="relative w-full overflow-hidden bg-slate-50 dark:bg-slate-950 min-h-[80vh] flex items-center">
                 
-                {/* FICTIONAL MAP BACKGROUND */}
+                {/* MAP BACKGROUND */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <div className="absolute inset-0 bg-[url('https://api.mapbox.com/styles/v1/mapbox/light-v10/static/-46.6333,-23.5505,12.5,0,0/1600x900?access_token=pk.eyJ1IjoiZGVtbyIsImEiOiJja2VuaGZ5cm8wMDB4MnJ0Z3Z4b214aXBiIn0.7b1-M3Z-1')] bg-cover bg-center opacity-30 dark:opacity-10 grayscale mix-blend-multiply dark:mix-blend-normal"></div>
-                    {/* Gradient Overlays for Readability */}
                     <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/70 to-white dark:from-slate-950/90 dark:via-slate-950/70 dark:to-slate-950"></div>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/50 dark:from-slate-950/80 dark:via-transparent dark:to-slate-950/50"></div>
                 </div>
@@ -185,17 +213,17 @@ const App: React.FC = () => {
                           {t.hero.tag}
                        </div>
 
-                       {/* Headline - Smaller Size */}
+                       {/* Headline */}
                        <h1 className="text-4xl lg:text-6xl font-bold tracking-tighter text-slate-900 dark:text-white leading-[1.1] mb-5 drop-shadow-sm">
                           {t.hero.titlePrefix} <span className="text-blue-600 dark:text-blue-400">{t.hero.titleHighlight}</span>
                        </h1>
 
-                       {/* Description - Smaller Size */}
+                       {/* Description */}
                        <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
                           {t.hero.description}
                        </p>
 
-                       {/* Buttons - Compacted */}
+                       {/* Buttons */}
                        <div className="flex flex-col gap-3 w-full">
                           <button 
                              onClick={() => setView(ViewState.LANDING_DRIVERS)}
@@ -206,7 +234,7 @@ const App: React.FC = () => {
                           </button>
                           <button 
                              onClick={() => setView(ViewState.LANDING_SHOPS)}
-                             className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 text-sm"
+                             className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-lg font-bold shadow-sm transition-all hover:-translate-y-0.5 text-sm"
                           >
                              <Wrench className="w-4 h-4" />
                              {t.hero.btnShop}
@@ -217,13 +245,10 @@ const App: React.FC = () => {
 
                     {/* RIGHT COLUMN: SCANNER CARD */}
                     <div className="relative animate-in fade-in slide-in-from-right-8 duration-700 delay-100">
-                       {/* Gradient Shadow/Glow Effect */}
                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-amber-500 rounded-[2rem] blur-xl opacity-60 dark:opacity-40"></div>
 
-                       {/* The Card - More Compact Padding */}
                        <div className="relative bg-white dark:bg-slate-900 rounded-[1.5rem] shadow-2xl border border-slate-100 dark:border-slate-800 p-6">
                           
-                          {/* Card Header */}
                           <div className="flex items-center justify-between mb-6">
                              <div className="flex items-center gap-3">
                                 <div className="bg-red-50 dark:bg-red-900/20 p-2 rounded-full">
@@ -240,7 +265,6 @@ const App: React.FC = () => {
                              </div>
                           </div>
 
-                          {/* Card Body (Upload Area) - Reduced Height */}
                           <div className="h-56 mb-6">
                              <FileUpload 
                                 onFileSelect={handleFileSelect} 
@@ -249,7 +273,6 @@ const App: React.FC = () => {
                              />
                           </div>
 
-                          {/* Card Footer */}
                           <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
                              <div className="text-center">
                                 <div className="flex justify-center mb-1 text-slate-400">
@@ -278,7 +301,6 @@ const App: React.FC = () => {
                 </div>
               </div>
               
-              {/* Only show minimalist sections if NOT logged in/accessed */}
               {!currentUser && !hasAccessedSystem && (
                 <>
                   <VideoSection language={language} />
@@ -319,7 +341,6 @@ const App: React.FC = () => {
 
         <footer className="bg-blue-600 py-16 text-white border-t border-blue-500">
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
-            {/* Col 1: Brand & Desc */}
             <div className="space-y-6">
                <div className="flex items-center mb-2">
                   <div className="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mr-2 shadow-lg">
@@ -334,7 +355,6 @@ const App: React.FC = () => {
                </p>
             </div>
 
-            {/* Col 2: Solutions */}
             <div>
                <h4 className="font-bold text-white mb-6">{t.footer.col1}</h4>
                <ul className="space-y-4 text-sm text-blue-100">
@@ -344,7 +364,6 @@ const App: React.FC = () => {
                </ul>
             </div>
 
-            {/* Col 3: Company */}
             <div>
                <h4 className="font-bold text-white mb-6">{t.footer.col2}</h4>
                <ul className="space-y-4 text-sm text-blue-100">

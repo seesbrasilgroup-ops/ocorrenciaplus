@@ -296,6 +296,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
                          onChange={(e) => setName(e.target.value)}
                          className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all"
                          required
+                         autoComplete="name"
+                         autoCapitalize="words"
                       />
                    </div>
 
@@ -310,6 +312,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
                             onChange={(e) => setShopName(e.target.value)}
                             className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all"
                             required
+                            autoComplete="organization"
                          />
                       </div>
                    )}
@@ -323,6 +326,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all text-sm"
+                            inputMode="tel"
+                            autoComplete="tel"
                          />
                       </div>
                       {(activeTab !== 'ADMIN') && (
@@ -334,6 +339,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
                                 value={doc}
                                 onChange={(e) => setDoc(e.target.value)}
                                 className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all text-sm"
+                                inputMode="numeric"
                              />
                           </div>
                       )}
@@ -352,6 +358,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
                    onChange={(e) => setEmail(e.target.value)}
                    className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all"
                    required
+                   autoComplete="email"
+                   inputMode="email"
                  />
                </div>
                <div className="relative">
@@ -363,6 +371,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ language, onLogin, onClose }) => 
                    onChange={(e) => setPassword(e.target.value)}
                    className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 dark:text-white transition-all"
                    required
+                   autoComplete="current-password"
                  />
                </div>
              </div>
